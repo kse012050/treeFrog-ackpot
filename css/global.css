@@ -1,0 +1,32 @@
+
+
+/* 테두리 둥글게 */
+.borderRadius30{border-radius: 30px;}
+
+
+/* 로그인 페이지 */
+/* 로그인 페이지 공통 */
+.signPage input{padding: 0 15px;}
+.signPage input::placeholder{color: #d9d9d9;}
+.signPage input[type="checkbox"]{display: none;}
+.signPage input[type="checkbox"] + label{display: inline-flex; align-items: center; line-height: 0.5;}
+.signPage input[type="checkbox"] + label::before{content: ''; width: 15px; height: 15px; border: 1px solid #d9d9d9; border-radius: 100%; margin-right: 5px; box-sizing: border-box;}
+.signPage input[type="checkbox"]:checked + label::before{border: none; background: url('../images/chekc.png') no-repeat center / cover;}
+.signPage input[type="radio"]{display: none;}
+.signPage{height: 100vh; display: flex; flex-direction: column; }
+.signPage header{height: 90px;}
+.signPage header h1{max-width: 1580px; margin: 0 auto; padding: 10px 0;}
+.signPage header h1 img{width: 100%; max-width: 260px;}
+.signPage .signArea{flex: 1; background-color: #f5f5f5; display: flex; justify-content: center; padding: 50px 0;}
+.signPage .signArea form{background-color: white; width: 580px; padding: 60px 75px; box-sizing: border-box;}
+.signPage .signArea form fieldset{height: 100%;}
+.signPage .signArea form fieldset .topArea{text-align: center; margin-bottom: 40px;}
+.signPage .signArea form fieldset .topArea legend{font-size: 39px; font-weight: 700;}
+.signPage .signArea form fieldset div:not([class]){margin-bottom: 10px;}
+.signPage .signArea form fieldset div:not(.topArea){width: 100%; display: flex;}
+.signPage .signArea form fieldset div:not(.topArea) input{width: 100%; height: 50px; border: 1px solid #e9e9e9; border-radius: 10px;}
+.signPage .signArea form fieldset label{font-size: 14px; margin-bottom: 30px;}
+.signPage .signArea form fieldset .btnArea input{color: #fff; background-color: #d9d9d9; border-radius: 10px;}
+.signPage .signArea form fieldset ul{display: flex; justify-content: center; margin-top: 20px;}
+.signPage .signArea form fieldset ul li a{color: #929292; padding: 0 10px;}
+.signPage .signArea form fieldset ul li:not(:last-child) a{border-right: 1px solid #e4e4e4;}
