@@ -69,3 +69,42 @@ mark{color: #ee2222;}
 .signPage .signArea form fieldset .agreeArea ul li input[required] + label::after{content: '[필수]';}
 .signPage .signArea form fieldset .agreeArea ul li input:not([required]) + label::after{content: '[선택]';}
 .signPage .signArea form fieldset .agreeArea ul li button{font-size: 13px; color: #929292; text-decoration: underline;}
+
+
+/* 페이지 */
+.contentPage{display: flex; height: 100vh;}
+.contentPage header{width: 230px; background-image: linear-gradient(to bottom, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f); display: flex; flex-direction: column; justify-content: space-between;}
+.contentPage header .topArea{height: 51.85%; max-height: 560px; display: flex; flex-direction: column; justify-content: space-between;}
+.contentPage header .topArea .profileArea{min-height: 263.5px; padding: 0 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.2);}
+.contentPage header .topArea .profileArea img{width: 66px; border-radius: 25px; margin-bottom: 10px;}
+.contentPage header .topArea .profileArea strong{font-size: 18px; font-weight: 700; color: white; margin-bottom: 10px;}
+.contentPage header .topArea .profileArea b{width: 100%; font-size: 14px; font-weight: 700; color: #4d4d4d; line-height: 28px; text-align: center; border-radius: 14px; background-color: white;}
+.contentPage header .topArea .profileArea p{font-size: 13px; color: rgba(255, 255, 255, 0.7);}
+.contentPage header .topArea .profileArea p:first-of-type{margin-top: 10px;}
+.contentPage header .topArea .profileArea p:not(:first-of-type){margin-top: 3px;}
+.contentPage header nav{padding: 0 20px;}
+.contentPage header nav ul li a{display: block; font-weight: 700; color: rgba(255, 255, 255, 0.7); line-height: 50px; padding-left: 45px; background-repeat: no-repeat; background-position: left 14px center; border-radius: 10px;}
+.contentPage header nav ul li:nth-child(1) a{background-image: url('../images/icon-menu01.png'); background-size: 20px;}
+.contentPage header nav ul li:nth-child(2) a{background-image: url('../images/icon-menu02.png'); background-size: 20px;}
+.contentPage header nav ul li:nth-child(3) a{background-image: url('../images/icon-menu03.png'); background-size: 23px;}
+.contentPage header nav ul li:nth-child(4) a{background-image: url('../images/icon-menu04.png'); background-size: 20px;}
+.contentPage header nav ul li:nth-child(5) a{background-image: url('../images/icon-menu05.png'); background-size: 20px;}
+.contentPage header nav ul li:hover a{color: white; background-color: rgba(255, 255, 255, 0.2);}
+.contentPage header nav ul li:nth-child(1):hover a{background-image: url('../images/icon-menu01-active.png');}
+.contentPage header nav ul li:nth-child(2):hover a{background-image: url('../images/icon-menu02-active.png');}
+.contentPage header nav ul li:nth-child(3):hover a{background-image: url('../images/icon-menu03-active.png');}
+.contentPage header nav ul li:nth-child(4):hover a{background-image: url('../images/icon-menu04-active.png');}
+.contentPage header nav ul li:nth-child(5):hover a{background-image: url('../images/icon-menu05-active.png');}
+.contentPage header .bottomArea{height: 39.81%; max-height: 350px; display: flex; flex-direction: column; justify-content: space-between;}
+.contentPage header .bottomArea img{width: 100%;}
+.contentPage header .bottomArea div{flex: 1; display: flex; flex-direction: column; padding: 20px 30px;}
+.contentPage header .bottomArea div ul{}
+.contentPage header .bottomArea div ul li:not(:last-child){margin-bottom: 8px;}
+.contentPage header .bottomArea div ul li :is(a:not(:has(b)) , button){color: rgba(255, 255, 255, 0.7);}
+.contentPage header .bottomArea div ul li :is(a , button){font-size: 13px; }
+.contentPage header .bottomArea div ul li button{line-height: 20px; padding-left: 25px; background: url('../images/icon-logout.png') no-repeat left center / 16px;}
+.contentPage header .bottomArea div ul li a b{color: white;}
+.contentPage header .bottomArea div h1{max-width: 143px; margin-bottom: 10px; margin-top: auto;}
+.contentPage header .bottomArea div h1 img{width: 100%;}
+.contentPage header .bottomArea div small{font-size: 9px; color: rgba(255, 255, 255, 0.5);}
+
