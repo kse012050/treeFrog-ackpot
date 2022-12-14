@@ -140,12 +140,12 @@ mark{color: #ee2222;}
 .contentPage header nav ul li:nth-child(3) a{background-image: url('../images/icon-menu03.png'); background-size: 23px;}
 .contentPage header nav ul li:nth-child(4) a{background-image: url('../images/icon-menu04.png'); background-size: 20px;}
 .contentPage header nav ul li:nth-child(5) a{background-image: url('../images/icon-menu05.png'); background-size: 20px;}
-.contentPage header nav ul li:hover a{color: white; background-color: rgba(255, 255, 255, 0.2);}
-.contentPage header nav ul li:nth-child(1):hover a{background-image: url('../images/icon-menu01-active.png');}
-.contentPage header nav ul li:nth-child(2):hover a{background-image: url('../images/icon-menu02-active.png');}
-.contentPage header nav ul li:nth-child(3):hover a{background-image: url('../images/icon-menu03-active.png');}
-.contentPage header nav ul li:nth-child(4):hover a{background-image: url('../images/icon-menu04-active.png');}
-.contentPage header nav ul li:nth-child(5):hover a{background-image: url('../images/icon-menu05-active.png');}
+.contentPage header nav ul li:is(:hover, .active) a{color: white; background-color: rgba(255, 255, 255, 0.2);}
+.contentPage header nav ul li:nth-child(1):is(:hover, .active) a{background-image: url('../images/icon-menu01-active.png');}
+.contentPage header nav ul li:nth-child(2):is(:hover, .active) a{background-image: url('../images/icon-menu02-active.png');}
+.contentPage header nav ul li:nth-child(3):is(:hover, .active) a{background-image: url('../images/icon-menu03-active.png');}
+.contentPage header nav ul li:nth-child(4):is(:hover, .active) a{background-image: url('../images/icon-menu04-active.png');}
+.contentPage header nav ul li:nth-child(5):is(:hover, .active) a{background-image: url('../images/icon-menu05-active.png');}
 .contentPage header .bottomArea{height: 39.81%; max-height: 350px; display: flex; flex-direction: column; justify-content: space-between;}
 .contentPage header .bottomArea img{width: 100%;}
 .contentPage header .bottomArea div{flex: 1; display: flex; flex-direction: column; padding: 20px 30px;}
