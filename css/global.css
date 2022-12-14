@@ -31,8 +31,13 @@ mark{color: #ee2222;}
 .contentPage .contentArea .contentBox section > *{padding: 0 20px;}
 .contentPage .contentArea .contentBox section h3{font-size: 24px; font-weight: 700; padding: 25px 30px 20px;}
 .contentBox.case01 .slideBox{height: 300px; border: 1px solid black;}
+/* 서브 게시판 */
+.boradArea{padding-top: 40px; width: 350px; display: flex; flex-direction: column;}
+.boradArea > *:not(.scrollBox){padding: 0 30px;}
+.boradArea h2{font-size: 24px; font-weight: 700; margin-bottom: 5px;}
+.boradArea > p{width: 245px; font-size: 14px; color: #929292; line-height: 20px; margin-bottom: 10px;}
 /* 스크롤 박스 공통 */
-.scrollBox{flex: 1; overflow: auto; padding: 20px;}
+.scrollBox{flex: 1; overflow: auto; padding: 0 20px;}
 .scrollBox::-webkit-scrollbar{width: 5px;}
 .scrollBox::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
 .scrollBox ul{padding: 5px 0;} 
@@ -56,6 +61,7 @@ mark{color: #ee2222;}
 .scrollBox.case02 ul li a div:nth-child(2) strong span{color: #929292; position: absolute; right: 0; top: 0;}
 /* 스크롤 케이스 3 */
 .scrollBox.case03 ul li a{border-bottom: 1px solid #eeeeee;}
+.scrollBox.case03 ul li a img{width: 100%; border-radius: 10px; margin-bottom: 10px;}
 .scrollBox.case03 ul li a div{display: flex; flex-wrap: wrap;}
 .scrollBox.case03 ul li a div strong{width: 100%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
 .scrollBox.case03 ul li a div p:not(:last-of-type){padding-right: 5px; margin-right: 5px; border-right: 1px solid #e4e4e4;}
