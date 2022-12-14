@@ -17,31 +17,41 @@ mark{color: #ee2222;}
 .popupArea > div p{color: #bcbcbc;}
 .popupArea > div p:last-of-type{margin-bottom: 20px;}
 
+/* 텝 버튼 */
+.tabBtn{display: flex;}
+.tabBtn li:not(:last-child){margin-right: 5px;}
+.tabBtn li button{font-size: 13px; color: #929292; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 100px; box-sizing: border-box;}
+.tabBtn li.active button{color: #fff; background-color: #ee2222; border: none;}
+
 /* 컨텐츠 영역 */
-.contentArea{flex: 1; background-color: #f5f5f5; padding: 50px 50px;}
-.contentPage .contentArea{display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; justify-content: space-between; gap: 30px; position: relative;}
-.contentPage .contentArea .contentBox{width: calc((100% - 60px) / 3); border-radius: 30px; background-color: white;}
-.contentPage .contentArea .contentBox:has(:not(*)){background-color: red;}
-.contentPage .contentArea .contentBox.case01{height: 100%; display: flex; flex-direction: column;}
-.contentPage .contentArea .contentBox[class*="case02"]{display: flex; flex-direction: column; justify-content: space-between;}
-.contentPage .contentArea .contentBox.case02_1{height: calc((100% - 60px) * 0.4347);}
-.contentPage .contentArea .contentBox.case02{height: calc((100% - 60px) * 0.2653);}
-.contentPage .contentArea .contentBox section{min-height: 1%; display: flex; flex-direction: column;}
-.contentPage .contentArea .contentBox section:not(:last-of-type){margin-bottom: 4px;}
-.contentPage .contentArea .contentBox section > *{padding: 0 20px;}
-.contentPage .contentArea .contentBox section h3{font-size: 24px; font-weight: 700; padding: 25px 30px 20px;}
+.contentArea{flex: 1; background-color: #f5f5f5;}
+.mainPage .contentArea{ padding: 50px 50px;}
+.mainPage .contentArea{display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; justify-content: space-between; gap: 30px; position: relative;}
+.mainPage .contentArea .contentBox{width: calc((100% - 60px) / 3); border-radius: 30px; background-color: white;}
+.mainPage .contentArea .contentBox:has(:not(*)){background-color: red;}
+.mainPage .contentArea .contentBox.case01{height: 100%; display: flex; flex-direction: column;}
+.mainPage .contentArea .contentBox[class*="case02"]{display: flex; flex-direction: column; justify-content: space-between;}
+.mainPage .contentArea .contentBox.case02_1{height: calc((100% - 60px) * 0.4347);}
+.mainPage .contentArea .contentBox.case02{height: calc((100% - 60px) * 0.2653);}
+.mainPage .contentArea .contentBox section{min-height: 1%; display: flex; flex-direction: column;}
+.mainPage .contentArea .contentBox section:not(:last-of-type){margin-bottom: 4px;}
+.mainPage .contentArea .contentBox section > *{padding: 0 20px;}
+.mainPage .contentArea .contentBox section h3{font-size: 24px; font-weight: 700; padding: 25px 30px 20px;}
+/* 슬라이더 만들 예정 */
 .contentBox.case01 .slideBox{height: 300px; border: 1px solid black;}
+
 /* 서브 게시판 */
 .boradArea{padding-top: 40px; width: 350px; display: flex; flex-direction: column;}
 .boradArea > *:not(.scrollBox){padding: 0 30px;}
-.boradArea h2{font-size: 24px; font-weight: 700; margin-bottom: 5px;}
+.boradArea h2{font-size: 24px; font-weight: 700; margin-bottom: 10px;}
 .boradArea > p{width: 245px; font-size: 14px; color: #929292; line-height: 20px; margin-bottom: 10px;}
+
 /* 스크롤 박스 공통 */
 .scrollBox{flex: 1; overflow: auto; padding: 0 20px;}
 .scrollBox::-webkit-scrollbar{width: 5px;}
 .scrollBox::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
 .scrollBox ul{padding: 5px 0;} 
-.scrollBox ul li:hover a{background-color: #fff9f9;}
+.scrollBox ul li:is(:hover , .active) a{background-color: #fff9f9;}
 .scrollBox ul li a{border-radius: 10px; display: flex; align-items: center; padding: 14px 10px; }
 .scrollBox ul li a .imgArea{min-width: 53px; width: 53px;  margin-right: 2.12%; position: relative;}
 .scrollBox ul li a .imgArea img{width: 100%; border-radius: 20px;} 
@@ -66,6 +76,21 @@ mark{color: #ee2222;}
 .scrollBox.case03 ul li a div strong{width: 100%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
 .scrollBox.case03 ul li a div p:not(:last-of-type){padding-right: 5px; margin-right: 5px; border-right: 1px solid #e4e4e4;}
 
+/* 게시판 상세 */
+.boardPage .contentArea section{height: 100%; display: flex; flex-direction: column;}
+.boardPage .contentArea section > *{padding: 40px 50px;}
+.boardPage .contentArea section .titleArea{display: flex; flex-wrap: wrap; border-bottom: 1px solid #d9d9d9;}
+.boardPage .contentArea section .titleArea h3{width: 100%; font-size: 24px; font-weight: 700; line-height: 37px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-bottom: 10px;}
+.boardPage .contentArea section .titleArea p{font-size: 12px; color: #929292;}
+.boardPage .contentArea section .titleArea p:not(:last-of-type){padding-right: 5px; margin-right: 5px; border-right: 1px solid #e4e4e4;}
+.boardPage .contentArea section .editorArea{flex: 1; min-height: 1px;}
+.boardPage .contentArea section .editorArea b {font-weight: bold;}
+.boardPage .contentArea section .editorArea i{font-style: italic;}
+.boardPage .contentArea section .editorArea a{color: rgba(0, 0, 238, 1,);cursor: pointer;text-decoration: underline;}
+.boardPage .contentArea section .editorArea table{ display: table; box-sizing: border-box; text-indent: initial; border-spacing: 2px; border: 1px solid #ececec; width: 100%;}
+.boardPage .contentArea section .editorArea table tbody{display: table-row-group; vertical-align: middle; border-color: inherit;}
+.boardPage .contentArea section .editorArea table tbody tr{display: table-row; vertical-align: inherit; border-color: inherit;}
+.boardPage .contentArea section .editorArea table tbody tr td{display: table-cell; vertical-align: inherit; border: 1px solid #ececec; padding: 5px 3px; text-align: center; }
 
 /* 로그인 페이지 */
 .signPage{height: 100vh; display: flex; flex-direction: column; }
