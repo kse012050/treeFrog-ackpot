@@ -1,9 +1,10 @@
 /* 셋팅 */
+.settingPage :is(h3 , h4 , legend){font-size: 24px; font-weight: 700; margin-bottom: 20px;}
+.settingPage .contentBox{padding: 24px 30px 30px;}
 .settingPage .submit140{width: 140px; line-height: 42px;}
+.settingPage .submit160{width: 160px; line-height: 42px;}
 /* 프로필 */
 .settingPage .profilePage section{width: 580px; display: flex; flex-wrap: wrap; gap: 30px;}
-.settingPage .profilePage section :is(h3 , h4){font-size: 24px; font-weight: 700; margin-bottom: 20px;}
-.settingPage .profilePage section .contentBox{padding: 24px 30px 30px;}
 .settingPage .profilePage section .contentBox b{display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; padding-top: 5px;}
 .settingPage .profilePage section .contentBox .grayBG{line-height: 28px; background-color: #eeeeee; border-radius: 100px;}
 .settingPage .profilePage section .contentBox > button{position: absolute; right: 30px; top: 20px; width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: #ee2222;}
@@ -36,4 +37,14 @@
 .settingPage .profilePage section .balanceArea mark{display: block; font-size: 24px; font-weight: 700; letter-spacing: -1px; padding-top: 5px;}
 .settingPage .profilePage section .balanceArea mark::after{content: '개'; font-weight: 400;}
 .settingPage .profilePage section .balanceArea button{background-color: black;}
+/* 알람 */
+.settingPage .alramPage .contentBox{width: 460px; text-align: center;}
+.settingPage .alramPage .contentBox fieldset{text-align: left; margin-bottom: 20px;}
+.settingPage .alramPage .contentBox fieldset ul li:not(:last-child){margin-bottom: 15px;}
+.settingPage .alramPage .contentBox fieldset ul li label{display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 500;}
+.settingPage .alramPage .contentBox fieldset ul li label > span{width: 56px; height: 28px; background-color: #d9d9d9; border-radius: 100px; padding: 3px; box-sizing: border-box;}
+.settingPage .alramPage .contentBox fieldset ul li label > span::before{content: ''; display: inline-block; width: 22px; height: 22px; background-color: white; border-radius: 100%;  transition: margin 0.5s;}
+.settingPage .alramPage .contentBox fieldset ul li input[type="checkbox"]:checked + label > span{background-color: #f86868;}
+.settingPage .alramPage .contentBox fieldset ul li input[type="checkbox"]:checked + label > span::before{margin-left: 28px;}
+
 

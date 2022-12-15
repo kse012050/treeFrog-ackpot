@@ -37,7 +37,7 @@
                         <li><a href=""><b>개인정보 처리방침</b></a></li>
                         <li><a href="">이용약관</a></li>
                     </ul>
-                    <h1><img src="images/logo-white.png" alt=""></h1>
+                    <h1><img src="../images/logo-white.png" alt=""></h1>
                     <small>@frogstock Corp.</small>
                 </div>
             </div>
@@ -57,10 +57,61 @@
             </ul>
         </div>
 
-        <div class="contentArea">
-            <section>
-                <h3>유료 리딩방</h3>
-            </section>
+        <div class="contentArea alramPage">
+            <form class="contentBox">
+                <fieldset>
+                    <legend>알림설정</legend>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="allSet" checked>
+                            <label for="allSet">
+                                전체 설정
+                                <span>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="readingNotice">
+                            <label for="readingNotice">
+                                리딩방 알림
+                                <span>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="readingSignals">
+                            <label for="readingSignals">
+                                리딩방 매수/매도 신호
+                                <span>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="receivePush">
+                            <label for="receivePush">
+                                푸시 수신
+                                <span>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="receiveText">
+                            <label for="receiveText">
+                                문자 수신
+                                <span>
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </fieldset>
+                <input type="submit" value="적용" class="submit160 active">
+                <div class="confirmPopup">
+                    <div class="borderRadius30">
+                        <p>수정 되었습니다.</p>
+                        <button class="submit160 active">확인</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
