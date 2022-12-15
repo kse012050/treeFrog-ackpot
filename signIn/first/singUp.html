@@ -14,7 +14,7 @@
             <h1><img src="../../images/logo.png" alt="청개구리 대박이"></h1>
         </header>
         <div class="signArea">
-            <form class="borderRadius30">
+            <form>
                 <fieldset>
                     <legend>회원가입</legend>
                     <!-- <p>본인 인증을 진행해주세요.</p> -->
@@ -23,11 +23,11 @@
                     <div class="inputArea">
                         <div>
                             <input type="text" placeholder="간편비밀번호 6자리를 등록해주세요." maxlength="11">
-                            <p>* 올바른 비밀번호를 입력해주세요.</p>
+                            <p class="errorText">* 올바른 비밀번호를 입력해주세요.</p>
                         </div>
                         <div>
                             <input type="text" placeholder="비밀번호를 한번 더 입력해주세요." maxlength="11">
-                            <p>* 비밀번호가 맞지 않습니다.</p>
+                            <p class="errorText">* 비밀번호가 맞지 않습니다.</p>
                         </div>
                     </div>
                     
@@ -41,8 +41,9 @@
                                 <label for="termsOfService">서비스 이용약관 동의</label>
                                 <button>보기</button>
                                 <div class="popupArea">
-                                    <div class="borderRadius30">
+                                    <div>
                                         서비스 이용약관 동의 팝업
+                                        <button>팝업 닫기</button>
                                     </div>
                                 </div>
                             </li>
@@ -51,8 +52,9 @@
                                 <label for="collectionAndUse">개인정보 수집 및 이용 동의</label>
                                 <button>보기</button>
                                 <div class="popupArea">
-                                    <div class="borderRadius30">
+                                    <div>
                                         개인정보 수집 및 이용 동의 팝업
+                                        <button>팝업 닫기</button>
                                     </div>
                                 </div>
                             </li>
@@ -61,8 +63,9 @@
                                 <label for="providedByThirdParties">개인정보 제3자 제공</label>
                                 <button>보기</button>
                                 <div class="popupArea">
-                                    <div class="borderRadius30">
+                                    <div>
                                         개인정보 제3자 제공 팝업
+                                        <button>팝업 닫기</button>
                                     </div>
                                 </div>
                             </li>
@@ -71,8 +74,9 @@
                                 <label for="marketingReception">마케팅 정보 수신 동의</label>
                                 <button>보기</button>
                                 <div class="popupArea">
-                                    <div class="borderRadius30">
+                                    <div>
                                         마케팅 정보 수신 동의 팝업
+                                        <button>팝업 닫기</button>
                                     </div>
                                 </div>
                             </li>

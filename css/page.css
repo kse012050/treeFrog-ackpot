@@ -1,0 +1,39 @@
+/* 셋팅 */
+.settingPage .submit140{width: 140px; line-height: 42px;}
+/* 프로필 */
+.settingPage .profilePage section{width: 580px; display: flex; flex-wrap: wrap; gap: 30px;}
+.settingPage .profilePage section :is(h3 , h4){font-size: 24px; font-weight: 700; margin-bottom: 20px;}
+.settingPage .profilePage section .contentBox{padding: 24px 30px 30px;}
+.settingPage .profilePage section .contentBox b{display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; padding-top: 5px;}
+.settingPage .profilePage section .contentBox .grayBG{line-height: 28px; background-color: #eeeeee; border-radius: 100px;}
+.settingPage .profilePage section .contentBox > button{position: absolute; right: 30px; top: 20px; width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: #ee2222;}
+.settingPage .profilePage section .profileArea{width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: relative;}
+.settingPage .profilePage section .profileArea :is(h3 , .messageArea){width: 100%;}
+.settingPage .profilePage section .profileArea :is(.imgArea , > p){margin-bottom: 25px;}
+.settingPage .profilePage section .profileArea .imgArea{width: 83px; margin-right: 15px; position: relative;}
+.settingPage .profilePage section .profileArea .imgArea img{width: 100%; border-radius: 30px;}
+.settingPage .profilePage section .profileArea .imgArea button{position: absolute; right: -8px; bottom: 0; width: 32px; height: 32px; background: white url('../images/icon-update.png') no-repeat center / 18px; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); border-radius: 100%; text-indent: -9999px;} 
+.settingPage .profilePage section .profileArea > p{font-size: 20px; font-weight: 700; line-height: 29px;}
+.settingPage .profilePage section .profileArea .messageArea p{font-size: 14px; line-height: 20px;}
+.settingPage .profilePage section .profileArea .popupArea > div{width: 425px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset{text-align: left; margin-bottom: 42px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li:not(:last-child){margin-bottom: 16px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li label{display: block; margin-bottom: 5px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li :is(input , textarea){width: 100%;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li input{height: 46px; padding: 13px 15px; box-sizing: border-box;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li textarea{height: 86px;}
+.settingPage .profilePage section > :not(.profileArea){width: calc((100% - 30px) / 2);}
+.settingPage .profilePage section .membershipArea div:not(:last-of-type){margin-bottom: 15px;}
+.settingPage .profilePage section .membershipArea div p{font-size: 15px; margin-bottom: 5px;}
+.settingPage .profilePage section .membershipArea div p strong{display: inline-block; font-size: 13px; font-weight: 700; margin-right: 5px; padding: 0 10px;}
+.settingPage .profilePage section .membershipArea div p:has(strong){display: flex; align-items: center;}
+.settingPage .profilePage section .membershipArea div span{display: block; font-size: 12px; color: #929292; line-height: 17px;}
+.settingPage .profilePage section .membershipArea .extraArea{display: flex; flex-wrap: wrap;}
+.settingPage .profilePage section .membershipArea .extraArea b{width: 100%;}
+.settingPage .profilePage section .membershipArea .extraArea p{padding: 0 16px;}
+.settingPage .profilePage section .membershipArea .extraArea p:not(:last-of-type){margin-right: 5px;}
+.settingPage .profilePage section .balanceArea{position: relative;}
+.settingPage .profilePage section .balanceArea mark{display: block; font-size: 24px; font-weight: 700; letter-spacing: -1px; padding-top: 5px;}
+.settingPage .profilePage section .balanceArea mark::after{content: '개'; font-weight: 400;}
+.settingPage .profilePage section .balanceArea button{background-color: black;}
+

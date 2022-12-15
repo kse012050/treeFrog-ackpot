@@ -2,20 +2,31 @@
 
 mark{color: #ee2222;}
 
-/* 테두리 둥글게 */
-.borderRadius30{border-radius: 30px;}
-
 /* 접근성 타이틀 */
 .hiddenText{height: 0.1px; overflow: hidden; position: absolute; left: 0; top:0;}
 
+/* 컨텐츠 박스 */
+.contentBox{border-radius: 30px; background-color: white; box-sizing: border-box;}
+
+/* 입력창 공통 */
+input:not([type="submint"]) , textarea{border: 1px solid #e9e9e9;  border-radius: 10px;}
+:is(input , textarea)::placeholder{color: #d9d9d9;}
+input[type="submit"]{color: #fff; background-color: #d9d9d9; border-radius: 10px; padding: 0; border: none;}
+input[type="submit"].active{background-image: linear-gradient(to right, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f);}
+
+/* 에러 메세지 */
+.errorText{display: none; font-size: 14px; color: #ee2222; margin-top: 6px;}
+.errorText.active{display: block;}
+
 /* 팝업 */
-.popupArea{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center;}
+.popupArea{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10;}
 .popupArea.active{display: flex;}
-.popupArea > div{background-color: white; padding: 30px 35px; text-align: center;}
+.popupArea > div{background-color: white; padding: 30px 35px; text-align: center; border-radius: 30px; box-sizing: border-box; position: relative;}
 .popupArea > div strong{display: block; font-size: 20px; font-weight: 700; margin-bottom: 20px;}
 .popupArea > div *:not(strong){font-size: 14px; font-weight: 500; line-height: 20px;}
 .popupArea > div p{color: #bcbcbc;}
 .popupArea > div p:last-of-type{margin-bottom: 20px;}
+.popupArea > div > button{position: absolute; right: 27px; top: 27px; width: 14px; height: 14px; background: url('../images/icon-x.png') no-repeat center / cover; text-indent: -9999px;}
 
 /* 텝 버튼 */
 .tabBtn{display: flex;}
@@ -27,7 +38,7 @@ mark{color: #ee2222;}
 .contentArea{flex: 1; background-color: #f5f5f5;}
 .mainPage .contentArea{ padding: 50px 50px;}
 .mainPage .contentArea{display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; justify-content: space-between; gap: 30px; position: relative;}
-.mainPage .contentArea .contentBox{width: calc((100% - 60px) / 3); border-radius: 30px; background-color: white;}
+.mainPage .contentArea .contentBox{width: calc((100% - 60px) / 3);}
 .mainPage .contentArea .contentBox:has(:not(*)){background-color: red;}
 .mainPage .contentArea .contentBox.case01{height: 100%; display: flex; flex-direction: column;}
 .mainPage .contentArea .contentBox[class*="case02"]{display: flex; flex-direction: column; justify-content: space-between;}
@@ -95,6 +106,7 @@ mark{color: #ee2222;}
 .settingMenu ul li:nth-child(7) a{background-image: url('../images/setting-menu07.png');}
 .settingMenu ul li:nth-child(8) a{background-image: url('../images/setting-menu08.png');}
 .settingMenu ul li:is(:hover , .active) a{background-color: #fff9f9;}
+.settingPage .contentArea{padding: 40px 50px;}
 
 /* 게시판 상세 */
 .boardPage .contentArea section{height: 100%; display: flex; flex-direction: column;}
@@ -115,7 +127,6 @@ mark{color: #ee2222;}
 /* 로그인 페이지 */
 .signPage{height: 100vh; display: flex; flex-direction: column; }
 .signPage input{padding: 0 15px;}
-.signPage input::placeholder{color: #d9d9d9;}
 .signPage input[type="checkbox"]{display: none;}
 .signPage input[type="checkbox"] + label{display: inline-flex; align-items: center; font-size: 14px; line-height: 0.5;}
 .signPage input[type="checkbox"] + label::before{content: ''; width: 15px; height: 15px; border: 1px solid #d9d9d9; border-radius: 100%; margin-right: 5px; box-sizing: border-box;}
@@ -127,7 +138,7 @@ mark{color: #ee2222;}
 .signPage header h1 img{width: 100%; max-width: 260px;}
 /* 전체 공간 */
 .signPage .signArea{flex: 1; background-color: #f5f5f5; display: flex; justify-content: center; padding: 50px 0;}
-.signPage .signArea form{background-color: white; width: 580px; padding: 60px 75px; box-sizing: border-box;}
+.signPage .signArea form{background-color: white; width: 580px; padding: 60px 75px; border-radius: 30px; box-sizing: border-box;}
 .signPage .signArea form fieldset{height: 100%; text-align: center;}
 .signPage .signArea form fieldset{ margin-bottom: 40px;}
 .signPage .signArea form fieldset legend{font-size: 39px; font-weight: 700;}
@@ -138,17 +149,16 @@ mark{color: #ee2222;}
 .signPage .signArea form fieldset .inputArea div.certificationBox{display: none;}
 .signPage .signArea form fieldset .inputArea div.certificationBox.active{display: flex;}
 .signPage .signArea form fieldset .inputArea div:not(:first-child){margin-top: 16px;}
-.signPage .signArea form fieldset .inputArea div input{flex: 1; height: 50px; border: 1px solid #e9e9e9;  border-radius: 10px;}
+.signPage .signArea form fieldset .inputArea div input{flex: 1; height: 50px;}
 .signPage .signArea form fieldset .inputArea div button{width: 120px; line-height: 50px; color: white; background-color: #1c1c1c; border-radius: 10px; margin-left: 10px;}
 .signPage .signArea form fieldset .inputArea div div{flex: 1; position: relative;}
 .signPage .signArea form fieldset .inputArea div div time{position: absolute; right: 18px; top: 0; height: 100%; display: flex; align-items: center; color: #ee2222;}
-.signPage .signArea form fieldset .inputArea div p{display: none; font-size: 14px; color: #ee2222; margin-top: 6px;}
-.signPage .signArea form fieldset .inputArea div p.active{display: block;}
 .signPage .signArea form fieldset .inputArea > label{margin-top: 10px;}
 /* 버튼 */
 .signPage .signArea form fieldset .btnArea{display: flex; margin-top: 30px;}
-.signPage .signArea form fieldset .btnArea :is(input , a){flex: 1; line-height: 50px; color: #fff; background-color: #d9d9d9; border-radius: 10px; border: none; padding: 0;}
-.signPage .signArea form fieldset .btnArea :is(input , a).active{background-image: linear-gradient(to right, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f);}
+.signPage .signArea form fieldset .btnArea :is(input , a){flex: 1; line-height: 50px;}
+.signPage .signArea form fieldset .btnArea a{color: #fff; background-color: #d9d9d9; border-radius: 10px; border: none; padding: 0;}
+.signPage .signArea form fieldset .btnArea a.active{background-image: linear-gradient(to right, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f);}
 .signPage .signArea form fieldset .btnArea a{flex: 1; margin-right: 10px;}
 /* 하단 링크 */
 .signPage .signArea form fieldset > ul{display: flex; justify-content: center; margin-top: 20px;}
