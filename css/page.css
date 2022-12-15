@@ -46,5 +46,61 @@
 .settingPage .alramPage .contentBox fieldset ul li label > span::before{content: ''; display: inline-block; width: 22px; height: 22px; background-color: white; border-radius: 100%;  transition: margin 0.5s;}
 .settingPage .alramPage .contentBox fieldset ul li input[type="checkbox"]:checked + label > span{background-color: #f86868;}
 .settingPage .alramPage .contentBox fieldset ul li input[type="checkbox"]:checked + label > span::before{margin-left: 28px;}
+/* 돈풍선 충전 / 내역 */
+.settingPage .historyPage section{width: 690px;}
+.settingPage .historyPage section > div:not(:last-of-type){margin-bottom: 30px;}
+.settingPage .historyPage section .moneyArea div{display: flex; justify-content: space-between; align-items: flex-end;}
+.settingPage .historyPage section .moneyArea div mark{font-size: 36px; font-weight: 700; display: flex; align-items: center;}
+.settingPage .historyPage section .moneyArea div mark::after{content: '개'; font-size: 26px; font-weight: 400; margin-top: 5px;}
+/* 돈풍선 충전 / 내역 - 게시판 공통 */
+/* 돈풍선 충전 / 내역 - 게시판 공통 제목 */
+.settingPage .historyPage section [class|="board"]{font-size: 14px; }
+.settingPage .historyPage section [class|="board"] .boardTitle{background-color: #eeeeee; border-radius: 10px;}
+.settingPage .historyPage section [class|="board"] .boardTitle b{font-weight: 500;}
+/* 돈풍선 충전 / 내역 - 게시판 공통 내용 */
+.settingPage .historyPage section [class|="board"] ul li{display: flex; border-bottom: 1px solid #eeeeee;}
+/* 돈풍선 충전 / 내역 - 게시판 공통 제목 , 내용 공통 */
+.settingPage .historyPage section [class|="board"] :is(.boardTitle , ul li){display: flex; justify-content: space-between; align-items: center; padding: 0 5.1948%;}
+.settingPage .historyPage section [class|="board"] :is(.boardTitle , ul li) *{box-sizing: border-box;}
+.settingPage .historyPage section :is([class|="board"] .boardTitle ,[class|="board"]:not(.board-gift) ul li){height: 48px;}
+/* 돈풍선 충전 / 내역 - 충전 내역*/
+.settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(2n + 1){text-align: center;}
+.settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(2n){text-align: right;}
+.settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(1){width: 19.5%;}
+.settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(2){width: 18%;}
+.settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(3){width: 15%;}
+.settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(4){width: 19%;}
+.settingPage .historyPage section .board-charge ul li *:nth-child(2){color: #ee2222;}
+.settingPage .historyPage section .board-charge ul li *:nth-child(2)::before{content: '+';}
+.settingPage .historyPage section .board-charge ul li *:nth-child(2)::after{content: '개';}
+/* 돈풍선 충전 / 내역 - 선물 내역*/
+.settingPage .historyPage section .board-gift ul li{height: 65px;}
+.settingPage .historyPage section .board-gift :is(.boardTitle , ul li) > *:nth-child(1){width: 19.5%; text-align: center;}
+.settingPage .historyPage section .board-gift :is(.boardTitle , ul li) > *:nth-child(2){width: 18%; text-align: right;}
+.settingPage .historyPage section .board-gift :is(.boardTitle , ul li) > *:nth-child(3){width: 44%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.settingPage .historyPage section .board-gift :is(.boardTitle , ul li) > *:nth-child(3) span{display: block; font-size: 12px; color: #929292; margin-top: 5px;}
+.settingPage .historyPage section .board-gift ul li > *:nth-child(2){color: #2c75d4;}
+.settingPage .historyPage section .board-gift ul li > *:nth-child(2)::before{content: '-';}
+.settingPage .historyPage section .board-gift ul li > *:nth-child(2)::after{content: '개';}
+/* 돈풍선 충전 / 내역 - 사용 내역*/
+.settingPage .historyPage section .board-use :is(.boardTitle , ul li) > *{text-align: center;}
+.settingPage .historyPage section .board-use :is(.boardTitle , ul li) > *:nth-child(1){width: 19.5%;}
+.settingPage .historyPage section .board-use :is(.boardTitle , ul li) > *:nth-child(2){width: 5%;}
+.settingPage .historyPage section .board-use :is(.boardTitle , ul li) > *:nth-child(3){width: 42%;}
+.settingPage .historyPage section .board-use :is(.boardTitle , ul li) > *:nth-child(4){width: 20%;}
+.settingPage .historyPage section .board-use ul li.use > *:nth-child(2n){color: #ee2222;}
+.settingPage .historyPage section .board-use ul li.use > *:nth-child(4)::before{content: '+';}
+.settingPage .historyPage section .board-use ul li.use > *:nth-child(4)::after{content: '개';}
+.settingPage .historyPage section .board-use ul li.charge > *:nth-child(4){color: #2c75d4;}
+.settingPage .historyPage section .board-use ul li.charge > *:nth-child(4)::before{content: '-';}
+.settingPage .historyPage section .board-use ul li.charge > *:nth-child(4)::after{content: '개';}
 
+/* 돈풍선 충전 / 내역 - 게시판 공통 페이저 */
+.settingPage .historyPage section [class|="board"] .pagerArea{display: flex; justify-content: center; align-items: center; margin-top: 20px;}
+.settingPage .historyPage section [class|="board"] .pagerArea > a{width: 20px; height: 20px; background-repeat: no-repeat; background-position: center; background-size: cover; text-indent: -9999px;} 
+.settingPage .historyPage section [class|="board"] .pagerArea > a:nth-of-type(1){background-image: url('../images/icon-prev.png');}
+.settingPage .historyPage section [class|="board"] .pagerArea > a:nth-of-type(2){background-image: url('../images/icon-next.png');}
+.settingPage .historyPage section [class|="board"] .pagerArea ol{display: flex; align-items: center; margin: 0 60px;}
+.settingPage .historyPage section [class|="board"] .pagerArea ol li a{display: block; font-weight: 700; color: #bcbcbc; line-height: 20px; padding: 0 10px;}
+.settingPage .historyPage section [class|="board"] .pagerArea ol li:is(:hover , .active) a{color: black;}
 
