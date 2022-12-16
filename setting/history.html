@@ -74,28 +74,28 @@
                                             <li>
                                                 <ol>
                                                     <li>
-                                                        <input type="radio" id="" checked>
-                                                        <label for="">1,000</label>
+                                                        <input type="radio" name="chargeCount" id="pieces1000" checked>
+                                                        <label for="pieces1000">1,000</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" id="">
-                                                        <label for="">500</label>
+                                                        <input type="radio" name="chargeCount" id="pieces500">
+                                                        <label for="pieces500">500</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" id="">
-                                                        <label for="">100</label>
+                                                        <input type="radio" name="chargeCount" id="pieces100">
+                                                        <label for="pieces100">100</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" id="">
-                                                        <label for="">50</label>
+                                                        <input type="radio" name="chargeCount" id="pieces50">
+                                                        <label for="pieces50">50</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" id="">
-                                                        <label for="">10</label>
+                                                        <input type="radio" name="chargeCount" id="pieces10">
+                                                        <label for="pieces10">10</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" id="">
-                                                        <label for="">직접입력</label>
+                                                        <input type="radio" name="chargeCount" id="pieces">
+                                                        <label for="pieces">직접입력</label>
                                                     </li>
                                                 </ol>
                                             </li>
@@ -129,14 +129,6 @@
                 </div>
                 <div class="contentBox">
                     <h4>돈풍선 충전 내역</h4>
-                    <div>
-                        <input type="date" id="charge-start">
-                        <label for="charge-start">2021.11.1</label>
-                        <span>-</span>
-                        <input type="date" id="charge-end">
-                        <label for="charge-end">2021.11.30</label>
-                        <button class="btn">검색</button>
-                    </div>
                     <div class="board-charge">
                         <div class="boardTitle">
                             <b>일자</b>
@@ -164,17 +156,17 @@
                             <a href="">다음</a>
                         </div>
                     </div>
+                    <div>
+                        <input type="date" id="charge-start">
+                        <label for="charge-start">2021.11.1</label>
+                        <span>-</span>
+                        <input type="date" id="charge-end">
+                        <label for="charge-end">2021.11.30</label>
+                        <button class="btn">검색</button>
+                    </div>
                 </div>
                 <div class="contentBox">
                     <h4>선물한 돈풍선 내역</h4>
-                    <div>
-                        <input type="date">
-                        <label for="">2021.11.1</label>
-                        <span>-</span>
-                        <input type="date">
-                        <label for="">2021.11.30</label>
-                        <button class="btn">검색</button>
-                    </div>
                     <div class="board-gift">
                         <div class="boardTitle">
                             <b>선물한 일자</b>
@@ -203,22 +195,17 @@
                             <a href="">다음</a>
                         </div>
                     </div>
-                </div>
-                <div class="contentBox">
-                    <h4>돈풍선 사용 내역</h4>
                     <div>
-                        <select>
-                            <option value="">전체</option>
-                            <option value="">충전</option>
-                            <option value="">사용</option>
-                        </select>
                         <input type="date">
                         <label for="">2021.11.1</label>
-                        <span>~</span>
+                        <span>-</span>
                         <input type="date">
                         <label for="">2021.11.30</label>
                         <button class="btn">검색</button>
                     </div>
+                </div>
+                <div class="contentBox">
+                    <h4>돈풍선 사용 내역</h4>
                     <div class="board-use">
                         <div class="boardTitle">
                             <b>일자</b>
@@ -251,6 +238,19 @@
                             </ol>
                             <a href="">다음</a>
                         </div>
+                    </div>
+                    <div>
+                        <select>
+                            <option value="">전체</option>
+                            <option value="">충전</option>
+                            <option value="">사용</option>
+                        </select>
+                        <input type="date">
+                        <label for="">2021.11.1</label>
+                        <span>~</span>
+                        <input type="date">
+                        <label for="">2021.11.30</label>
+                        <button class="btn">검색</button>
                     </div>
                 </div>
             </section>

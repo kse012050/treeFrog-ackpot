@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0, user-scalable=0">
+    <!-- Iphone 모바일 확대 방지  maximum-scale=1.0, user-scalable=0-->
+    <title>전문가 변경 신청 설정 - 청개구리 대박이</title> 
+    <link rel="stylesheet" href="../css/import.css">
+</head>
+<body>
+    <div class="contentPage settingPage">
+        <header>
+            <div class="topArea">
+                <div class="profileArea">
+                    <img src="../images/profile-img.png" alt="">
+                    <strong>주식대박이</strong>
+                    <b>VIP 평생회원</b>
+                    <p>2022.03.01-2022.07.31</p>
+                    <p>2022.03.01-2022.07.31</p>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">홈</a></li>
+                        <li><a href="">리딩방</a></li>
+                        <li><a href="">투자정보</a></li>
+                        <li><a href="">새소식</a></li>
+                        <li class="active"><a href="">설정</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="bottomArea">
+                <img src="../images/banner.png" alt="광고 배너">
+                <div>
+                    <ul>
+                        <li><button>로그아웃</button></li>
+                        <li><a href=""><b>개인정보 처리방침</b></a></li>
+                        <li><a href="">이용약관</a></li>
+                    </ul>
+                    <h1><img src="../images/logo-white.png" alt=""></h1>
+                    <small>@frogstock Corp.</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="settingMenu">
+            <h2>설정</h2>
+            <ul>
+                <li><a href="">프로필</a></li>
+                <li><a href="">알림 설정</a></li>
+                <li><a href="">돈풍선 충전/내역</a></li>
+                <li><a href="">간편 결제 정보</a></li>
+                <li><a href="">전문가 변경 신청</a></li>
+                <li><a href="">이용약관</a></li>
+                <li><a href="">로그인 설정</a></li>
+                <li><a href="">쿠폰 내역</a></li>
+            </ul>
+        </div>
+
+        <div class="contentArea expertPage">
+            <section class="contentBox">
+                <h3>전문가 추가/변경 신청</h3>
+                <p>
+                    리딩방 전문가가 마음이 들지 않으셨나요?<br>
+                    원하시는 전문가를 선택해주세요.
+                </p>
+                <form>
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <input type="radio" name="furtherChange" id="expertFurther" checked>
+                                <label for="expertFurther">전문가 추가</label>
+                                <input type="radio" name="furtherChange" id="expertChange">
+                                <label for="expertChange">전문가 변경</label>
+                            </li>
+                            <li>
+                                <label for="">리딩하고 싶은 전문가</label>
+                                <div class="searchArea">
+                                    <div class="inputArea">
+                                        <input type="text" placeholder="전문가를 검색해주세요.">
+                                        <button>검색</button>
+                                    </div>
+                                    <div class="scrollBox">
+                                        <p>검색한 전문가가 없습니다.</p>
+                                        <div>
+                                            <b>추천전문가</b>
+                                            <button>김전문가 닉네임 글자수20자 제한맞춤</button>
+                                            <button>김OO</button>
+                                            <button>김OO</button>
+                                            <button>김OO</button>
+                                            <button>김OO</button>
+                                            <button>김OO</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <strong>사유</strong>
+                                <input type="checkbox" id="reason01">
+                                <label for="reason01">수익률이 좋지 못해서</label>
+                                <input type="checkbox" id="reason02">
+                                <label for="reason02">리딩 스타일이 마음에 들지 않아서</label>
+                                <input type="checkbox" id="reason03">
+                                <label for="reason03">다른 서버도 체험해보고 싶어서</label>
+                                <input type="checkbox" id="reason04">
+                                <label for="reason04">기타</label>
+                                <textarea placeholder="사유를 기재하시면 전문가 매칭에 도움이 됩니다."></textarea>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
