@@ -156,11 +156,14 @@
 .settingPage .expertPage section > p{line-height: 20px;}
 .settingPage .expertPage section form fieldset ul{margin-bottom: 20px;}
 .settingPage .expertPage section form fieldset ul li:not(:last-child){margin-bottom: 20px;}
-.settingPage .expertPage section form fieldset ul li:first-child{display: flex; gap: 5px;}
+.settingPage .expertPage section form fieldset ul li:first-child{display: flex; flex-wrap: wrap; gap: 0 5px;}
 .settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]{display: none;}
-.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"] + label{width: 87px; line-height: 28px; font-size: 13px; color: #929292; text-align: center; border: 1px solid #929292; border-radius: 100px;}
+.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"] + label{width: 87px; line-height: 28px; font-size: 13px; color: #929292; text-align: center; border: 1px solid #929292; border-radius: 100px; margin-bottom: 20px;}
 .settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]:checked + label{color: white; background-color: #ee2222; border: none;}
-.settingPage .expertPage section form fieldset ul li > *:first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
+.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]#expertFurther:checked ~ div > label:first-child::before{content: '리딩';}
+.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]#expertChange:checked ~ div > label:first-child::before{content: '변경';}
+.settingPage .expertPage section form fieldset ul li:first-child > div{width: 100%;}
+.settingPage .expertPage section form fieldset ul li :is(label , strong):first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
 .settingPage .expertPage section form fieldset ul li .searchArea{border: 1px solid #e9e9e9; border-radius: 10px;}
 .settingPage .expertPage section form fieldset ul li .searchArea .inputArea{position: relative;}
 .settingPage .expertPage section form fieldset ul li .searchArea .inputArea input{width: 100%; border: none; outline: none;}
