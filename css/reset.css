@@ -22,9 +22,10 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	font-family: 'Noto Sans KR', sans-serif;
-	color: #1c1c1c;
+	/* color: #1c1c1c; */
 	vertical-align: baseline;
 }
+body{color: #1c1c1c;}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
