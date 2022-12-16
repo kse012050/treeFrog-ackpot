@@ -11,7 +11,15 @@ mark{color: #ee2222;}
 /* 입력창 공통 */
 input:not([type="submit"]) , input:not([type="checkbox"]) , textarea{border: 1px solid #e9e9e9;  border-radius: 10px;}
 :is(input , textarea)::placeholder{color: #d9d9d9;}
-input[type="checkbox"]{display: none;}
+input[type="checkbox"]:not([class]){display: none;}
+input[type="checkbox"]:not([class]) + label{display: inline-flex; align-items: center; font-size: 14px; line-height: 0.5;}
+input[type="checkbox"]:not([class]) + label::before{content: ''; width: 15px; height: 15px; border: 1px solid #d9d9d9; border-radius: 100%; margin-right: 5px; box-sizing: border-box;}
+input[type="checkbox"]:not([class]):checked + label::before{border: none; background: url('../images/chekc.png') no-repeat center / cover;}
+input[type="checkbox"].case01 + label{display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 500;}
+input[type="checkbox"].case01 + label > span{width: 56px; height: 28px; background-color: #d9d9d9; border-radius: 100px; padding: 3px; box-sizing: border-box;}
+input[type="checkbox"].case01 + label > span::before{content: ''; display: inline-block; width: 22px; height: 22px; background-color: white; border-radius: 100%;  transition: margin 0.5s;}
+input[type="checkbox"].case01:checked + label > span{background-color: #f86868;}
+input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 [class*="submit"]{color: #fff; background-color: #d9d9d9; border-radius: 10px; padding: 0; border: none;}
 [class*="submit"].active{background-image: linear-gradient(to right, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f);}
 
@@ -22,11 +30,12 @@ input[type="checkbox"]{display: none;}
 /* 팝업 */
 .popupArea{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10;}
 .popupArea.active{display: flex;}
-.popupArea > div{background-color: white; padding: 30px 35px; text-align: center;  position: relative;}
+.popupArea > div{background-color: white; padding: 30px 35px; border-radius: 30px; text-align: center;  position: relative;}
 .popupArea > div strong{display: block; font-size: 20px; font-weight: 700; margin-bottom: 20px;}
-.popupArea > div *:not(strong){font-size: 14px; font-weight: 500; line-height: 20px;}
-.popupArea > div p{color: #bcbcbc;}
-.popupArea > div p:last-of-type{margin-bottom: 20px;}
+.popupArea > div > *:not(strong){font-size: 14px;}
+.popupArea > div > *:not(strong):not(label):not(input){font-weight: 500; line-height: 20px;}
+.popupArea > div > p{color: #bcbcbc;}
+.popupArea > div > p:last-of-type{margin-bottom: 20px;}
 .popupArea > div > button{position: absolute; right: 27px; top: 27px; width: 14px; height: 14px; background: url('../images/icon-x.png') no-repeat center / cover; text-indent: -9999px;}
 .confirmPopup{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10;}
 .confirmPopup.active{display: flex;}

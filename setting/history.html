@@ -65,12 +65,77 @@
                     <div>
                         <mark>999,999,999,999</mark>
                         <button class="submit140 active">충전</button>
+                        <div class="popupArea">
+                            <div>
+                                <strong>돈풍선 충전하기</strong>
+                                <form action="">
+                                    <fieldset>
+                                        <ul>
+                                            <li>
+                                                <ol>
+                                                    <li>
+                                                        <input type="radio" id="" checked>
+                                                        <label for="">1,000</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="">
+                                                        <label for="">500</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="">
+                                                        <label for="">100</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="">
+                                                        <label for="">50</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="">
+                                                        <label for="">10</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="">
+                                                        <label for="">직접입력</label>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li>
+                                                <label for="">충전개수</label>
+                                                <input type="number" placeholder="돈풍선 개수를 입력해주세요.">
+                                            </li>
+                                            <li>
+                                                <p>결제금액</p>
+                                                <mark>1,000,000</mark>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="paymentAgree">
+                                                <label for="paymentAgree">결제 및 약관에 동의합니다.</label>
+                                                <button>자세히 보기</button>
+                                            </li>
+                                        </ul>
+                                    </fieldset>
+                                    <input type="submit" value="충전" class="submit160 active">
+                                </form>
+                                <button>팝업 닫기</button>
+                            </div>
+                        </div>
+                        <div class="confirmPopup">
+                            <div class="borderRadius30">
+                                <p>다시 확인해주세요.</p>
+                                <button class="submit160 active">확인</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="contentBox">
                     <h4>돈풍선 충전 내역</h4>
                     <div>
-                        <button>검색</button>
+                        <input type="date" id="charge-start">
+                        <label for="charge-start">2021.11.1</label>
+                        <span>-</span>
+                        <input type="date" id="charge-end">
+                        <label for="charge-end">2021.11.30</label>
+                        <button class="btn">검색</button>
                     </div>
                     <div class="board-charge">
                         <div class="boardTitle">
@@ -102,6 +167,14 @@
                 </div>
                 <div class="contentBox">
                     <h4>선물한 돈풍선 내역</h4>
+                    <div>
+                        <input type="date">
+                        <label for="">2021.11.1</label>
+                        <span>-</span>
+                        <input type="date">
+                        <label for="">2021.11.30</label>
+                        <button class="btn">검색</button>
+                    </div>
                     <div class="board-gift">
                         <div class="boardTitle">
                             <b>선물한 일자</b>
@@ -133,6 +206,19 @@
                 </div>
                 <div class="contentBox">
                     <h4>돈풍선 사용 내역</h4>
+                    <div>
+                        <select>
+                            <option value="">전체</option>
+                            <option value="">충전</option>
+                            <option value="">사용</option>
+                        </select>
+                        <input type="date">
+                        <label for="">2021.11.1</label>
+                        <span>~</span>
+                        <input type="date">
+                        <label for="">2021.11.30</label>
+                        <button class="btn">검색</button>
+                    </div>
                     <div class="board-use">
                         <div class="boardTitle">
                             <b>일자</b>

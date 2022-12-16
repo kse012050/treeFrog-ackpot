@@ -3,11 +3,18 @@
 .settingPage .contentBox{padding: 24px 30px 30px;}
 .settingPage .submit140{width: 140px; line-height: 42px;}
 .settingPage .submit160{width: 160px; line-height: 42px;}
+.settingPage .btn{width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: #ee2222;}
+.settingPage .btn:hover{background-color: black;}
+.settingPage input:is([type="text"] , [type="number"]){height: 46px;}
+.settingPage :is(input[type="text"] , textarea){font-weight: 400;}
+.settingPage :is(input:is([type="text"] , [type="number"]) , textarea){font-weight: 400; padding: 13px 15px; box-sizing: border-box;}
+.settingPage input[type="number"]::-webkit-outer-spin-button,
+.settingPage input[type="number"]::-webkit-inner-spin-button{-webkit-appearance: none;}
 /* 프로필 */
 .settingPage .profilePage section{width: 580px; display: flex; flex-wrap: wrap; gap: 30px;}
 .settingPage .profilePage section .contentBox b{display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; padding-top: 5px;}
 .settingPage .profilePage section .contentBox .grayBG{line-height: 28px; background-color: #eeeeee; border-radius: 100px;}
-.settingPage .profilePage section .contentBox > button{position: absolute; right: 30px; top: 20px; width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: #ee2222;}
+.settingPage .profilePage section .contentBox > button{position: absolute; right: 30px; top: 20px;}
 .settingPage .profilePage section .profileArea{width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: relative;}
 .settingPage .profilePage section .profileArea :is(h3 , .messageArea){width: 100%;}
 .settingPage .profilePage section .profileArea :is(.imgArea , > p){margin-bottom: 25px;}
@@ -21,7 +28,6 @@
 .settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li:not(:last-child){margin-bottom: 16px;}
 .settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li label{display: block; margin-bottom: 5px;}
 .settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li :is(input , textarea){width: 100%;}
-.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li input{height: 46px; padding: 13px 15px; box-sizing: border-box;}
 .settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li textarea{height: 86px;}
 .settingPage .profilePage section > :not(.profileArea){width: calc((100% - 30px) / 2);}
 .settingPage .profilePage section .membershipArea div:not(:last-of-type){margin-bottom: 15px;}
@@ -36,23 +42,27 @@
 .settingPage .profilePage section .balanceArea{position: relative;}
 .settingPage .profilePage section .balanceArea mark{display: block; font-size: 24px; font-weight: 700; letter-spacing: -1px; padding-top: 5px;}
 .settingPage .profilePage section .balanceArea mark::after{content: '개'; font-weight: 400;}
-.settingPage .profilePage section .balanceArea button{background-color: black;}
 /* 알람 */
 .settingPage .alramPage .contentBox{width: 460px; text-align: center;}
 .settingPage .alramPage .contentBox fieldset{text-align: left; margin-bottom: 20px;}
 .settingPage .alramPage .contentBox fieldset ul li:not(:last-child){margin-bottom: 15px;}
-.settingPage .alramPage .contentBox fieldset ul li label{display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 500;}
-.settingPage .alramPage .contentBox fieldset ul li label > span{width: 56px; height: 28px; background-color: #d9d9d9; border-radius: 100px; padding: 3px; box-sizing: border-box;}
-.settingPage .alramPage .contentBox fieldset ul li label > span::before{content: ''; display: inline-block; width: 22px; height: 22px; background-color: white; border-radius: 100%;  transition: margin 0.5s;}
-.settingPage .alramPage .contentBox fieldset ul li input[type="checkbox"]:checked + label > span{background-color: #f86868;}
-.settingPage .alramPage .contentBox fieldset ul li input[type="checkbox"]:checked + label > span::before{margin-left: 28px;}
 /* 돈풍선 충전 / 내역 */
-.settingPage .historyPage section{width: 690px;}
+.settingPage .historyPage section{width: 750px;}
 .settingPage .historyPage section > div:not(:last-of-type){margin-bottom: 30px;}
-.settingPage .historyPage section .moneyArea div{display: flex; justify-content: space-between; align-items: flex-end;}
-.settingPage .historyPage section .moneyArea div mark{font-size: 36px; font-weight: 700; display: flex; align-items: center;}
-.settingPage .historyPage section .moneyArea div mark::after{content: '개'; font-size: 26px; font-weight: 400; margin-top: 5px;}
+.settingPage .historyPage section .moneyArea > div{display: flex; justify-content: space-between; align-items: flex-end;}
+.settingPage .historyPage section .moneyArea > div mark{font-size: 36px; font-weight: 700; display: flex; align-items: center;}
+.settingPage .historyPage section .moneyArea > div mark::after{content: '개'; font-size: 26px; font-weight: 400; margin-top: 5px;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 */
+/* 기간 */
+.settingPage .historyPage section > div:not(.moneyArea) h4{float: left;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]){float: right; display: flex; align-items: center;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) + *{clear: both;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) input{display: none;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) :is(select , label){font-size: 13px; line-height: 28px;; border: 1px solid #e9e9e9; border-radius: 5px; background-repeat: no-repeat; background-position: center right 8px; background-size: 16px;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) select{width: 73px; padding: 0 12px; background-image: url('../images/icon-arrow-down.png'); margin-right: 5px;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) label{width: 110px; color: #d9d9d9; padding: 0 10px; box-sizing: border-box; background-image: url('../images/icon-calendar.png');}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) span{font-size: 13px; color: #d9d9d9; margin: 0 5px;}
+.settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) button{margin-left: 10px;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 제목 */
 .settingPage .historyPage section [class|="board"]{font-size: 14px; }
 .settingPage .historyPage section [class|="board"] .boardTitle{background-color: #eeeeee; border-radius: 10px;}
@@ -94,7 +104,6 @@
 .settingPage .historyPage section .board-use ul li.charge > *:nth-child(4){color: #2c75d4;}
 .settingPage .historyPage section .board-use ul li.charge > *:nth-child(4)::before{content: '-';}
 .settingPage .historyPage section .board-use ul li.charge > *:nth-child(4)::after{content: '개';}
-
 /* 돈풍선 충전 / 내역 - 게시판 공통 페이저 */
 .settingPage .historyPage section [class|="board"] .pagerArea{display: flex; justify-content: center; align-items: center; margin-top: 20px;}
 .settingPage .historyPage section [class|="board"] .pagerArea > a{width: 20px; height: 20px; background-repeat: no-repeat; background-position: center; background-size: cover; text-indent: -9999px;} 
@@ -103,4 +112,25 @@
 .settingPage .historyPage section [class|="board"] .pagerArea ol{display: flex; align-items: center; margin: 0 60px;}
 .settingPage .historyPage section [class|="board"] .pagerArea ol li a{display: block; font-weight: 700; color: #bcbcbc; line-height: 20px; padding: 0 10px;}
 .settingPage .historyPage section [class|="board"] .pagerArea ol li:is(:hover , .active) a{color: black;}
+/* 돈풍선 충전 / 내역 - 팝업 */
+.settingPage .historyPage .popupArea > div{width: 425px;}
+.settingPage .historyPage .popupArea > div form fieldset{text-align: right;}
+.settingPage .historyPage .popupArea > div form fieldset ul li ol{display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 15.5px; border-bottom: 1px solid #e9e9e9; margin-bottom: 15.5px;}
+.settingPage .historyPage .popupArea > div form fieldset ul li ol li{width: calc((100% - 8px) / 2);}
+.settingPage .historyPage .popupArea > div form fieldset ul li ol li input[type="radio"]{display: none;}
+.settingPage .historyPage .popupArea > div form fieldset ul li ol li label{display: block; line-height: 62px; padding: 0 10px; border: 1px solid #e9e9e9; border-radius: 10px;}
+.settingPage .historyPage .popupArea > div form fieldset ul li ol li:not(:last-child) label{ font-size: 24px; font-weight: 700; }
+.settingPage .historyPage .popupArea > div form fieldset ul li ol li:not(:last-child) label::after{content: '개'; font-size: 16px; font-weight: 400;}
+.settingPage .historyPage .popupArea > div form fieldset ul li ol li input[type="radio"]:checked + label{border-color: #ee2222; background: url('../images/chekc.png') no-repeat left 12px center / 22px;}
+.settingPage .historyPage .popupArea > div form fieldset ul{margin-bottom: 20px;}
+.settingPage .historyPage .popupArea > div form fieldset ul > li:not(:first-child){display: flex; justify-content: space-between; align-items: center; font-weight: 400;}
+.settingPage .historyPage .popupArea > div form fieldset ul > li:not(:first-child , :last-child){margin-bottom: 10px;}
+.settingPage .historyPage .popupArea > div form fieldset ul > li:not(:first-child) label{font-size: 14px;}
+.settingPage .historyPage .popupArea > div form fieldset ul > li input[type="number"]{width: 284px; font-size: 22px; font-weight: 700; text-align: right;}
+.settingPage .historyPage .popupArea > div form fieldset ul > li input[type="number"]::placeholder{font-size: 14px; font-weight: 400; transform: translateY(-3px);}
+.settingPage .historyPage .popupArea > div form fieldset ul > li mark{padding: 13px 0;}
+.settingPage .historyPage .popupArea > div form fieldset ul > li button{font-size: 13px; color: #929292; text-decoration: underline;}
+
+
+
 
