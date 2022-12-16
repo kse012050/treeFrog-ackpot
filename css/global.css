@@ -36,7 +36,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .popupArea > div > *:not(strong):not(label):not(input){font-weight: 500; line-height: 20px;}
 .popupArea > div > p{color: #bcbcbc;}
 .popupArea > div > p:last-of-type{margin-bottom: 20px;}
-.popupArea > div > button{position: absolute; right: 27px; top: 27px; width: 14px; height: 14px; background: url('../images/icon-x.png') no-repeat center / cover; text-indent: -9999px;}
+.popupArea > div > button:not([class]){position: absolute; right: 27px; top: 27px; width: 14px; height: 14px; background: url('../images/icon-x.png') no-repeat center / cover; text-indent: -9999px;}
 .confirmPopup{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: none; justify-content: center; align-items: center; z-index: 10;}
 .confirmPopup.active{display: flex;}
 .confirmPopup > div{background-color: white; width: 310px; padding: 30px 0; text-align: center; border-radius: 30px; box-sizing: border-box;}

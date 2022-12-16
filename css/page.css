@@ -202,10 +202,27 @@
 .settingPage .termsPage section .contentBox .scrollBox.privacyPolicy ul li::before{content: '-';}
 .settingPage .termsPage section .contentBox .scrollBox.termsOfService ol[data-type="article"] > li::before{display: block; content: '제' counter(articleList) '조(' attr(title) ')';}
 
-/* 쿠폰 - 쿠폰 내역 */
+/* 쿠폰 내역 */
 .settingPage .couponPage section{width: 627px;}
 .settingPage .couponPage section .board-coupon :is(.boardTitle , ul li) > *:not(button){text-align: center;}
 .settingPage .couponPage section .board-coupon :is(.boardTitle , ul li) > *:nth-child(1){width: 22%;}
 .settingPage .couponPage section .board-coupon :is(.boardTitle , ul li) > *:nth-child(2){width: 14%;}
 .settingPage .couponPage section .board-coupon :is(.boardTitle , ul li) > *:nth-child(3){width: 31%;}
 .settingPage .couponPage section .board-coupon ul li.unavailable > p:nth-child(2){color: #ee2222;}
+
+/* 로그인 설정 */
+.settingPage .loginPage form{width: 460px;}
+.settingPage .loginPage form{text-align: center;}
+.settingPage .loginPage form fieldset{text-align: left;}
+.settingPage .loginPage form fieldset ul{margin-bottom: 20px;}
+.settingPage .loginPage form fieldset > ul > li:not(:last-child){margin-bottom: 20px;}
+.settingPage .loginPage form fieldset > ul > li > p{font-size: 13px; color: #929292; line-height: 18px; margin-top: 5px;}
+.settingPage .loginPage form fieldset > ul > li:nth-child(2){display: flex; justify-content: space-between; align-items: center;}
+.settingPage .loginPage form fieldset > ul > li:nth-child(2) > b{font-size: 15px; font-weight: 500;}
+.settingPage .loginPage form fieldset > ul > li:nth-child(2) > button{width: 56px; line-height: 28px; font-size: 14px; font-weight: 500; background-color: #eeeeee; border-radius: 100px;}
+.settingPage .loginPage form fieldset > ul > li .popupArea div{width: 424px; box-sizing: border-box;}
+.settingPage .loginPage form fieldset > ul > li .popupArea div ul{text-align: left;}
+.settingPage .loginPage form fieldset > ul > li .popupArea div ul li:not(:last-child){margin-bottom: 16px;}
+.settingPage .loginPage form fieldset > ul > li .popupArea div ul li label{display: block; margin-bottom: 5px;}
+.settingPage .loginPage form fieldset > ul > li .popupArea div ul li input{width: 100%;}
+
