@@ -154,24 +154,26 @@
 /* 전문가 추가/변경 신청 */
 .settingPage .expertPage section{width: 424px;}
 .settingPage .expertPage section > p{line-height: 20px;}
-.settingPage .expertPage section ul{margin-bottom: 20px;}
-.settingPage .expertPage section ul li:not(:last-child){margin-bottom: 20px;}
-.settingPage .expertPage section ul li:first-child{display: flex; gap: 5px;}
-.settingPage .expertPage section ul li:first-child input[type="radio"]{display: none;}
-.settingPage .expertPage section ul li:first-child input[type="radio"] + label{width: 87px; line-height: 28px; font-size: 13px; color: #929292; text-align: center; border: 1px solid #929292; border-radius: 100px;}
-.settingPage .expertPage section ul li:first-child input[type="radio"]:checked + label{color: white; background-color: #ee2222; border: none;}
-.settingPage .expertPage section ul li > *:first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
-.settingPage .expertPage section ul li .searchArea{border: 1px solid #e9e9e9; border-radius: 10px;}
-.settingPage .expertPage section ul li .searchArea .inputArea{position: relative;}
-.settingPage .expertPage section ul li .searchArea .inputArea input{width: 100%; border: none; outline: none;}
-.settingPage .expertPage section ul li .searchArea .inputArea button{position: absolute; right: 8px; top: 0; width: 24px; height: 100%; background: url('../images/icon-search.png') no-repeat left center / contain; text-indent: -9999px;}
-.settingPage .expertPage section ul li .searchArea .scrollBox{max-height: 200px; padding: 0; border-top: 1px solid #e9e9e9;}
-.settingPage .expertPage section ul li .searchArea .scrollBox{background-color: #fbfbfb; padding: 0px 15px; font-size: 13px;}
-.settingPage .expertPage section ul li .searchArea .scrollBox > p{line-height: 49px; margin-bottom: 7.5px; border-bottom: 1px solid #e9e9e9;}
-.settingPage .expertPage section ul li .searchArea .scrollBox > div{padding: 7.5px 0;}
-.settingPage .expertPage section ul li .searchArea .scrollBox > div :is(b,button){display: block;}
-.settingPage .expertPage section ul li .searchArea .scrollBox > div b{font-weight: 700; margin-bottom: 7.5px;}
-.settingPage .expertPage section ul li .searchArea .scrollBox > div button{width: 100%; padding: 7.5px 0; text-align: left;}
-.settingPage .expertPage section ul li input[type="checkbox"] + label{display: flex; margin-bottom: 10px;}
-.settingPage .expertPage section ul li textarea{width: 100%; height: 105px; font-size: 14px;}
-
+.settingPage .expertPage section form fieldset ul{margin-bottom: 20px;}
+.settingPage .expertPage section form fieldset ul li:not(:last-child){margin-bottom: 20px;}
+.settingPage .expertPage section form fieldset ul li:first-child{display: flex; gap: 5px;}
+.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]{display: none;}
+.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"] + label{width: 87px; line-height: 28px; font-size: 13px; color: #929292; text-align: center; border: 1px solid #929292; border-radius: 100px;}
+.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]:checked + label{color: white; background-color: #ee2222; border: none;}
+.settingPage .expertPage section form fieldset ul li > *:first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
+.settingPage .expertPage section form fieldset ul li .searchArea{border: 1px solid #e9e9e9; border-radius: 10px;}
+.settingPage .expertPage section form fieldset ul li .searchArea .inputArea{position: relative;}
+.settingPage .expertPage section form fieldset ul li .searchArea .inputArea input{width: 100%; border: none; outline: none;}
+.settingPage .expertPage section form fieldset ul li .searchArea .inputArea button{position: absolute; right: 8px; top: 0; width: 24px; height: 100%; background: url('../images/icon-search.png') no-repeat left center / contain; text-indent: -9999px;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox{display: none; max-height: 200px; padding: 0; border-top: 1px solid #e9e9e9;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox.active{display: block;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox{background-color: #fbfbfb; padding: 0px 15px; font-size: 13px;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > p{line-height: 49px; margin-bottom: 7.5px; border-bottom: 1px solid #e9e9e9;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div{padding: 7.5px 0;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div :is(b,button){display: block;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div b{font-weight: 700; margin-bottom: 7.5px;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div button{width: 100%; padding: 7.5px 0; text-align: left;}
+.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div button::after{content: '전문가'; color: #929292; margin-left: 10px;}
+.settingPage .expertPage section form fieldset ul li input[type="checkbox"] + label{display: flex; margin-bottom: 10px;}
+.settingPage .expertPage section form fieldset ul li textarea{width: 100%; height: 105px; font-size: 14px;}
+.settingPage .expertPage form input[type="submit"]{display: block; margin: 0 auto;}
