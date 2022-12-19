@@ -37,17 +37,21 @@
 .livingPage .rightAside .asidePosition > div .buttonArea button:last-child{width: 58.33%; background-image: url('../images/icon-out.png'); background-size: 17px;}
 /* 팝업 공통 */
 .livingPage .rightAside .asidePosition > div > ul > li .popupArea > div{width: 736px; padding: 30px; box-sizing: border-box;}
+.livingPage .rightAside .asidePosition > div > ul > li .popupArea > div .tabBtn li button{padding-top: 2px; padding-bottom: 2px;}
+.livingPage .rightAside .asidePosition > div > ul > li .popupArea > div [class|="board"] :is(.boardTitle , ul li){padding: 0;}
+.livingPage .rightAside .asidePosition > div > ul > li .popupArea > div [class|="board"] ul li{font-weight: 400;}
 /* 지난 대화 내역 */
 /* 보유 종목 현황 */
-.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is([class|="board"] .boardTitle ,[class|="board"]:not(.board-gift) ul li){padding: 0;}
-.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(1){width: 48.65%;}
-.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(2){width: 25.675%;}
-.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(3){width: 25.675%;}
-.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem ul li{font-weight: 400;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(1){width: 47.92%;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(2){width: 26.04%;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(3){width: 26.04%;}
 /* 매수/매도 내역 */
 /* 투자 내역 */
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .popupArea > div .tabBtn{margin-bottom: 12px;}
-.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .popupArea > div .tabBtn li button{padding-top: 2px; padding-bottom: 2px;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li){text-align: center;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(1){width: 47.92%;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(2){width: 3.84%;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(3){width: 26.03%;}
 
 /* 게시판 */
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div{overflow: hidden; padding-left: 0; padding-right: 0; padding-bottom: 0;}
@@ -80,7 +84,7 @@
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div li img{width: 100%;}
 /* 전문가 추가/변경 신청 */
 .livingPage .rightAside .asidePosition > div > ul > li.expertArea .popupArea > div .expertBox{text-align: left;}
-.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .popupArea{display: flex;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .popupArea{display: flex;}
 
 
 
