@@ -15,7 +15,7 @@
 .livingPage .rightAside .asidePosition img{width: 100%; flex-shrink: 0;}
 .livingPage .rightAside .asidePosition > div{flex: 1; padding: 20px 30px 40px; display: flex; flex-direction: column; justify-content: space-between}
 .livingPage .rightAside .asidePosition > div > ul > li{ border: 1px solid #e9e9e9; border-radius: 10px; }
-.livingPage .rightAside .asidePosition > div > ul > li button{font-size: 14px; font-weight: 500; text-align: left; width: 100%; line-height: 46px; padding: 0 15px; background-repeat: no-repeat; background-position: right 8px center; background-size: 24px;}
+.livingPage .rightAside .asidePosition > div > ul > li > button{font-size: 14px; font-weight: 500; text-align: left; width: 100%; line-height: 46px; padding: 0 15px; background-repeat: no-repeat; background-position: right 8px center; background-size: 24px;}
 .livingPage .rightAside .asidePosition > div > ul > li:not(:last-child){margin-bottom: 8px;}
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea > button{background-image: url('../images/icon-arrow-down.png');}
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox{padding: 15px; border-top: 1px solid #e9e9e9; background-color: #fbfbfb;}
@@ -30,11 +30,57 @@
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox .expertArea{padding-bottom: 14.5px; border-bottom: 1px solid #e9e9e9; margin-bottom: 14.5px;}
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox .expertArea li p{color: #929292; margin-left: 5px;}
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox .expertArea li strong{line-height: 17.5px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
-.livingPage .rightAside .asidePosition > div > ul > li:not(.dropArea) button{background-image: url('../images/icon-arrow-right.png');}
+.livingPage .rightAside .asidePosition > div > ul > li:not(.dropArea) > button{background-image: url('../images/icon-arrow-right.png');}
 .livingPage .rightAside .asidePosition > div .buttonArea{display: flex; justify-content: space-between;}
 .livingPage .rightAside .asidePosition > div .buttonArea button{text-align: left; font-size: 13px; font-weight: 500; line-height: 39px; color: #929292; border-radius: 10px; padding: 0 12px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: right 12px center;}
 .livingPage .rightAside .asidePosition > div .buttonArea button:first-child{width: 37.22%; background-image: url('../images/icon-share.png'); background-size: 13px;}
 .livingPage .rightAside .asidePosition > div .buttonArea button:last-child{width: 58.33%; background-image: url('../images/icon-out.png'); background-size: 17px;}
+/* 팝업 공통 */
+.livingPage .rightAside .asidePosition > div > ul > li .popupArea > div{width: 736px; padding: 30px; box-sizing: border-box;}
+/* 지난 대화 내역 */
+/* 보유 종목 현황 */
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is([class|="board"] .boardTitle ,[class|="board"]:not(.board-gift) ul li){padding: 0;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(1){width: 48.65%;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(2){width: 25.675%;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem :is(.boardTitle , ul li) > *:nth-child(3){width: 25.675%;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .board-holdingItem ul li{font-weight: 400;}
+/* 매수/매도 내역 */
+/* 투자 내역 */
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .popupArea > div .tabBtn{margin-bottom: 12px;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .popupArea > div .tabBtn li button{padding-top: 2px; padding-bottom: 2px;}
+
+/* 게시판 */
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div{overflow: hidden; padding-left: 0; padding-right: 0; padding-bottom: 0;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .tabBtn{padding: 0 30px; margin-bottom: 20px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div [class|="content"]{display: none;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div [class|="content"].active{display: flex;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board {flex-direction: column;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board{max-height: 630px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board{padding: 0 20px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a{display: flex; align-items: center;} 
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a .textArea{flex: 1; display: flex; flex-wrap: wrap;} 
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a .textArea strong{width: 100%; font-size: 14px; font-weight: 500; line-height: 18px; text-align: left; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a .textArea :is(p , time){font-size: 12px; color: #929292; font-weight: 400; line-height: 1;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a .textArea time{padding-right: 5px; border-right: 1px solid #e4e4e4; margin-right: 5px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a .imgArea{width: 134px; height: 74px; border-radius: 10px; background-color: red; box-sizing: border-box; overflow: hidden; flex-shrink: 0; margin-left: 40px;} 
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .scrollBox-board ul li a .imgArea img{width: 100%;} 
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-board > .pagerArea{padding-bottom: 40px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect{text-align: left;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabBtn-collect{width: 117px; flex-shrink: 0; background-color: #f5f5f5;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabBtn-collect li button{width: 100%; font-size: 14px; line-height: 52px; text-align: left; padding: 0 30px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabBtn-collect li:is(.active , :hover) button{font-weight: 700; background-color: #e9e9e9;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect{max-height: 710px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect{padding: 30px; box-sizing: border-box;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div{display: none;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div.active{display: block;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div time{display: block; font-size: 11px; color: #929292; margin-bottom: 14px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div ul{display: flex; flex-wrap: wrap; gap: 14px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div ul:not(:last-of-type){margin-bottom: 30px;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div li{width: calc((100% - 28px) / 3); height: 177px; border: 1px solid #929292; border-radius: 10px; overflow: hidden; box-sizing: border-box;}
+.livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div li img{width: 100%;}
+/* 전문가 추가/변경 신청 */
+.livingPage .rightAside .asidePosition > div > ul > li.expertArea .popupArea > div .expertBox{text-align: left;}
+.livingPage .rightAside .asidePosition > div > ul > li.holdingItem .popupArea{display: flex;}
 
 
 
@@ -43,13 +89,13 @@
 .settingPage :is(h3 , h4 , legend) + *:not(p){margin-top: 22px;}
 .settingPage :is(h3 , h4 , legend) + p{font-size: 14px; color: #929292; margin-top: 10px; margin-bottom: 22px;}
 .settingPage .contentBox{padding: 30px;}
-.settingPage .submit140{width: 140px; line-height: 42px;}
-.settingPage .submit160{width: 160px; line-height: 42px;}
+:is(.settingPage , .livingPage) .submit140{width: 140px; line-height: 42px;}
+:is(.settingPage , .livingPage) .submit160{width: 160px; line-height: 42px;}
 .settingPage .btn{min-width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: #ee2222; padding: 0 10px; box-sizing: border-box;}
 .settingPage .btn:hover{background-color: black;}
-.settingPage input:is([type="text"] , [type="number"]){height: 46px;}
-.settingPage :is(input[type="text"] , textarea){font-size: 14px; font-weight: 400;}
-.settingPage :is(input:is([type="text"] , [type="number"]) , textarea){padding: 13px 15px; box-sizing: border-box;}
+:is(.settingPage , .livingPage) input:is([type="text"] , [type="number"]){height: 46px;}
+:is(.settingPage , .livingPage) :is(input[type="text"] , textarea){font-size: 14px; font-weight: 400;}
+:is(.settingPage , .livingPage) :is(input:is([type="text"] , [type="number"]) , textarea){padding: 13px 15px; box-sizing: border-box;}
 .settingPage input[type="number"]::-webkit-outer-spin-button,
 .settingPage input[type="number"]::-webkit-inner-spin-button{-webkit-appearance: none;}
 .settingPage input[type="radio"] + label{cursor: pointer;}
@@ -109,23 +155,23 @@
 .settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) span{font-size: 13px; color: #d9d9d9; margin: 0 5px;}
 .settingPage .historyPage section > div:not(.moneyArea) > div:not([class]) button{margin-left: 10px;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 제목 */
-.settingPage section [class|="board"]{font-size: 14px; }
-.settingPage section [class|="board"] .boardTitle{background-color: #eeeeee; border-radius: 10px;}
-.settingPage section [class|="board"] .boardTitle b{font-weight: 500;}
+[class|="board"]{font-size: 14px; }
+[class|="board"] .boardTitle{background-color: #eeeeee; border-radius: 10px;}
+[class|="board"] .boardTitle b{font-weight: 500;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 내용 */
-.settingPage section [class|="board"] ul li{display: flex; border-bottom: 1px solid #eeeeee;}
+[class|="board"] ul li{display: flex; border-bottom: 1px solid #eeeeee;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 제목 , 내용 공통 */
-.settingPage section [class|="board"] :is(.boardTitle , ul li){display: flex; justify-content: space-between; align-items: center; padding: 0 5.1948%;}
-.settingPage section [class|="board"] :is(.boardTitle , ul li) *{box-sizing: border-box;}
-.settingPage section :is([class|="board"] .boardTitle ,[class|="board"]:not(.board-gift) ul li){height: 48px;}
+[class|="board"] :is(.boardTitle , ul li){display: flex; justify-content: space-between; align-items: center; padding: 0 5.1948%;}
+[class|="board"] :is(.boardTitle , ul li) *{box-sizing: border-box;}
+:is([class|="board"] .boardTitle ,[class|="board"]:not(.board-gift) ul li){height: 48px;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 페이저 */
-.settingPage section [class|="board"] .pagerArea{display: flex; justify-content: center; align-items: center; margin-top: 20px;}
-.settingPage section [class|="board"] .pagerArea > a{width: 20px; height: 20px; background-repeat: no-repeat; background-position: center; background-size: cover; text-indent: -9999px;} 
-.settingPage section [class|="board"] .pagerArea > a:nth-of-type(1){background-image: url('../images/icon-prev.png');}
-.settingPage section [class|="board"] .pagerArea > a:nth-of-type(2){background-image: url('../images/icon-next.png');}
-.settingPage section [class|="board"] .pagerArea ol{display: flex; align-items: center; margin: 0 60px;}
-.settingPage section [class|="board"] .pagerArea ol li a{display: block; font-weight: 700; color: #bcbcbc; line-height: 20px; padding: 0 10px;}
-.settingPage section [class|="board"] .pagerArea ol li:is(:hover , .active) a{color: black;}
+.pagerArea{display: flex; justify-content: center; align-items: center; margin-top: 20px;}
+.pagerArea > a{width: 20px; height: 20px; background-repeat: no-repeat; background-position: center; background-size: cover; text-indent: -9999px;} 
+.pagerArea > a:nth-of-type(1){background-image: url('../images/icon-prev.png');}
+.pagerArea > a:nth-of-type(2){background-image: url('../images/icon-next.png');}
+.pagerArea ol{display: flex; align-items: center; margin: 0 60px;}
+.pagerArea ol li a{display: block; font-weight: 700; color: #bcbcbc; line-height: 20px; padding: 0 10px;}
+.pagerArea ol li:is(:hover , .active) a{color: black;}
 /* 돈풍선 충전 / 내역 - 충전 내역*/
 .settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(2n + 1){text-align: center;}
 .settingPage .historyPage section .board-charge :is(.boardTitle , ul li) > *:nth-child(2n){text-align: right;}
@@ -194,31 +240,31 @@
 /* 전문가 추가/변경 신청 */
 .settingPage .expertPage section{width: 424px;}
 .settingPage .expertPage section > p{line-height: 20px;}
-.settingPage .expertPage section form fieldset ul{margin-bottom: 20px;}
-.settingPage .expertPage section form fieldset ul li:not(:last-child){margin-bottom: 20px;}
-.settingPage .expertPage section form fieldset ul li:first-child{display: flex; flex-wrap: wrap; gap: 0 5px;}
-.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]{display: none;}
-.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"] + label{width: 87px; line-height: 28px; font-size: 13px; color: #929292; text-align: center; border: 1px solid #929292; border-radius: 100px; margin-bottom: 20px;}
-.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]:checked + label{color: white; background-color: #ee2222; border: none;}
-.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]#expertFurther:checked ~ div > label:first-child::before{content: '리딩';}
-.settingPage .expertPage section form fieldset ul li:first-child input[type="radio"]#expertChange:checked ~ div > label:first-child::before{content: '변경';}
-.settingPage .expertPage section form fieldset ul li:first-child > div{width: 100%;}
-.settingPage .expertPage section form fieldset ul li :is(label , strong):first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
-.settingPage .expertPage section form fieldset ul li .searchArea{border: 1px solid #e9e9e9; border-radius: 10px;}
-.settingPage .expertPage section form fieldset ul li .searchArea .inputArea{position: relative;}
-.settingPage .expertPage section form fieldset ul li .searchArea .inputArea input{width: 100%; border: none; outline: none;}
-.settingPage .expertPage section form fieldset ul li .searchArea .inputArea button{position: absolute; right: 8px; top: 0; width: 24px; height: 100%; background: url('../images/icon-search.png') no-repeat left center / contain; text-indent: -9999px;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox{display: none; max-height: 200px; font-size: 13px; padding: 0px 15px; background-color: #fbfbfb; border-top: 1px solid #e9e9e9;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox.active{display: block;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > p{line-height: 49px; margin-bottom: 7.5px; border-bottom: 1px solid #e9e9e9;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div{padding: 7.5px 0;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div :is(b,button){display: block;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div b{font-weight: 700; margin-bottom: 7.5px;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div button{width: 100%; padding: 7.5px 0; text-align: left;}
-.settingPage .expertPage section form fieldset ul li .searchArea .scrollBox > div button::after{content: '전문가'; color: #929292; margin-left: 10px;}
-.settingPage .expertPage section form fieldset ul li input[type="checkbox"] + label{display: flex; margin-bottom: 10px;}
-.settingPage .expertPage section form fieldset ul li textarea{width: 100%; height: 105px; font-size: 14px;}
-.settingPage .expertPage form input[type="submit"]{display: block; margin: 0 auto;}
+form.expertBox fieldset ul{margin-bottom: 20px;}
+form.expertBox fieldset ul li:not(:last-child){margin-bottom: 20px;}
+form.expertBox fieldset ul li:first-child{display: flex; flex-wrap: wrap; gap: 0 5px;}
+form.expertBox fieldset ul li:first-child input[type="radio"]{display: none;}
+form.expertBox fieldset ul li:first-child input[type="radio"] + label{width: 87px; line-height: 28px; font-size: 13px; color: #929292; text-align: center; border: 1px solid #929292; border-radius: 100px; margin-bottom: 20px;}
+form.expertBox fieldset ul li:first-child input[type="radio"]:checked + label{color: white; background-color: #ee2222; border: none;}
+form.expertBox fieldset ul li:first-child input[type="radio"]#expertFurther:checked ~ div > label:first-child::before{content: '리딩';}
+form.expertBox fieldset ul li:first-child input[type="radio"]#expertChange:checked ~ div > label:first-child::before{content: '변경';}
+form.expertBox fieldset ul li:first-child > div{width: 100%;}
+form.expertBox fieldset ul li :is(label , strong):first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
+form.expertBox fieldset ul li .searchArea{border: 1px solid #e9e9e9; border-radius: 10px;}
+form.expertBox fieldset ul li .searchArea .inputArea{position: relative;}
+form.expertBox fieldset ul li .searchArea .inputArea input{width: 100%; border: none; outline: none;}
+form.expertBox fieldset ul li .searchArea .inputArea button{position: absolute; right: 8px; top: 0; width: 24px; height: 100%; background: url('../images/icon-search.png') no-repeat left center / contain; text-indent: -9999px;}
+form.expertBox fieldset ul li .searchArea .scrollBox{display: none; max-height: 200px; font-size: 13px; padding: 0px 15px; background-color: #fbfbfb; border-top: 1px solid #e9e9e9;}
+form.expertBox fieldset ul li .searchArea .scrollBox.active{display: block;}
+form.expertBox fieldset ul li .searchArea .scrollBox > p{line-height: 49px; margin-bottom: 7.5px; border-bottom: 1px solid #e9e9e9;}
+form.expertBox fieldset ul li .searchArea .scrollBox > div{padding: 7.5px 0;}
+form.expertBox fieldset ul li .searchArea .scrollBox > div :is(b,button){display: block;}
+form.expertBox fieldset ul li .searchArea .scrollBox > div b{font-weight: 700; margin-bottom: 7.5px;}
+form.expertBox fieldset ul li .searchArea .scrollBox > div button{width: 100%; padding: 7.5px 0; text-align: left;}
+form.expertBox fieldset ul li .searchArea .scrollBox > div button::after{content: '전문가'; color: #929292; margin-left: 10px;}
+form.expertBox fieldset ul li input[type="checkbox"] + label{display: flex; margin-bottom: 10px;}
+form.expertBox fieldset ul li textarea{width: 100%; height: 105px; font-size: 14px;}
+form.expertBox input[type="submit"]{display: block; margin: 0 auto;}
 
 /* 이용약관 */
 .settingPage .termsPage section{width: 753px; height: 100%; display: flex; flex-direction: column; gap: 30px;}

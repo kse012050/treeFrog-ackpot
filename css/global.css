@@ -46,7 +46,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .tabBtn{display: flex;}
 .tabBtn li:not(:last-child){margin-right: 5px;}
 .tabBtn li button{font-size: 13px; color: #929292; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 100px; box-sizing: border-box;}
-.tabBtn li.active button{color: #fff; background-color: #ee2222; border: none;}
+.tabBtn li:is(.active , :hover) button{color: #fff; background-color: #ee2222; border-color: #ee2222;}
 
 /* 컨텐츠 영역 */
 .contentArea{flex: 1; background-color: #f5f5f5;}
@@ -65,12 +65,12 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .contentBox.case01 .slideBox{height: 300px; border: 1px solid black;}
 
 /* 스크롤 박스 공통 */
-.scrollBox{flex: 1; overflow: auto; padding: 0 20px;}
-.scrollBox::-webkit-scrollbar{width: 5px;}
-.scrollBox::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
+[class*="scrollBox"]{flex: 1; overflow: auto; padding: 0 20px;}
+[class*="scrollBox"]::-webkit-scrollbar{width: 5px;}
+[class*="scrollBox"]::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
+[class*="scrollBox"] ul li:is(:hover , .active) a{background-color: #fff9f9;}
 .scrollBox ul{padding: 5px 0;} 
-.scrollBox ul li:is(:hover , .active) a{background-color: #fff9f9;}
-.scrollBox ul li a{border-radius: 10px; display: flex; align-items: center; padding: 14px 10px; }
+:is(.scrollBox , .content-board .scrollBox-board) ul li a{border-radius: 10px; display: flex; align-items: center; padding: 14px 10px; }
 .scrollBox ul li a .imgArea{min-width: 53px; width: 53px; min-height: 53px;  margin-right: 2.12%; position: relative;}
 .scrollBox ul li a .imgArea img{width: 100%; border-radius: 20px;} 
 .scrollBox ul li a .imgArea span{position: absolute; right: -2px; top: -3px; font-size: 11px; color: white; line-height: 22px; padding: 0 8px; border-radius: 100px; background-color: #ee2222;}
