@@ -1,3 +1,43 @@
+/* 리빙방 */
+.livingPage header{position: relative; z-index: 10;}
+.livingPage :is(.leftAside , .rightAside){position: relative;}
+.livingPage :is(.leftAside , .rightAside) .asidePosition{height: 100%; display: flex; flex-direction: column; position: absolute;  top: 0;}
+.livingPage .leftAside{width: 348px; display: flex; flex-direction: column;}
+.livingPage .leftAside .asidePosition{right: 0;}
+.livingPage .leftAside .asidePosition h2{font-size: 24px; font-weight: 700; padding: 30px 30px 0; margin-bottom: 20px;}
+.livingPage .leftAside .asidePosition > div > strong{display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px;}
+.livingPage .leftAside .asidePosition > div ul li a .imgArea{background-color: #eeeeee; border-radius: 20px; overflow: hidden;}
+.livingPage .leftAside .asidePosition > div ul li a div:nth-child(2){flex: 1;}
+.livingPage .leftAside .asidePosition > div ul li a div:nth-child(2) strong{width: 100%;}
+
+.livingPage .rightAside{width: 240px; display: flex; flex-direction: column;}
+.livingPage .rightAside .asidePosition{left: 0;}
+.livingPage .rightAside .asidePosition img{width: 100%; flex-shrink: 0;}
+.livingPage .rightAside .asidePosition > div{flex: 1; padding: 20px 30px 40px; display: flex; flex-direction: column; justify-content: space-between}
+.livingPage .rightAside .asidePosition > div > ul > li{ border: 1px solid #e9e9e9; border-radius: 10px; }
+.livingPage .rightAside .asidePosition > div > ul > li button{font-size: 14px; font-weight: 500; text-align: left; width: 100%; line-height: 46px; padding: 0 15px; background-repeat: no-repeat; background-position: right 8px center; background-size: 24px;}
+.livingPage .rightAside .asidePosition > div > ul > li:not(:last-child){margin-bottom: 8px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea > button{background-image: url('../images/icon-arrow-down.png');}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox{padding: 15px; border-top: 1px solid #e9e9e9; background-color: #fbfbfb;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox.scrollBox{max-height: 200px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox > p{font-size: 13px; color: #4d4d4d; margin-bottom: 10px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox > p b{font-weight: 500;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox ul li{display: flex; align-items: center; font-size: 13px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox ul li:not(:last-child){margin-bottom: 10px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox ul li .imgArea{min-width: 32px; width: 32px; min-height: 32px; border-radius: 13px; overflow: hidden; margin-right: 7px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox ul li .imgArea img{width: 100%;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox ul li strong{flex: 1;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox .expertArea{padding-bottom: 14.5px; border-bottom: 1px solid #e9e9e9; margin-bottom: 14.5px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox .expertArea li p{color: #929292; margin-left: 5px;}
+.livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox .expertArea li strong{line-height: 17.5px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.livingPage .rightAside .asidePosition > div > ul > li:not(.dropArea) button{background-image: url('../images/icon-arrow-right.png');}
+.livingPage .rightAside .asidePosition > div .buttonArea{display: flex; justify-content: space-between;}
+.livingPage .rightAside .asidePosition > div .buttonArea button{text-align: left; font-size: 13px; font-weight: 500; line-height: 39px; color: #929292; border-radius: 10px; padding: 0 12px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: right 12px center;}
+.livingPage .rightAside .asidePosition > div .buttonArea button:first-child{width: 37.22%; background-image: url('../images/icon-share.png'); background-size: 13px;}
+.livingPage .rightAside .asidePosition > div .buttonArea button:last-child{width: 58.33%; background-image: url('../images/icon-out.png'); background-size: 17px;}
+
+
+
 /* 셋팅 */
 .settingPage :is(h3 , h4 , legend){font-size: 24px; font-weight: 700;}
 .settingPage :is(h3 , h4 , legend) + *:not(p){margin-top: 22px;}

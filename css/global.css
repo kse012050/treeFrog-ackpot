@@ -60,7 +60,6 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .mainPage .contentArea .contentBox.case02{height: calc((100% - 60px) * 0.2653);}
 .mainPage .contentArea .contentBox section{min-height: 1%; display: flex; flex-direction: column;}
 .mainPage .contentArea .contentBox section:not(:last-of-type){margin-bottom: 4px;}
-.mainPage .contentArea .contentBox section > *{padding: 0 20px;}
 .mainPage .contentArea .contentBox section h3{font-size: 24px; font-weight: 700; padding: 25px 30px 20px;}
 /* 슬라이더 만들 예정 */
 .contentBox.case01 .slideBox{height: 300px; border: 1px solid black;}
@@ -72,7 +71,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .scrollBox ul{padding: 5px 0;} 
 .scrollBox ul li:is(:hover , .active) a{background-color: #fff9f9;}
 .scrollBox ul li a{border-radius: 10px; display: flex; align-items: center; padding: 14px 10px; }
-.scrollBox ul li a .imgArea{min-width: 53px; width: 53px;  margin-right: 2.12%; position: relative;}
+.scrollBox ul li a .imgArea{min-width: 53px; width: 53px; min-height: 53px;  margin-right: 2.12%; position: relative;}
 .scrollBox ul li a .imgArea img{width: 100%; border-radius: 20px;} 
 .scrollBox ul li a .imgArea span{position: absolute; right: -2px; top: -3px; font-size: 11px; color: white; line-height: 22px; padding: 0 8px; border-radius: 100px; background-color: #ee2222;}
 .scrollBox ul li a div p{font-size: 12px; color: #929292;}
