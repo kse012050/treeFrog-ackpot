@@ -139,21 +139,36 @@
 .livingPage .contentArea section .chattingArea > div .messageArea{position: relative;}
 .livingPage .contentArea section .chattingArea > div .messageArea > p{font-size: 13px; font-weight: 500; line-height: 19px; margin-bottom: 8px;}
 .livingPage .contentArea section .chattingArea > div .messageArea > p span{color: #929292;}
-.livingPage .contentArea section .chattingArea > div .messageArea > .textArea{font-size: 15px; line-height: 22px; display: flex; flex-direction: column; align-items: flex-start;}
-.livingPage .contentArea section .chattingArea > div .messageArea > .textArea p{ background-color: white; padding: 12px 15px; border-radius: 10px; box-sizing: border-box; position: relative;}
-.livingPage .contentArea section .chattingArea > div .messageArea > .textArea p:not(:last-of-type){margin-bottom: 8px;}
-.livingPage .contentArea section .chattingArea > div .messageArea > .textArea{position: relative;}
+.livingPage .contentArea section .chattingArea > div .messageArea :is(.textArea p , .imgList li , .videoArea , .fileArea){border-radius: 10px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textArea{font-size: 15px; line-height: 22px; display: flex; flex-direction: column; align-items: flex-start;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textArea p{ background-color: white; padding: 12px 15px; box-sizing: border-box; position: relative;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textArea p:not(:last-of-type){margin-bottom: 8px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textArea{position: relative;}
 .livingPage .contentArea section .chattingArea > div .messageArea time{font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > div:not([data-type="me"]) .messageArea time{position: absolute; right: 0; bottom: 0; transform: translateX(calc(100% + 10px)); font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea time{position: absolute; left: 0; bottom: 0; transform: translateX(calc(-100% - 10px)); font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > div .messageArea > .messageArea > time{position: absolute; right: 0; bottom: 0;}
 .livingPage .contentArea section .chattingArea > div .messageArea:has(.imgList , .videoArea){flex: 1;}
 .livingPage .contentArea section .chattingArea > div .messageArea .imgList{display: flex; flex-wrap: wrap; gap: 2px;}
-.livingPage .contentArea section .chattingArea > div .messageArea .imgList li{flex: 1; min-width: calc((100% - 4px) / 3); height: 197px; border-radius: 10px; border: 1px solid black; box-sizing: border-box;}
+.livingPage .contentArea section .chattingArea > div .messageArea .imgList li{flex: 1; min-width: calc((100% - 4px) / 3); height: 197px; border: 1px solid black; box-sizing: border-box;}
 .livingPage .contentArea section .chattingArea > div .messageArea .imgList li:only-child{height: 341px;}
 .livingPage .contentArea section .chattingArea > div .messageArea .imgList li img{width: 100%;}
-.livingPage .contentArea section .chattingArea > div .messageArea .videoArea{height: 314px; border: 1px solid black; border-radius: 10px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .videoArea{height: 314px; border: 1px solid black; }
 .livingPage .contentArea section .chattingArea > div .messageArea .videoArea video{width: 100%;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea{min-height: 142px; display: flex; padding: 12px 16px; background-color: white; box-sizing: border-box;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea::after{content: ''; width: 84px; height: 84px; border-radius: 10px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center; background-size: 45px; flex-shrink: 0; margin-left: 18px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea[data-type="img"]::after{background-image: url('../images/file-img.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea[data-type="document"]::after{background-image: url('../images/file-document.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea[data-type="mp"]::after{background-image: url('../images/file-mp.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea[data-type="compression"]::after{background-image: url('../images/file-compression.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div{display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div p{font-size: 16px; font-weight: 700; line-height: 22px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div span:first-of-type{margin-top: 4px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div span{display: block; font-size: 12px; color: #929292; line-height: 18px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea{margin-top: auto; display: flex;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea button{font-size: 14px; line-height: 20px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
+.livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea button:not(:last-child){margin-right: 14px;}
 
 
 
