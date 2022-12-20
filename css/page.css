@@ -1,17 +1,24 @@
 /* 리빙방 */
+.livingPage{overflow: hidden;}
 .livingPage header{position: relative; z-index: 10;}
 .livingPage :is(.leftAside , .rightAside){position: relative;}
+.livingPage :is(.leftAside , .rightAside) > button{position: absolute; top: 30px; width: 36px; height: 36px; border-radius: 100%;  box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.1); background-color: white; background-repeat: no-repeat; background-position: center; background-size: cover; z-index: 1; font-size: 10px; color: transparent;}
+.livingPage .leftAside > button{right: -18px; background-image: url('../images/icon-arrow-right.png'); transform: rotate(180deg);}
+.livingPage .rightAside > button{left: -18px; background-image: url('../images/icon-arrow-right.png');}
 .livingPage :is(.leftAside , .rightAside) .asidePosition{height: 100%; display: flex; flex-direction: column; position: absolute;  top: 0;}
+.livingPage :is(.leftAside , .rightAside).active{width: 22px;}
+.livingPage .leftAside.active .asidePosition > div{overflow: hidden;}
 .livingPage .leftAside{width: 348px; display: flex; flex-direction: column;}
-.livingPage .leftAside .asidePosition{right: 0;}
+.livingPage .leftAside .asidePosition{right: 0; width: 348px;}
 .livingPage .leftAside .asidePosition h2{font-size: 24px; font-weight: 700; padding: 30px 30px 0; margin-bottom: 20px;}
 .livingPage .leftAside .asidePosition > div > strong{display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px;}
 .livingPage .leftAside .asidePosition > div ul li a .imgArea{background-color: #eeeeee; border-radius: 20px; overflow: hidden;}
 .livingPage .leftAside .asidePosition > div ul li a div:nth-child(2){flex: 1;}
 .livingPage .leftAside .asidePosition > div ul li a div:nth-child(2) strong{width: 100%;}
+.livingPage .leftAside .asidePosition > div ul li a div:nth-child(3) span{margin-top: 3px;}
 
 .livingPage .rightAside{width: 240px; display: flex; flex-direction: column;}
-.livingPage .rightAside .asidePosition{left: 0;}
+.livingPage .rightAside .asidePosition{left: 0; width: 240px;}
 .livingPage .rightAside .asidePosition img{width: 100%; flex-shrink: 0;}
 .livingPage .rightAside .asidePosition > div{flex: 1; padding: 20px 30px 40px; display: flex; flex-direction: column; justify-content: space-between}
 .livingPage .rightAside .asidePosition > div > ul > li{ border: 1px solid #e9e9e9; border-radius: 10px; }
@@ -52,7 +59,8 @@
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(1){width: 47.92%;}
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(2){width: 3.84%;}
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(3){width: 26.03%;}
-
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails ul li[data-type="revenue"] span{color: #ee2222;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails ul li[data-type="stopLoss"] span{color: #2c75d4;}
 /* 게시판 */
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div{overflow: hidden; padding-left: 0; padding-right: 0; padding-bottom: 0;}
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .tabBtn{padding: 0 30px; margin-bottom: 20px;}
@@ -84,7 +92,69 @@
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .content-collect .tabContent-collect > div li img{width: 100%;}
 /* 전문가 추가/변경 신청 */
 .livingPage .rightAside .asidePosition > div > ul > li.expertArea .popupArea > div .expertBox{text-align: left;}
-.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .popupArea{display: flex;}
+
+
+/* 리빙 채팅 전체 틀*/
+.livingPage .contentArea section{position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px 24px; box-sizing: border-box;}
+.livingPage .contentArea section .titleArea{position: absolute; left: 0; top: 0; width: 100%; height: 147px; display: flex; flex-direction: column; justify-content: center; padding: 0 52px; background-color: #e9e9e9; backdrop-filter: blur(30px); box-sizing: border-box; z-index: 1;}
+.livingPage .contentArea section .titleArea h3{font-size: 24px; font-weight: 700;}
+.livingPage .contentArea section .titleArea p{font-size: 14px; color: #929292; margin-top: 12px;}
+.livingPage .contentArea section .inputArea{background-color: white; border-radius: 10px; padding: 12px 20px; border: 1px solid white;}
+.livingPage .contentArea section .inputArea:has(textarea:focus){border-color: black;}
+.livingPage .contentArea section .inputArea textarea{width: 100%; font-size: 15px; line-height: 22px; padding: 0; border: none; background-color: transparent; outline: none;}
+.livingPage .contentArea section .inputArea .btnArea{display: flex;}
+.livingPage .contentArea section .inputArea .btnArea [class|="btn"]{width: 34px; height: 34px; background-position: center; background-size: cover; text-indent: -9999px;}
+.livingPage .contentArea section .inputArea .btnArea .btn-add{background-image: url('../images/icon-plus-circle.png'); margin-right: 4px;}
+.livingPage .contentArea section .inputArea .btnArea .btn-money{background-image: url('../images/icon-dollar-circle.png');}
+.livingPage .contentArea section .inputArea .btnArea :not([class|="btn"]){margin-left: auto; font-size: 14px; font-weight: 500; color: white; background-color: black; width: 100px; line-height: 32px; border-radius: 100px;}
+.livingPage .contentArea section .inputArea .btnArea :not([class|="btn"]).active{background-color: #ee2222;}
+
+/* 리빙 채팅 메세지 */
+.livingPage .contentArea section .chattingArea{overflow: auto; padding-top: 147px;}
+.livingPage .contentArea section .chattingArea::-webkit-scrollbar{width: 5px;}
+.livingPage .contentArea section .chattingArea::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
+.livingPage .contentArea section .chattingArea > div{display: flex; align-items: flex-start; max-width: 60%;}
+.livingPage .contentArea section .chattingArea > div:not(:last-of-type){margin-bottom: 20px;}
+.livingPage .contentArea section .chattingArea > div .imgArea{position: relative; width: 53px; height: 53px; margin-right: 9px; border-radius: 20px; line-height: 0;}
+.livingPage .contentArea section .chattingArea > div .imgArea img{flex-shrink: 0;}
+.livingPage .contentArea section .chattingArea > div[data-type|="manager"] .imgArea::after{content: ''; position: absolute; right: -2px; bottom: -3px; width: 22px; height: 22px; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > div[data-type|="manager"] .imgArea img{width: 53px; height: 53px; border-radius: 20px; }
+.livingPage .contentArea section .chattingArea > div[data-type="manager-best"] .imgArea::after{background-image: url('../images/chatting-best.png');}
+.livingPage .contentArea section .chattingArea > div[data-type="manager-expert"] .imgArea::after{background-image: url('../images/chatting-expert.png');}
+.livingPage .contentArea section .chattingArea > div[data-type="user"] .imgArea{display: flex; justify-content: center; align-items: flex-end; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"] .imgArea img{width: 43.4px; height: 38.2px; border-radius: 0;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="1"] .imgArea{background-color: #eeeeee;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="2"] .imgArea{background-color: #fff9e8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="3"] .imgArea{background-color: #ffeee8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="4"] .imgArea{background-color: #ffe8f2;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="5"] .imgArea{background-color: #f4e8ff;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="6"] .imgArea{background-color: #e8ecff;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="7"] .imgArea{background-color: #e8f3ff;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="8"] .imgArea{background-color: #e9ffe8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="9"] .imgArea{background-color: #f3ffe8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="10"] .imgArea{background-color: #e8ffff;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"]{margin-left: auto; justify-content: flex-end;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"] .imgArea{display: none;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea > p{display: none;}
+.livingPage .contentArea section .chattingArea > div .messageArea{position: relative;}
+.livingPage .contentArea section .chattingArea > div .messageArea > p{font-size: 13px; font-weight: 500; line-height: 19px; margin-bottom: 8px;}
+.livingPage .contentArea section .chattingArea > div .messageArea > p span{color: #929292;}
+.livingPage .contentArea section .chattingArea > div .messageArea > .textArea{font-size: 15px; line-height: 22px; display: flex; flex-direction: column; align-items: flex-start;}
+.livingPage .contentArea section .chattingArea > div .messageArea > .textArea p{ background-color: white; padding: 12px 15px; border-radius: 10px; box-sizing: border-box; position: relative;}
+.livingPage .contentArea section .chattingArea > div .messageArea > .textArea p:not(:last-of-type){margin-bottom: 8px;}
+.livingPage .contentArea section .chattingArea > div .messageArea > .textArea{position: relative;}
+.livingPage .contentArea section .chattingArea > div .messageArea time{font-size: 11px; color: #929292;}
+.livingPage .contentArea section .chattingArea > div:not([data-type="me"]) .messageArea time{position: absolute; right: 0; bottom: 0; transform: translateX(calc(100% + 10px)); font-size: 11px; color: #929292;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea time{position: absolute; left: 0; bottom: 0; transform: translateX(calc(-100% - 10px)); font-size: 11px; color: #929292;}
+.livingPage .contentArea section .chattingArea > div .messageArea > .messageArea > time{position: absolute; right: 0; bottom: 0;}
+.livingPage .contentArea section .chattingArea > div .messageArea:has(.imgList , .videoArea){flex: 1;}
+.livingPage .contentArea section .chattingArea > div .messageArea .imgList{display: flex; flex-wrap: wrap; gap: 2px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .imgList li{flex: 1; min-width: calc((100% - 4px) / 3); height: 197px; border-radius: 10px; border: 1px solid black; box-sizing: border-box;}
+.livingPage .contentArea section .chattingArea > div .messageArea .imgList li:only-child{height: 341px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .imgList li img{width: 100%;}
+.livingPage .contentArea section .chattingArea > div .messageArea .videoArea{height: 314px; border: 1px solid black; border-radius: 10px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .videoArea video{width: 100%;}
+
 
 
 
