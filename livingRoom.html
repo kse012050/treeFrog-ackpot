@@ -256,7 +256,7 @@
                             최고관리자 : manager-best , 전문가 : manager-expert
                             일반유저 : user 
                             (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
-                            me 자신
+                            자신 : me
                      -->
                     <div class="moneyArea" style="background-image: url('images/money-10.png');">
                         <span>돈풍선 선물 알림</span>
@@ -277,9 +277,9 @@
                         <div class="messageArea">
                             <p>김전문 <span>전문가</span></p>
                             <!-- 
-                                class : textBox , 일단 텍스트
+                                class : textBox , 일반 텍스트
                                     data-type이 없으면 일반 ( 하얀색 )
-                                    매도 : sell , 매수 : buy , 알림 : alarm , 비밀 : secret
+                                    매도 : sell , 매수 : buy , 알림 : alarm , 비밀 : secret (data-to : 사용자 닉네임)
                              -->
                             <div class="textBox">
                                 같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
@@ -309,10 +309,10 @@
                         </div>
                         <div class="messageArea">
                             <p>김전문 <span>전문가</span></p>
-                            <ul class="imgList">
-                                <li></li>
-                            </ul>
-                            <time>오후 1:47</time>
+                            <div class="imgBox">
+                                <div></div>
+                                <time>오후 1:47</time>
+                            </div>
                         </div>
                     </div>
                     <div data-type="me">
@@ -321,14 +321,14 @@
                         </div>
                         <div class="messageArea">
                             <p>유저 사용자</p>
-                            <ul class="imgList">
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                            <time>오후 1:47</time>
+                            <div class="imgBox">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <time>오후 1:47</time>
+                            </div>
                         </div>
                     </div>
                     <div data-type="manager-expert">
@@ -337,10 +337,10 @@
                         </div>
                         <div class="messageArea">
                             <p>유저 사용자</p>
-                            <div class="videoArea">
+                            <div class="videoBox">
                                 
+                                <time>오후 1:47</time>
                             </div>
-                            <time>오후 1:47</time>
                         </div>
                     </div>
                     <div data-type="manager-expert">
@@ -352,18 +352,18 @@
                             <!-- data-type 
                                 이미지 : img , 문서 : document , 비디오 : mp , 압축 : compression
                             -->
-                            <div class="fileArea" data-type="compression">
+                            <div class="fileBox" data-type="compression">
                                 <div>
                                     <p>단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip</p>
-                                    <span class="validity">유효기간 ~ 2022.06.10</span>
-                                    <span class="volume">용량: 1.40MB</span>
+                                    <span class="validity">2022.06.10</span>
+                                    <span class="volume">1.40MB</span>
                                     <div class="btnArea">
                                         <button>열기</button>
                                         <button>저장</button>
                                     </div>
                                 </div>
+                                <time>오후 1:47</time>
                             </div>
-                            <time>오후 1:47</time>
                         </div>
                     </div>
 
@@ -376,7 +376,7 @@
                             <!-- data-type 
                                 이미지 : img , 문서 : document , 비디오 : mp , 압축 : compression
                             -->
-                            <div class="linkArea">
+                            <div class="linkBox">
                                 <div class="thumbnail">
                                 </div>
                                 <div class="textArea">
@@ -384,8 +384,8 @@
                                     <span>개인투자자를 위한 주식 정보회사</span>
                                     <a href="">https://smkt.co.kr/ad/software/c/projects/DAEBAK/boardDAEBAK/board</a>
                                 </div>
+                                <time>오후 1:47</time>
                             </div>
-                            <time>오후 1:47</time>
                         </div>
                     </div>
                 </div>

@@ -188,7 +188,7 @@
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea{position: relative;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea > p{font-size: 13px; font-weight: 500; line-height: 19px; margin-bottom: 8px;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea > p span{color: #929292;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea :is(.textBox , .imgList li , .videoArea , .fileArea , .linkArea){border-radius: 10px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea :is(.textBox , .imgBox div , .videoBox , .fileBox , .linkBox){border-radius: 10px;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox{font-size: 15px; line-height: 22px;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox{ padding: 12px 15px; box-sizing: border-box; position: relative; }
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type]{color: white;}
@@ -224,34 +224,36 @@
 .livingPage .contentArea section .chattingArea > [data-type]:not([data-type="me"]) .messageArea time{position: absolute; right: 0; bottom: 0; transform: translateX(calc(100% + 10px)); font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > [data-type="me"] .messageArea time{position: absolute; left: 0; bottom: 0; transform: translateX(calc(-100% - 10px)); font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea > .messageArea > time{position: absolute; right: 0; bottom: 0;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea:has(.imgList , .videoArea){flex: 1;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgList{display: flex; flex-wrap: wrap; gap: 2px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgList li{flex: 1; min-width: calc((100% - 4px) / 3); height: 197px; border: 1px solid black; box-sizing: border-box;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgList li:only-child{height: 341px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgList li img{width: 100%;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoArea{height: 314px; border: 1px solid black; }
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoArea video{width: 100%;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea{min-height: 142px; display: flex; padding: 12px 16px; background-color: white; box-sizing: border-box;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea::after{content: ''; width: 84px; height: 84px; border-radius: 10px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center; background-size: 45px; flex-shrink: 0; margin-left: 18px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea[data-type="img"]::after{background-image: url('../images/file-img.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea[data-type="document"]::after{background-image: url('../images/file-document.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea[data-type="mp"]::after{background-image: url('../images/file-mp.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea[data-type="compression"]::after{background-image: url('../images/file-compression.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div{display: flex; flex-direction: column;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div p{font-size: 16px; font-weight: 700; line-height: 22px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div span:first-of-type{margin-top: 4px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div span{display: block; font-size: 12px; color: #929292; line-height: 18px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div .btnArea{margin-top: auto; display: flex;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div .btnArea button{font-size: 14px; line-height: 20px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileArea > div .btnArea button:not(:last-child){margin-right: 14px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea .thumbnail{height: 186px; background-repeat: no-repeat; background-position: center; background-size: cover;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea .textArea{flex: 1; padding: 16px; display: flex; flex-direction: column;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea .textArea > *{line-height: 1;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea .textArea strong{font-size: 15px; font-weight: 500;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea .textArea span{font-size: 13px; color: #929292; margin-top: 6px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkArea .textArea a{margin-top: auto; width: 100%; font-size: 12px; color: #2c75d4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea:has(.imgBox , .videoBox){flex: 1;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox{display: flex; flex-wrap: wrap; gap: 2px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div{flex: 1; min-width: calc((100% - 4px) / 3); height: 197px; border: 1px solid black; box-sizing: border-box;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div:only-child{height: 341px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div img{width: 100%;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox{height: 314px; border: 1px solid black; }
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox video{width: 100%;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox{min-height: 142px; display: flex; padding: 12px 16px; background-color: white; box-sizing: border-box;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox::after{content: ''; width: 84px; height: 84px; border-radius: 10px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center; background-size: 45px; flex-shrink: 0; margin-left: 18px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="img"]::after{background-image: url('../images/file-img.png');}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="document"]::after{background-image: url('../images/file-document.png');}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="mp"]::after{background-image: url('../images/file-mp.png');}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="compression"]::after{background-image: url('../images/file-compression.png');}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div{display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div p{font-size: 16px; font-weight: 700; line-height: 22px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span:first-of-type{margin-top: 4px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span{display: block; font-size: 12px; color: #929292; line-height: 18px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span.validity::before{content: '유효기간 ~ ';}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span.volume::before{content: '용량 : ';}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea{margin-top: auto; display: flex;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button{font-size: 14px; line-height: 20px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button:not(:last-child){margin-right: 14px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .thumbnail{height: 186px; background-repeat: no-repeat; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea{flex: 1; padding: 16px; display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea > *{line-height: 1;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea strong{font-size: 15px; font-weight: 500;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea span{font-size: 13px; color: #929292; margin-top: 6px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea a{margin-top: auto; width: 100%; font-size: 12px; color: #2c75d4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 /* 리빙 채팅 돈풍선 */
 .livingPage .contentArea section .chattingArea .moneyArea{background-color: white; padding: 20px 20px 20px 260px; border-radius: 10px; background-repeat: no-repeat; background-position: left 20px center; background-size: 220px;}
@@ -282,21 +284,21 @@
 .settingPage .profilePage section .contentBox b{display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; padding-top: 5px;}
 .settingPage .profilePage section .contentBox .grayBG{line-height: 28px; background-color: #eeeeee; border-radius: 100px;}
 .settingPage .profilePage section .contentBox > button{position: absolute; right: 30px; top: 27px;}
-.settingPage .profilePage section .profileArea{width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: relative;}
-.settingPage .profilePage section .profileArea :is(h3 , .messageArea){width: 100%;}
-.settingPage .profilePage section .profileArea :is(.imgArea , > p){margin-bottom: 25px;}
-.settingPage .profilePage section .profileArea .imgArea{width: 83px; margin-right: 15px; position: relative;}
-.settingPage .profilePage section .profileArea .imgArea img{width: 100%; border-radius: 30px;}
-.settingPage .profilePage section .profileArea .imgArea button{position: absolute; right: -8px; bottom: 0; width: 32px; height: 32px; background: white url('../images/icon-update.png') no-repeat center / 18px; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); border-radius: 100%; text-indent: -9999px;} 
-.settingPage .profilePage section .profileArea > p{font-size: 20px; font-weight: 700; line-height: 29px;}
-.settingPage .profilePage section .profileArea .messageArea p{font-size: 14px; line-height: 20px;}
-.settingPage .profilePage section .profileArea .popupArea > div{width: 425px;}
-.settingPage .profilePage section .profileArea .popupArea > div form fieldset{text-align: left; margin-bottom: 42px;}
-.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li:not(:last-child){margin-bottom: 16px;}
-.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li label{display: block; margin-bottom: 5px;}
-.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li :is(input , textarea){width: 100%;}
-.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li textarea{height: 86px;}
-.settingPage .profilePage section > :not(.profileArea){width: calc((100% - 30px) / 2);}
+.settingPage .profilePage section .profileBox{width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: relative;}
+.settingPage .profilePage section .profileBox :is(h3 , .messageArea){width: 100%;}
+.settingPage .profilePage section .profileBox :is(.imgArea , > p){margin-bottom: 25px;}
+.settingPage .profilePage section .profileBox .imgArea{width: 83px; margin-right: 15px; position: relative;}
+.settingPage .profilePage section .profileBox .imgArea img{width: 100%; border-radius: 30px;}
+.settingPage .profilePage section .profileBox .imgArea button{position: absolute; right: -8px; bottom: 0; width: 32px; height: 32px; background: white url('../images/icon-update.png') no-repeat center / 18px; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); border-radius: 100%; text-indent: -9999px;} 
+.settingPage .profilePage section .profileBox > p{font-size: 20px; font-weight: 700; line-height: 29px;}
+.settingPage .profilePage section .profileBox .messageArea p{font-size: 14px; line-height: 20px;}
+.settingPage .profilePage section .profileBox .popupArea > div{width: 425px;}
+.settingPage .profilePage section .profileBox .popupArea > div form fieldset{text-align: left; margin-bottom: 42px;}
+.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li:not(:last-child){margin-bottom: 16px;}
+.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li label{display: block; margin-bottom: 5px;}
+.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li :is(input , textarea){width: 100%;}
+.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li textarea{height: 86px;}
+.settingPage .profilePage section > :not(.profileBox){width: calc((100% - 30px) / 2);}
 .settingPage .profilePage section .membershipArea div:not(:last-of-type){margin-bottom: 15px;}
 .settingPage .profilePage section .membershipArea div p{font-size: 15px; margin-bottom: 5px;}
 .settingPage .profilePage section .membershipArea div p strong{display: inline-block; font-size: 13px; font-weight: 700; margin-right: 5px; padding: 0 10px;}
