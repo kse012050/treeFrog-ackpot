@@ -23,6 +23,7 @@
 .livingPage .rightAside .asidePosition > div{flex: 1; padding: 20px 30px 40px; display: flex; flex-direction: column; justify-content: space-between}
 .livingPage .rightAside .asidePosition > div > ul > li{ border: 1px solid #e9e9e9; border-radius: 10px; }
 .livingPage .rightAside .asidePosition > div > ul > li > button{font-size: 14px; font-weight: 500; text-align: left; width: 100%; line-height: 46px; padding: 0 15px; background-repeat: no-repeat; background-position: right 8px center; background-size: 24px;}
+.livingPage .rightAside .asidePosition > div > ul > li:hover > button{background-color: #fff9f9;}
 .livingPage .rightAside .asidePosition > div > ul > li:not(:last-child){margin-bottom: 8px;}
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea > button{background-image: url('../images/icon-arrow-down.png');}
 .livingPage .rightAside .asidePosition > div > ul > li.dropArea .dropBox{padding: 15px; border-top: 1px solid #e9e9e9; background-color: #fbfbfb;}
@@ -42,6 +43,9 @@
 .livingPage .rightAside .asidePosition > div .buttonArea button{text-align: left; font-size: 13px; font-weight: 500; line-height: 39px; color: #929292; border-radius: 10px; padding: 0 12px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: right 12px center;}
 .livingPage .rightAside .asidePosition > div .buttonArea button:first-child{width: 37.22%; background-image: url('../images/icon-share.png'); background-size: 13px;}
 .livingPage .rightAside .asidePosition > div .buttonArea button:last-child{width: 58.33%; background-image: url('../images/icon-out.png'); background-size: 17px;}
+.livingPage .rightAside .asidePosition > div .buttonArea button:hover{background-color: black; color: white;}
+.livingPage .rightAside .asidePosition > div .buttonArea button:first-child:hover{background-image: url('../images/icon-share-active.png');}
+.livingPage .rightAside .asidePosition > div .buttonArea button:last-child:hover{background-image: url('../images/icon-out-active.png');}
 /* 팝업 공통 */
 .livingPage .rightAside .asidePosition > div > ul > li .popupArea > div{width: 736px; padding: 30px; box-sizing: border-box;}
 .livingPage .rightAside .asidePosition > div > ul > li .popupArea > div .tabBtn li button{padding-top: 2px; padding-bottom: 2px;}
@@ -96,9 +100,20 @@
 
 /* 리빙 채팅 전체 틀*/
 .livingPage .contentArea section{position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px 24px; box-sizing: border-box;}
+/* 리빙 채팅 상단 타이틀 */
 .livingPage .contentArea section .titleArea{position: absolute; left: 0; top: 0; width: 100%; height: 147px; display: flex; flex-direction: column; justify-content: center; padding: 0 52px; background-color: #e9e9e9; backdrop-filter: blur(30px); box-sizing: border-box; z-index: 1;}
 .livingPage .contentArea section .titleArea h3{font-size: 24px; font-weight: 700;}
-.livingPage .contentArea section .titleArea p{font-size: 14px; color: #929292; margin-top: 12px;}
+.livingPage .contentArea section .titleArea p{font-size: 14px; color: #9d9d9d; margin-top: 12px;}
+/* 리빙 채팅 상단 공지사항 */
+.livingPage .contentArea section .titleArea > button{position: absolute; top: calc(100% + 12px); right: 30px; width: 46px; height: 46px; background: white url('../images/icon-notice-open.png') no-repeat center / 21px; border-radius: 100%;  text-indent: -9999px;}
+.livingPage .contentArea section .noticeArea{position: absolute; top: 100%; left: 0; width: 100%; display: none; flex-wrap: wrap; background-color: white; border: 1px solid #d9d9d9;}
+.livingPage .contentArea section .noticeArea.active{display: flex;}
+.livingPage .contentArea section .noticeArea p{width: 100%; font-size: 15px; line-height: 22px; display: flex; align-items: center; padding: 30px; border-bottom: 1px solid #d9d9d9;}
+.livingPage .contentArea section .noticeArea p::before{content: ''; width: 26px; height: 24px; background: url('../images/icon-notice.png') no-repeat center / cover; margin-right: 15px; flex-shrink: 0;}
+.livingPage .contentArea section .noticeArea button{flex: 1; font-size: 12px; line-height: 30px;}
+.livingPage .contentArea section .noticeArea button:not(:last-of-type){border-right: 1px solid #d9d9d9;}
+
+/* 리빙 채팅 하단 입력창 */
 .livingPage .contentArea section .inputArea{background-color: white; border-radius: 10px; padding: 12px 20px; border: 1px solid white;}
 .livingPage .contentArea section .inputArea:has(textarea:focus){border-color: black;}
 .livingPage .contentArea section .inputArea textarea{width: 100%; font-size: 15px; line-height: 22px; padding: 0; border: none; background-color: transparent; outline: none;}
@@ -106,44 +121,73 @@
 .livingPage .contentArea section .inputArea .btnArea [class|="btn"]{width: 34px; height: 34px; background-position: center; background-size: cover; text-indent: -9999px;}
 .livingPage .contentArea section .inputArea .btnArea .btn-add{background-image: url('../images/icon-plus-circle.png'); margin-right: 4px;}
 .livingPage .contentArea section .inputArea .btnArea .btn-money{background-image: url('../images/icon-dollar-circle.png');}
+.livingPage .contentArea section .inputArea .btnArea .btn-add:hover{background-image: url('../images/icon-plus-circle-active.png');}
+.livingPage .contentArea section .inputArea .btnArea .btn-money:hover{background-image: url('../images/icon-dollar-circle-active.png');}
 .livingPage .contentArea section .inputArea .btnArea :not([class|="btn"]){margin-left: auto; font-size: 14px; font-weight: 500; color: white; background-color: black; width: 100px; line-height: 32px; border-radius: 100px;}
 .livingPage .contentArea section .inputArea .btnArea :not([class|="btn"]).active{background-color: #ee2222;}
 
 /* 리빙 채팅 메세지 */
-.livingPage .contentArea section .chattingArea{overflow: auto; padding-top: 147px;}
+.livingPage .contentArea section .chattingArea{overflow: auto; padding-top: 147px; padding-bottom: 20px;}
 .livingPage .contentArea section .chattingArea::-webkit-scrollbar{width: 5px;}
 .livingPage .contentArea section .chattingArea::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
 .livingPage .contentArea section .chattingArea > div{display: flex; align-items: flex-start; max-width: 60%;}
 .livingPage .contentArea section .chattingArea > div:not(:last-of-type){margin-bottom: 20px;}
-.livingPage .contentArea section .chattingArea > div .imgArea{position: relative; width: 53px; height: 53px; margin-right: 9px; border-radius: 20px; line-height: 0;}
-.livingPage .contentArea section .chattingArea > div .imgArea img{flex-shrink: 0;}
-.livingPage .contentArea section .chattingArea > div[data-type|="manager"] .imgArea::after{content: ''; position: absolute; right: -2px; bottom: -3px; width: 22px; height: 22px; background-position: center; background-size: cover;}
-.livingPage .contentArea section .chattingArea > div[data-type|="manager"] .imgArea img{width: 53px; height: 53px; border-radius: 20px; }
-.livingPage .contentArea section .chattingArea > div[data-type="manager-best"] .imgArea::after{background-image: url('../images/chatting-best.png');}
-.livingPage .contentArea section .chattingArea > div[data-type="manager-expert"] .imgArea::after{background-image: url('../images/chatting-expert.png');}
-.livingPage .contentArea section .chattingArea > div[data-type="user"] .imgArea{display: flex; justify-content: center; align-items: flex-end; overflow: hidden;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"] .imgArea img{width: 43.4px; height: 38.2px; border-radius: 0;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="1"] .imgArea{background-color: #eeeeee;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="2"] .imgArea{background-color: #fff9e8;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="3"] .imgArea{background-color: #ffeee8;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="4"] .imgArea{background-color: #ffe8f2;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="5"] .imgArea{background-color: #f4e8ff;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="6"] .imgArea{background-color: #e8ecff;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="7"] .imgArea{background-color: #e8f3ff;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="8"] .imgArea{background-color: #e9ffe8;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="9"] .imgArea{background-color: #f3ffe8;}
-.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="10"] .imgArea{background-color: #e8ffff;}
-.livingPage .contentArea section .chattingArea > div[data-type="me"]{margin-left: auto; justify-content: flex-end;}
-.livingPage .contentArea section .chattingArea > div[data-type="me"] .imgArea{display: none;}
+.livingPage .contentArea section .chattingArea > div .profileImg{position: relative; width: 53px; height: 53px; margin-right: 9px; border-radius: 20px; line-height: 0;}
+.livingPage .contentArea section .chattingArea > div .profileImg img{flex-shrink: 0;}
+.livingPage .contentArea section .chattingArea > div[data-type|="manager"] .profileImg::after{content: ''; position: absolute; right: -2px; bottom: -3px; width: 22px; height: 22px; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > div[data-type|="manager"] .profileImg img{width: 53px; height: 53px; border-radius: 20px; }
+.livingPage .contentArea section .chattingArea > div[data-type="manager-best"] .profileImg::after{background-image: url('../images/chatting-best.png');}
+.livingPage .contentArea section .chattingArea > div[data-type="manager-expert"] .profileImg::after{background-image: url('../images/chatting-expert.png');}
+.livingPage .contentArea section .chattingArea > div[data-type="user"] .profileImg{display: flex; justify-content: center; align-items: flex-end; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"] .profileImg img{width: 43.4px; height: 38.2px; border-radius: 0;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="1"] .profileImg{background-color: #eeeeee;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="2"] .profileImg{background-color: #fff9e8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="3"] .profileImg{background-color: #ffeee8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="4"] .profileImg{background-color: #ffe8f2;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="5"] .profileImg{background-color: #f4e8ff;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="6"] .profileImg{background-color: #e8ecff;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="7"] .profileImg{background-color: #e8f3ff;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="8"] .profileImg{background-color: #e9ffe8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="9"] .profileImg{background-color: #f3ffe8;}
+.livingPage .contentArea section .chattingArea > div[data-type="user"][data-user="10"] .profileImg{background-color: #e8ffff;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"]{margin-left: auto; justify-content: flex-end; margin-right: 12px;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"] .profileImg{display: none;}
 .livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea > p{display: none;}
 .livingPage .contentArea section .chattingArea > div .messageArea{position: relative;}
 .livingPage .contentArea section .chattingArea > div .messageArea > p{font-size: 13px; font-weight: 500; line-height: 19px; margin-bottom: 8px;}
 .livingPage .contentArea section .chattingArea > div .messageArea > p span{color: #929292;}
-.livingPage .contentArea section .chattingArea > div .messageArea :is(.textArea p , .imgList li , .videoArea , .fileArea){border-radius: 10px;}
-.livingPage .contentArea section .chattingArea > div .messageArea .textArea{font-size: 15px; line-height: 22px; display: flex; flex-direction: column; align-items: flex-start;}
-.livingPage .contentArea section .chattingArea > div .messageArea .textArea p{ background-color: white; padding: 12px 15px; box-sizing: border-box; position: relative;}
-.livingPage .contentArea section .chattingArea > div .messageArea .textArea p:not(:last-of-type){margin-bottom: 8px;}
-.livingPage .contentArea section .chattingArea > div .messageArea .textArea{position: relative;}
+.livingPage .contentArea section .chattingArea > div .messageArea :is(.textBox , .imgList li , .videoArea , .fileArea , .linkArea){border-radius: 10px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox{font-size: 15px; line-height: 22px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox{ padding: 12px 15px; box-sizing: border-box; position: relative; }
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type]{color: white;}
+/* 배경 */
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:not([data-type]){background-color: white;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="sell"]{background-color: #ee2222;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="buy"]{background-color: #2c75d4;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="alarm"]{background-color: #ffa129;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="secret"]{background-color: #929292;}
+/* 말풍선 */
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:first-of-type::after{content: ''; position: absolute;  top: -8px; width: 30px; height: 32px; background-repeat: repeat; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > div:not([data-type="me"]) .messageArea .textBox:first-of-type::after{left: -12px;}
+.livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea .textBox:first-of-type::after{right: -12px; transform: rotateY(180deg);}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:not([data-type]){background-image: url('../images/chatting-message-normal.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="sell"]::after{background-image: url('../images/chatting-message-sell.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="buy"]::after{background-image: url('../images/chatting-message-buy.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="alarm"]::after{background-image: url('../images/chatting-message-alarm.png');}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="secret"]::after{background-image: url('../images/chatting-message-secret.png')}
+/*  */
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:is([data-type="sell"] , [data-type="buy"] , [data-type="alarm"]){display: flex; align-items: center; }
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:is([data-type="sell"] , [data-type="buy"] , [data-type="alarm"])::before{flex-shrink: 0;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:is([data-type="sell"] , [data-type="buy"])::before{width: 41px; font-size: 16px; text-align: center; margin-right: 10px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div{font-size: 15px; line-height: 22px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div strong{display: block; font-weight: 700;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div p::before{content: '▶ ';}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="sell"]::before{content: '매수';}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="buy"]::before{content: '매도';}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="alarm"]::before{content: ''; width: 17px; height: 16px; background: url('../images/icon-alarm.png') no-repeat center / cover; margin-right: 15px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox[data-type="secret"]::before{content: 'To 'attr(data-to); display: block; font-size: 13px; color: rgba(255, 255, 255, 0.5); font-weight: 500; display: block; padding-left: 22px; background: url('../images/icon-secret.png') no-repeat left center / 14px; margin-bottom: 4px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox:not(:last-of-type){margin-bottom: 8px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .textBox{position: relative;}
 .livingPage .contentArea section .chattingArea > div .messageArea time{font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > div:not([data-type="me"]) .messageArea time{position: absolute; right: 0; bottom: 0; transform: translateX(calc(100% + 10px)); font-size: 11px; color: #929292;}
 .livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea time{position: absolute; left: 0; bottom: 0; transform: translateX(calc(-100% - 10px)); font-size: 11px; color: #929292;}
@@ -169,6 +213,13 @@
 .livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea button{font-size: 14px; line-height: 20px;}
 .livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
 .livingPage .contentArea section .chattingArea > div .messageArea .fileArea > div .btnArea button:not(:last-child){margin-right: 14px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea .thumbnail{height: 186px; background-repeat: no-repeat; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea .textArea{flex: 1; padding: 16px; display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea .textArea > *{line-height: 1;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea .textArea strong{font-size: 15px; font-weight: 500;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea .textArea span{font-size: 13px; color: #929292; margin-top: 6px;}
+.livingPage .contentArea section .chattingArea > div .messageArea .linkArea .textArea a{margin-top: auto; width: 100%; font-size: 12px; color: #2c75d4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 
 
