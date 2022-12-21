@@ -1,6 +1,7 @@
 
 
-mark{color: #ee2222;}
+mark:not([class]){color: #ee2222;}
+mark.orange{color: #ffa129;}
 
 /* 접근성 타이틀 */
 .hiddenText{height: 0.1px; overflow: hidden; position: absolute; left: 0; top:0;}
@@ -137,6 +138,21 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .boardPage .contentArea section .editorArea table tbody{display: table-row-group; vertical-align: middle; border-color: inherit;}
 .boardPage .contentArea section .editorArea table tbody tr{display: table-row; vertical-align: inherit; border-color: inherit;}
 .boardPage .contentArea section .editorArea table tbody tr td{display: table-cell; vertical-align: inherit; border: 1px solid #ececec; padding: 5px 3px; text-align: center; }
+
+/* 검색 창 공통 */
+.searchArea{border: 1px solid #e9e9e9; border-radius: 10px;}
+.searchArea .inputArea{position: relative;}
+.searchArea .inputArea input{width: 100%; border: none; outline: none;}
+.searchArea .inputArea button{position: absolute; right: 8px; top: 0; width: 24px; height: 100%; background: url('../images/icon-search.png') no-repeat left center / contain; text-indent: -9999px;}
+.searchArea .scrollBox{display: none; max-height: 200px; font-size: 13px; padding: 0px 15px; background-color: #fbfbfb; border-top: 1px solid #e9e9e9;}
+.searchArea .scrollBox.active{display: block;}
+.searchArea .scrollBox > p{line-height: 49px; margin-bottom: 7.5px; border-bottom: 1px solid #e9e9e9;}
+.searchArea .scrollBox > div{padding: 7.5px 0;}
+.searchArea .scrollBox > div :is(b,button){display: block;}
+.searchArea .scrollBox > div b{font-weight: 700; margin-bottom: 7.5px;}
+.searchArea .scrollBox > div button{width: 100%; padding: 7.5px 0; text-align: left;}
+.searchArea .scrollBox > div button::after{content: '전문가'; color: #929292; margin-left: 10px;}
+
 
 /* 로그인 페이지 */
 .signPage{height: 100vh; display: flex; flex-direction: column; }

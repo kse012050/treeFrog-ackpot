@@ -253,11 +253,23 @@
                 <div class="chattingArea">
                     <!-- 
                         data-type
-                        최고관리자 : manager-best , 전문가 : manager-expert
-                        일반유저 : user 
-                        (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
-                        me 자신
+                            최고관리자 : manager-best , 전문가 : manager-expert
+                            일반유저 : user 
+                            (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
+                            me 자신
                      -->
+                    <div class="moneyArea" style="background-image: url('images/money-10.png');">
+                        <span>돈풍선 선물 알림</span>
+                        <strong>
+                            <mark class="orange">유저닉네임</mark> 회원님께서 <mark class="orange">김전문 전문가</mark> 에게 <br>
+                            돈풍선 <mark>1</mark>개 선물!
+                        </strong>
+                        <p>
+                            늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.<br>
+                            늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.<br>
+                            늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.
+                        </p>
+                    </div>
                     <div data-type="manager-best">
                         <div class="profileImg">
                             <img src="images/expert-img.png" alt="">
@@ -382,9 +394,55 @@
                     <div class="btnArea">
                         <button class="btn-add">추가</button>
                         <button class="btn-money">돈풍선 선물</button>
-                        <button>전송</button>
-                    </div>
-                </div>
+                        <!-- 돈풍선 선물 팝업 -->
+                        <div class="popup-money">
+                            <form action="">
+                                <fieldset>
+                                    <legend>돈풍선 선물하기</legend>
+                                    <ul>
+                                        <li>
+                                            <b>선물 받을 전문가</b>
+                                            <div class="searchArea">
+                                                <div class="inputArea">
+                                                    <input type="text" placeholder="전문가를 검색해주세요.">
+                                                    <button>검색</button>
+                                                </div>
+                                                <!-- active 클래스 추가시 생성 -->
+                                                <div class="scrollBox active">
+                                                    <div>
+                                                        <b>현 채팅방 참여 전문가</b>
+                                                        <button>김전문가 닉네임 글자수20자 제한맞춤</button>
+                                                        <button>김OO</button>
+                                                        <button>김OO</button>
+                                                        <button>김OO</button>
+                                                        <button>김OO</button>
+                                                        <button>김OO</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <b>현재보유 돈풍선
+                                                <!-- 보유 돈풍선 -->
+                                                <mark>300</mark>
+                                            </b>
+                                            <button>구매하기</button>
+                                            <div class="numberArea">
+                                                <input type="number" placeholder="돈풍선 개수를 입력해주세요." min="0">
+                                            </div>
+                                            <p class="errorText">돈풍선 개수를 확인해주세요.</p>
+                                        </li>
+                                        <li>
+                                            <textarea placeholder="돈풍선 금액 및 메세지가 공개적으로 표시됩니다."></textarea>
+                                        </li>
+                                    </ul>
+                                </fieldset>
+                                <input type="submit" value="선물하기" class="submit160"/>
+                            </form>
+                            <button>닫기</button>
+                        </div>  <!-- 돈풍선 선풀 팝업 -->
+                    </div>  <!-- 버튼 영역 -->
+                </div>  <!-- 입력 영역 -->
             </section>
         </div>
 
