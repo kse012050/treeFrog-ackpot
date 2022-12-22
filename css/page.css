@@ -226,11 +226,11 @@
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea > .messageArea > time{position: absolute; right: 0; bottom: 0;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea:has(.imgBox , .videoBox){flex: 1;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox{display: flex; flex-wrap: wrap; gap: 2px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div{flex: 1; min-width: calc((100% - 4px) / 3); height: 197px; border: 1px solid black; box-sizing: border-box;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div:only-child{height: 341px;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div{flex: 1; min-width: calc((100% - 4px) / 3); max-height: 197px; line-height: 0; border: 1px solid black; box-sizing: border-box; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div:only-of-type{max-height: 341px;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div img{width: 100%;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox{height: 314px; border: 1px solid black; }
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox video{width: 100%;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox{height: 314px; border: 1px solid black; overflow: hidden; position: relative;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox :is(video , iframe){width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox{min-height: 142px; display: flex; padding: 12px 16px; background-color: white; box-sizing: border-box;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox::after{content: ''; width: 84px; height: 84px; border-radius: 10px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center; background-size: 45px; flex-shrink: 0; margin-left: 18px;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="img"]::after{background-image: url('../images/file-img.png');}
@@ -247,8 +247,9 @@
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button{font-size: 14px; line-height: 20px;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button:not(:last-child){margin-right: 14px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .thumbnail{height: 186px; background-repeat: no-repeat; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .thumbnail{height: 186px; position: relative; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .thumbnail img{width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea{flex: 1; padding: 16px; display: flex; flex-direction: column;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea > *{line-height: 1;}
 .livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea strong{font-size: 15px; font-weight: 500;}
