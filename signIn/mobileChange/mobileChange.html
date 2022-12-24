@@ -8,7 +8,7 @@
     <title>휴대폰 전화번호 변동 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../../css/import.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../../js/common.js"></script>
 </head>
 <body>
     <div class="signPage">
@@ -21,11 +21,11 @@
                     <legend>휴대폰 전화번호 변동</legend>
                     <div class="inputArea">
                         <div>
-                            <input type="text" placeholder="이전 전화번호 입력(-제외)" maxlength="11">
+                            <input type="text" placeholder="이전 전화번호 입력(-제외)" maxlength="11" data-input="mobile">
                             <p class="errorText">* 올바른 전화번호를 입력해주세요.</p>
                         </div>
                         <div>
-                            <input type="text" placeholder="간편 비밀번호 6자리 입력해주세요." maxlength="6">
+                            <input type="password" placeholder="간편 비밀번호 6자리 입력해주세요." maxlength="6" data-input="password">
                             <p class="errorText">* 올바른 비밀번호를 입력해주세요.</p>
                         </div>
                     </div>
