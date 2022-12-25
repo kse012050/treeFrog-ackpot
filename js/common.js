@@ -13,13 +13,33 @@ function inputValidation(){
         !/\d{6,6}/.test($(this).val()) ? $(this).next().addClass('active') : $(this).next().removeClass('active')
         submitActive();
     })
-
+    
     $('[data-input="password-re"]').on('input' ,function(){
         $(this).val() === $('[data-input="password"]').val() ? $(this).next().addClass('active') : $(this).next().removeClass('active')
-
+        submitActive();
     })
     $('input[type="submit"]').click(function(e){
         !$(this).hasClass('active') && e.preventDefault();
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+
+        let inputAttr = 'name';
+        var testID = '01092931656';
+        var testPW = '123456'
+
+        // 인풋에서 받아 온 값
+        var inputValue = {}
+        $(this).parents('form').find('input:not([type="submit"])').each(function(){
+            if(!$(this).attr(inputAttr)) return;
+            inputValue[$(this).attr(inputAttr)] = $(this).val();
+        })
+
+        // 로그인 페이지
+        $('#signIn').click(function(){
+            inputValue.userMobile !== testID && $(`input[${inputAttr}="userMobile"]`).focus().next('p.errorText').addClass('active');
+        })
+
     })
 }
 
