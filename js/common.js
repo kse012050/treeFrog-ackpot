@@ -150,7 +150,7 @@ function popupClick(){
         popupClose($(this).parents('.popupArea'))
     })
 
-    function popupClose(selector){
+    function popupClose(selector){ 
         selector.fadeOut().css('display','flex');
     }
 }
