@@ -2,6 +2,9 @@ $(document).ready(function(){
     // 메인페이지 슬라이더
     $('.mainPage').length && mainSlider();
 
+    // 메인 페이지를 제외한 나머지 페이지 탭 공통
+    !$('.mainPage').length && tabClick();
+
     // 인풋 유효성 검사
     inputInput()
 
@@ -28,7 +31,7 @@ function mainSlider(){
             clickable: true,
         },
     });
-    var swiper = new Swiper(".slideBox .eventSwiper", {
+    var eventSwiper = new Swiper(".slideBox .eventSwiper", {
         spaceBetween: 16,
         navigation: {
             nextEl: ".swiper-button-next",
@@ -56,6 +59,20 @@ function mainSlider(){
             })
         }
         openSwiper.update();
+    })
+}
+
+function tabClick(){
+    $('.tabBtn li button').click(function(){
+        $(this).parent().addClass('active').siblings().removeClass('active');
+        const tabName = $(this).attr('data-tab');
+        if(tabName === 'all'){
+            $(`[data-tab="contentArea"] [data-tab]`).stop().fadeIn();
+        }else{
+            $(`[data-tab="contentArea"] [data-tab]`).hide();
+            $(`[data-tab="contentArea"] [data-tab="${tabName}"]`).stop().fadeIn();
+        }
+
     })
 }
 
