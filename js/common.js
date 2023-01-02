@@ -133,9 +133,18 @@ function mobileConfirm(){
 }
 
 function popupClick(){
+    $('body').click(function(){
+        console.log($('[class*="popup"]').hasClass('active'));
+        $('[class|="popup"]').hasClass('active') && popupClose($('[class*="popup"]'))
+    })
     // form 태그 안에 있는 button 클릭 자동 새로고침 막기
-    $('button').click((e)=>{
+    $('button').click(function(e){
+        e.stopPropagation();
+        const attrName = $(this).attr('data-popup');
         e.preventDefault();
+        attrName === 'next' ? 
+            $(this).next().fadeIn().css('display','flex').addClass('active') :
+            $(`.popup-${attrName}`).fadeIn().addClass('active');
     })
     // 팝업 검은 배경
     $('.popupArea').click(function(){
@@ -145,13 +154,17 @@ function popupClick(){
     $('.popupArea > div').click(function(e){
         e.stopPropagation();
     })
-    // 팝업 X 버튼
-    $('.popupArea > div > button').click(function(){
-        popupClose($(this).parents('.popupArea'))
+    $('[class|="popup"]').click(function(e){
+        e.stopPropagation();
     })
+    // 팝업 X 버튼
+    $('[data-popup="close"]').click(function(){
+        popupClose($(this).closest('[class*="popup"]'))
+    })
+   
 
     function popupClose(selector){ 
-        selector.fadeOut().css('display','flex');
+        selector.stop().fadeOut();
     }
 }
 

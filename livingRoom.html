@@ -406,7 +406,7 @@
                     <textarea placeholder="메시지를 입력해주세요." class="test"></textarea>
                     <div class="btnArea">
                         <button class="btn-add">추가</button>
-                        <button class="btn-money">돈풍선 선물</button>
+                        <button class="btn-money" data-popup="money">돈풍선 선물</button>
                         <!-- 돈풍선 선물 팝업 -->
                         <div class="popup-money">
                             <form action="">
@@ -452,7 +452,7 @@
                                 </fieldset>
                                 <input type="submit" value="선물하기" class="submit160"/>
                             </form>
-                            <button>닫기</button>
+                            <button data-popup="close">닫기</button>
                         </div>  <!-- 돈풍선 선풀 팝업 -->
                     </div>  <!-- 버튼 영역 -->
                 </div>  <!-- 입력 영역 -->
@@ -539,27 +539,27 @@
                                         <strong>유저닉네임</strong>
                                     </li>
                                 </ul>
-                                <div class="popupArea">
+                                <!-- <div class="popupArea active">
                                     <div class="borderRadius30">
                                         <strong>지난 대화 내역</strong>
                                     
-                                        <button>팝업 닫기</button>
+                                        <button data-popup="close">팝업 닫기</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </li>
                         <li class="lastConversation">
-                            <button>지난 대화 내역</button>
+                            <button data-popup="next">지난 대화 내역</button>
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>지난 대화 내역</strong>
                                 
-                                    <button>팝업 닫기</button>
+                                    <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
                         </li>
                         <li class="holdingItem">
-                            <button>보유 종목 현황</button>
+                            <button data-popup="next">보유 종목 현황</button>
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>보유 종목 현황</strong>
@@ -643,22 +643,22 @@
                                         </ol>
                                         <a href="">다음</a>
                                     </div>
-                                    <button>팝업 닫기</button>
+                                    <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
                         </li>
                         <li class="buySell">
-                            <button>매수/매도 내역</button>
+                            <button data-popup="next">매수/매도 내역</button>
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>매수/매도 내역</strong>
                                 
-                                    <button>팝업 닫기</button>
+                                    <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
                         </li>
                         <li class="investmentDetails">
-                            <button>투자 내역</button>
+                            <button data-popup="next">투자 내역</button>
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>투자내역</strong>
@@ -703,13 +703,13 @@
                                         </ol>
                                         <a href="">다음</a>
                                     </div>
-                                    <button>팝업 닫기</button>
+                                    <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
                         </li>
                         <li class="boardArea">
-                            <button>게시판</button>
-                            <div class="popupArea active">
+                            <button data-popup="next">게시판</button>
+                            <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>게시판</strong>
                                     <ul class="tabBtn">
@@ -983,12 +983,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button>팝업 닫기</button>
+                                    <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
                         </li>
                         <li class="expertArea">
-                            <button>전문가 추가/변경 신청</button>
+                            <button data-popup="next">전문가 추가/변경 신청</button>
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>전문가 추가/변경 신청</strong>
@@ -1039,13 +1039,13 @@
                                         </fieldset>
                                         <input type="submit" value="신청하기" class="submit140 active">
                                     </form>
-                                    <button>팝업 닫기</button>
+                                    <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
                         </li>
                     </ul>
                     <div class="buttonArea">
-                        <button>공유</button>
+                        <button data-popup="share">공유</button>
                         <div class="popup-share">
                             <strong>채팅방 공유하기</strong>
                             <div>
