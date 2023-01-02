@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    // 메인페이지 슬라이더
+    $('.mainPage').length && mainSlider();
+
     // 인풋 유효성 검사
     inputInput()
 
@@ -8,7 +11,14 @@ $(document).ready(function(){
     // 팝업 관련 클릭 이벤트
     popupClick();
 
-    var swiper = new Swiper(".slideBox .openSwiper", {
+    
+    
+    $('.certificationBox').length && mobileConfirm();
+})
+
+function mainSlider(){
+    var openSwiper = new Swiper(".slideBox .openSwiper", {
+        spaceBetween: 10,
         slidesPerView: 1,
         grid: {
             rows: 2,
@@ -25,8 +35,29 @@ $(document).ready(function(){
             prevEl: ".swiper-button-prev",
         },
     })
-    $('.certificationBox').length && mobileConfirm();
-})
+    let sliderContent = []
+    $('.slideBox .openSwiper .swiper-slide').each(function(i){
+        sliderContent[i] = {
+            content : $(this),
+            attrName : $(this).attr('data-tab')
+        }
+    })
+    $('.slideBox .tabBtn li button').click(function(){
+        $(this).parent().addClass('active').siblings().removeClass('active');
+        const tabName = $(this).attr('data-tab');
+        $(`[data-tab="contentArea"] [data-tab]`).remove();
+        if(tabName === 'all'){
+            sliderContent.map((t)=>{
+                $(`[data-tab="contentArea"] .swiper-wrapper`).append(t.content);
+            })
+        }else{
+            sliderContent.map((t)=>{
+                t.attrName === tabName && $(`[data-tab="contentArea"] .swiper-wrapper`).append(t.content);
+            })
+        }
+        openSwiper.update();
+    })
+}
 
 // 인풋 유효성 검사
 function inputValidation(selector){

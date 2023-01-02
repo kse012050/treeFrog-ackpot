@@ -285,21 +285,21 @@
 .settingPage .profilePage section .contentBox b{display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; padding-top: 5px;}
 .settingPage .profilePage section .contentBox .grayBG{line-height: 28px; background-color: #eeeeee; border-radius: 100px;}
 .settingPage .profilePage section .contentBox > button{position: absolute; right: 30px; top: 27px;}
-.settingPage .profilePage section .profileBox{width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: relative;}
-.settingPage .profilePage section .profileBox :is(h3 , .messageArea){width: 100%;}
-.settingPage .profilePage section .profileBox :is(.imgArea , > p){margin-bottom: 25px;}
-.settingPage .profilePage section .profileBox .imgArea{width: 83px; margin-right: 15px; position: relative;}
-.settingPage .profilePage section .profileBox .imgArea img{width: 100%; border-radius: 30px;}
-.settingPage .profilePage section .profileBox .imgArea button{position: absolute; right: -8px; bottom: 0; width: 32px; height: 32px; background: white url('../images/icon-update.png') no-repeat center / 18px; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); border-radius: 100%; text-indent: -9999px;} 
-.settingPage .profilePage section .profileBox > p{font-size: 20px; font-weight: 700; line-height: 29px;}
-.settingPage .profilePage section .profileBox .messageArea p{font-size: 14px; line-height: 20px;}
-.settingPage .profilePage section .profileBox .popupArea > div{width: 425px;}
-.settingPage .profilePage section .profileBox .popupArea > div form fieldset{text-align: left; margin-bottom: 42px;}
-.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li:not(:last-child){margin-bottom: 16px;}
-.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li label{display: block; margin-bottom: 5px;}
-.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li :is(input , textarea){width: 100%;}
-.settingPage .profilePage section .profileBox .popupArea > div form fieldset ul li textarea{height: 86px;}
-.settingPage .profilePage section > :not(.profileBox){width: calc((100% - 30px) / 2);}
+.settingPage .profilePage section .profileArea{width: 100%; display: flex; flex-wrap: wrap; align-items: center; position: relative;}
+.settingPage .profilePage section .profileArea :is(h3 , .messageArea){width: 100%;}
+.settingPage .profilePage section .profileArea :is(.imgArea , > p){margin-bottom: 25px;}
+.settingPage .profilePage section .profileArea .imgArea{width: 83px; margin-right: 15px; position: relative;}
+.settingPage .profilePage section .profileArea .imgArea img{width: 100%; border-radius: 30px;}
+.settingPage .profilePage section .profileArea .imgArea button{position: absolute; right: -8px; bottom: 0; width: 32px; height: 32px; background: white url('../images/icon-update.png') no-repeat center / 18px; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); border-radius: 100%; text-indent: -9999px;} 
+.settingPage .profilePage section .profileArea > p{font-size: 20px; font-weight: 700; line-height: 29px;}
+.settingPage .profilePage section .profileArea .messageArea p{font-size: 14px; line-height: 20px;}
+.settingPage .profilePage section .profileArea .popupArea > div{width: 425px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset{text-align: left; margin-bottom: 42px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li:not(:last-child){margin-bottom: 16px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li label{display: block; margin-bottom: 5px;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li :is(input , textarea){width: 100%;}
+.settingPage .profilePage section .profileArea .popupArea > div form fieldset ul li textarea{height: 86px;}
+.settingPage .profilePage section > :not(.profileArea){width: calc((100% - 30px) / 2);}
 .settingPage .profilePage section .membershipArea div:not(:last-of-type){margin-bottom: 15px;}
 .settingPage .profilePage section .membershipArea div p{font-size: 15px; margin-bottom: 5px;}
 .settingPage .profilePage section .membershipArea div p strong{display: inline-block; font-size: 13px; font-weight: 700; margin-right: 5px; padding: 0 10px;}

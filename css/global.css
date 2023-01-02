@@ -67,6 +67,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .mainPage .contentArea .contentBox section .slideBox .openSwiper{height: 100%; height: 300px; border-bottom: 1px solid #eeeeee;}
 .mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper{height: 100%;}
 .mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide{height: auto; }
+/* .mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-slide[data-tab="AI"]{display: none;} */
 .mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a{display: flex; padding: 10px 0; box-sizing: border-box; border-radius: 10px;}
 .mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a:hover{background-color: #fff9f9;}
 .mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .imgArea{flex-shrink: 0; width: 116px; height: 116px; border-radius: 10px; overflow: hidden; margin-right: 12px; position: relative;}
