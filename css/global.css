@@ -46,7 +46,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 /* 텝 버튼 */
 .tabBtn{display: flex;}
 .tabBtn li:not(:last-child){margin-right: 5px;}
-.tabBtn li button{font-size: 13px; color: #929292; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 100px; box-sizing: border-box;}
+.tabBtn li button{font-size: 13px; color: #929292; padding: 7px 11px; border: 1px solid #929292; border-radius: 100px; box-sizing: border-box;}
 .tabBtn li:is(.active , :hover) button{color: #fff; background-color: #ee2222; border-color: #ee2222;}
 
 /* 컨텐츠 영역 */
@@ -57,13 +57,48 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .mainPage .contentArea .contentBox:has(:not(*)){background-color: red;}
 .mainPage .contentArea .contentBox.case01{height: 100%; display: flex; flex-direction: column;}
 .mainPage .contentArea .contentBox[class*="case02"]{display: flex; flex-direction: column; justify-content: space-between;}
-.mainPage .contentArea .contentBox.case02_1{height: calc((100% - 60px) * 0.4347);}
-.mainPage .contentArea .contentBox.case02{height: calc((100% - 60px) * 0.2653);}
-.mainPage .contentArea .contentBox section{min-height: 1%; display: flex; flex-direction: column;}
+.mainPage .contentArea .contentBox.case02_1{height: 257px; flex-shrink: 0;}
+.mainPage .contentArea .contentBox.case02{height: calc((100% - 257px - (60px)) / 2);}
+.mainPage .contentArea .contentBox section{flex: 1; min-height: 1%; display: flex; flex-direction: column;}
 .mainPage .contentArea .contentBox section:not(:last-of-type){margin-bottom: 4px;}
 .mainPage .contentArea .contentBox section h3{font-size: 24px; font-weight: 700; padding: 25px 30px 20px;}
-/* 슬라이더 만들 예정 */
-.contentBox.case01 .slideBox{height: 300px; border: 1px solid black;}
+.mainPage .contentArea .contentBox section .slideBox{max-width: 1000px; padding: 0 30px;}
+.mainPage .contentArea .contentBox section .slideBox .tabBtn{margin-bottom: 10px;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper{height: 100%; height: 300px; border-bottom: 1px solid #eeeeee;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper{height: 100%;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide{height: auto; }
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a{display: flex; padding: 10px 0; box-sizing: border-box; border-radius: 10px;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a:hover{background-color: #fff9f9;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .imgArea{flex-shrink: 0; width: 116px; height: 116px; border-radius: 10px; overflow: hidden; margin-right: 12px; position: relative;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .imgArea img{width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea{display: flex; flex-direction: column; padding: 7px 0; flex: 1;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div{display: flex; justify-content: space-between; align-items: center; padding-right: 2px;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div:first-child{margin-bottom: 2px;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div mark{font-size: 12px; font-weight: 700;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div button{width: 64px; line-height: 28px; display: flex; justify-content: center; align-items: center; font-size: 13px; color: white; background-color: black; border-radius: 10em;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div button::after{content: ''; width: 4px; height: 8px; background: url('../images/icon-arrow-right-white.png') no-repeat center / cover; margin-left: 10px;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div button:hover{background-color: #ee2222;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea strong{font-size: 14px; line-height: 18px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div:last-child{margin-top: auto; font-size: 12px; color: #929292;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-wrapper .swiper-slide a .textArea div p b{font-weight: 700;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-pagination{bottom: 13.5px;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-pagination-bullet{background-color: #eeeeee; opacity: 1;}
+.mainPage .contentArea .contentBox section .slideBox .openSwiper .swiper-pagination-bullet.swiper-pagination-bullet-active{background-color: #ee2222;}
+.mainPage .contentArea .contentBox section .slideBox:has(.eventSwiper){overflow: hidden; padding: 24px 0; height: 100%; box-sizing: border-box;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper{width: 266px; height: 100%; margin: 0 auto; overflow: visible;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a{display: flex; flex-direction: column; height: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.1);}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a .imgArea{flex-shrink: 0; width: 266px; height: 120px; border-radius: 10px 10px 0 0; overflow: hidden; position: relative;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a .imgArea img{width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a .imgArea span{position: absolute; left: 10px; top: 10px; z-index: 1; width: 41px; font-size: 9px; font-weight: 500; line-height: 16px; text-align: center; background-color: white; border-radius: 10em;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a .textArea{flex: 1; padding: 14px; display: flex; flex-direction: column;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a .textArea strong{font-size: 14px; font-weight: 500; line-height: 18px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide a .textArea time{margin-top: auto; font-size: 12px; color: #929292;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-slide:not(.swiper-slide-active){opacity: 0.2; pointer-events: none;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper :is(.swiper-button-next, .swiper-button-prev){width: 63px; height: 63px; background-repeat: no-repeat; background-position: center; background-size: cover;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper :is(.swiper-button-next, .swiper-button-prev)::after{display: none;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-button-prev{background-image: url('../images/icon-slider-prev.png'); left: -121px;}
+.mainPage .contentArea .contentBox section .slideBox .eventSwiper .swiper-button-next{background-image: url('../images/icon-slider-next.png'); right: -121px;}
+
 
 /* 스크롤 박스 공통 */
 [class*="scrollBox"]{flex: 1; overflow: auto; padding: 0 20px;}

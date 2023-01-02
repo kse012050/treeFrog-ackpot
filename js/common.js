@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // 인풋 유효성 검사
-    inputValidation()
+    inputInput()
 
     // submit 관련 클릭 이벤트
     submitClick();
@@ -8,56 +8,65 @@ $(document).ready(function(){
     // 팝업 관련 클릭 이벤트
     popupClick();
 
-
+    var swiper = new Swiper(".slideBox .openSwiper", {
+        slidesPerView: 1,
+        grid: {
+            rows: 2,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+    var swiper = new Swiper(".slideBox .eventSwiper", {
+        spaceBetween: 16,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    })
     $('.certificationBox').length && mobileConfirm();
 })
 
 // 인풋 유효성 검사
-function inputValidation(){
-    $('[data-input="mobile"]').on('input' ,function(){
-        errorTextClass($(this) , !/^01(\d{9,9})/.test($(this).val()))
-        submitActive();
-    })
-    $('[data-input="password"]').on('input' ,function(){
-        errorTextClass($(this) , !/[a-zA-Z0-9]{6,6}/.test($(this).val()))
-        submitActive();
-    })
-
-    $('[data-input="mobileConfirm"]').on('input' ,function(){
-        errorTextClass($(this) , !/\d{6,6}/.test($(this).val()))
-        submitActive();
-    })
-    
-    $('[data-input="password-re"]').on('input' ,function(){
-        $(this).val() === $('[data-input="password"]').val() ? $(this).siblings('.errorText').addClass('active') : $(this).siblings('.errorText').removeClass('active')
-        submitActive();
-    })
-
-    
+function inputValidation(selector){
+    const attrName = $(selector).attr('data-input');
+    let boolean;
+    attrName === 'mobile' && (boolean = !/^01(\d{9,9})/.test($(selector).val()));
+    attrName === 'password' && (boolean = !/[a-zA-Z0-9]{6,6}/.test($(selector).val()));
+    // attrName === 'mobileConfirm' && (errorMessage = !/^01(\d{9,9})/.test($(this).val()));
+    return boolean;
 }
-function errorTextClass(selector , boolean){
-    boolean ? selector.parent().siblings('.errorText').addClass('active') : selector.parent().siblings('.errorText').removeClass('active')
+
+function inputInput(){
+    $('[data-input]').on('input' , function(){
+        const boolean = inputValidation($(this))
+        errorMessageActive($(this) , boolean);
+        submitActive();
+    })
+}
+
+function errorMessageActive(selector , boolean){
+    const errorSeletor = selector.parent().siblings('.errorText');
+    boolean ? errorSeletor.addClass('active') : errorSeletor.removeClass('active');
 }
 
 // 유효성 검사 통과하면 submit 색상
 function submitActive(){
-    let inputBool = [];
-
-    // input 값이 입력되었는지 확인
-    inputBool.push($('input[type="text"] , input[type="password"] , input[type="number"]').get().every((a)=>{
-        return $(a).val() !== '';
-    }))
-
-    // 에러메세지가 있는지 없는지 확인
-    inputBool.push(errorTextConfirm());
-    
-    // input 값 , 에러메세지가 둘 다 true인지 확인
-    let result = inputBool.every((test)=>{
-        return test === true
+    let inputBoolean = $('[required]').get().every((a)=>{
+        const boolean = inputValidation(a)
+        return boolean == false;
     })
+    
+    // 에러메세지가 있는지 없는지 확인
+    let errorBoolean = errorTextConfirm();
 
     // input 값 , 에러메세지가 둘 다 true 면 submit 버튼에 active 클래스 추가
-    result ? $('input[type="submit"]').addClass('active') : $('input[type="submit"]').removeClass('active');
+    if(inputBoolean && errorBoolean){
+        $('input[type="submit"]').addClass('active')
+    }else{
+        $('input[type="submit"]').removeClass('active');
+    }
 }
 
 // 에레메시지 확인
@@ -69,45 +78,61 @@ function errorTextConfirm(){
 
 // submit 클릭 이벤트
 function submitClick(){
-    let inputAttr = 'name';
-    let testID = '01092931656';
-    let testPW = '123456'
+    let inputAttr = 'id';
     let inputValue = [{}]
     $('input[type="submit"]').click(function(e){
         if(!$(this).hasClass('active')){ 
             e.preventDefault()
+            $('[required]').each(function(){
+                const boolean = inputValidation($(this));
+                errorMessageActive($(this) , boolean);
+            })
+            $('[required]').get().find((v)=>{
+                return $(v).parent().siblings('.errorText').hasClass('active') && $(v).focus();
+            })
+            return;
         };
 
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
 
         // 인풋에서 받아 온 값
-        $(this).parents('form').find('input:not([type="submit"])').each(function(i){
+        $(this).closest('form').find('[required]').each(function(i){
             if(!$(this).attr(inputAttr)) return;
             inputValue[i] = {
                 selector : $(this),
                 name : $(this).attr(inputAttr),
-                value : $(this).val()
+                value : $(this).val(),
+                errorSelector : $(this).parent().siblings('.errorText')
             };
         })
         
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn');
-        $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange');
+        // $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange');
+
+        // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
+        inputValue.find((v)=>{
+            return v.errorSelector.hasClass('active') && v.selector.focus();
+        })
 
     })
 
     // 로그인 페이지 submit 클릭
     function mobileAndPW(pageName){
+        let testID = '01092931656';
+        let testPW = '123456'
         // 값 판별
         inputValue.map((v)=>{
-            v.name === 'userMobile' && (v.value !== testID && errorTextClass(v.selector , true));
-            v.name === 'userPassword' && (v.value !== testPW && errorTextClass(v.selector , true));
+            v.name === 'userMobile' && (v.value !== testID && errorMessageActive(v.selector , true));
+            if(v.name === 'userPassword') {
+                if(v.value !== testPW){
+                    errorMessageActive(v.selector , true);
+                    v.selector.val('');
+                }
+            };
         })
 
-        // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
-        inputValue.find((v)=>{
-            return v.selector.parent().siblings('.errorText').hasClass('active') && v.selector.focus();
-        })
+        
 
         // 에러 메세지가 없으면
         var result = errorTextConfirm();
@@ -118,8 +143,10 @@ function submitClick(){
 
         // 페이지 이동
         if(result){
-            pageName === 'signIn' && (location.href = '../index.html');
-            pageName === 'mobileChange' && (location.href = 'newMobile.html');
+            // pageName === 'signIn' && (location.href = '../index.html');
+            // pageName === 'mobileChange' && (location.href = 'newMobile.html');
+        }else{
+            $('input[type="submit"').removeClass('active');
         }
     }
 }
@@ -133,7 +160,7 @@ function mobileConfirm(){
 }
 
 function popupClick(){
-    $('body').click(function(){
+    $('body:has([class*="popup"].active)').click(function(){
         console.log($('[class*="popup"]').hasClass('active'));
         $('[class|="popup"]').hasClass('active') && popupClose($('[class*="popup"]'))
     })
