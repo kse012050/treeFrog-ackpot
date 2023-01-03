@@ -80,9 +80,9 @@ function tabClick(){
 function inputValidation(selector){
     const attrName = $(selector).attr('data-input');
     let boolean;
-    attrName === 'mobile' && (boolean = !/^01(\d{9,9})/.test($(selector).val()));
-    attrName === 'password' && (boolean = !/[a-zA-Z0-9]{6,6}/.test($(selector).val()));
-    // attrName === 'mobileConfirm' && (errorMessage = !/^01(\d{9,9})/.test($(this).val()));
+    attrName === 'mobile' && (boolean = /^01(\d{9,9})/.test($(selector).val()));
+    attrName === 'password' && (boolean = /[a-zA-Z0-9]{6,6}/.test($(selector).val()));
+    attrName === 'confirm' && (boolean = /^\d{6,6}/.test($(selector).val()));
     return boolean;
 }
 
@@ -96,21 +96,31 @@ function inputInput(){
 
 function errorMessageActive(selector , boolean){
     const errorSeletor = selector.parent().siblings('.errorText');
-    boolean ? errorSeletor.addClass('active') : errorSeletor.removeClass('active');
+    boolean ? errorSeletor.removeClass('active') : errorSeletor.addClass('active');
 }
 
 // 유효성 검사 통과하면 submit 색상
 function submitActive(){
+    // 필수항목 입력 값 유효성 검사
     let inputBoolean = $('[required]').get().every((a)=>{
-        const boolean = inputValidation(a)
-        return boolean == false;
+        let boolean = inputValidation(a)
+        return boolean === true;
     })
     
     // 에러메세지가 있는지 없는지 확인
-    let errorBoolean = errorTextConfirm();
+    let errorBoolean = !errorTextConfirm();
+
+
+    // 인증이 완료 되었는 지 확인
+    if($('[data-input="confirm"]')){
+        if(!JSON.parse($('[data-input="confirm"]').attr('data-confirm'))){
+            console.log(JSON.parse($('[data-input="confirm"]').attr('data-confirm')));
+            return
+        }
+    }
 
     // input 값 , 에러메세지가 둘 다 true 면 submit 버튼에 active 클래스 추가
-    if(inputBoolean && errorBoolean){
+    if(inputBoolean && !errorBoolean){
         $('input[type="submit"]').addClass('active')
     }else{
         $('input[type="submit"]').removeClass('active');
@@ -127,24 +137,31 @@ function errorTextConfirm(){
 // submit 클릭 이벤트
 function submitClick(){
     let inputAttr = 'id';
-    let inputValue = [{}]
+    let inputValue = []
     $('input[type="submit"]').click(function(e){
+        inputValue = []
         if(!$(this).hasClass('active')){ 
             e.preventDefault()
-            $('[required]').each(function(){
-                const boolean = inputValidation($(this));
-                errorMessageActive($(this) , boolean);
-            })
-            $('[required]').get().find((v)=>{
-                return $(v).parent().siblings('.errorText').hasClass('active') && $(v).focus();
-            })
-            return;
         };
+        
+        // input 값이 잘 못 되었다면
+        $('[required]').each(function(){
+            const boolean = inputValidation($(this));
+            errorMessageActive($(this) , boolean);
+        })
+        let invalidInput = $('[required]').get().find((v)=>{
+            return $(v).parent().siblings('.errorText').hasClass('active') && $(v).focus();
+        })
+        if(invalidInput){
+            invalidInput.focus();
+            return
+        }
+
 
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
 
-        // 인풋에서 받아 온 값
+        // 인풋에서 받아 온 필수 값
         $(this).closest('form').find('[required]').each(function(i){
             if(!$(this).attr(inputAttr)) return;
             inputValue[i] = {
@@ -154,6 +171,20 @@ function submitClick(){
                 errorSelector : $(this).parent().siblings('.errorText')
             };
         })
+
+        // 인풋에서 받아 온 필수가 아닌 값
+        $(this).closest('form').find('input').not('[required]').not('[type="submit"]').each(function(i){
+            if(!$(this).attr(inputAttr)) return;
+            inputValue.push( {
+                selector : $(this),
+                name : $(this).attr(inputAttr),
+                value : $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked'),
+                errorSelector : $(this).parent().siblings('.errorText')
+            });
+        })
+
+        console.log($(this).closest('form').find('input'));
+        console.log(inputValue);
         
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn');
         // $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange');
@@ -169,12 +200,14 @@ function submitClick(){
     function mobileAndPW(pageName){
         let testID = '01092931656';
         let testPW = '123456'
+        let IDCheck;
+        let PWCheck;
         // 값 판별
         inputValue.map((v)=>{
-            v.name === 'userMobile' && (v.value !== testID && errorMessageActive(v.selector , true));
+            v.name === 'userMobile' && (IDCheck = v.value !== testID);
             if(v.name === 'userPassword') {
                 if(v.value !== testPW){
-                    errorMessageActive(v.selector , true);
+                    errorMessageActive(v.selector , false);
                     v.selector.val('');
                 }
             };
@@ -182,7 +215,7 @@ function submitClick(){
 
         
 
-        // 에러 메세지가 없으면
+        // 에러 메세지가 없으면  
         var result = errorTextConfirm();
 
         if($('input[type="submit"]').hasClass('active')){ 
@@ -201,9 +234,59 @@ function submitClick(){
 
 // 핸드폰 번호 인증번호 전송
 function mobileConfirm(){
-    console.log('asd');
-    $('.sendConfirm').click(function(){
-        console.log($(this));
+    let timer;
+    // 인증번호 전송 버튼 클릭
+    $('[data-btn="sendConfirm"]').click(function(){
+        if($('input[type="submit"]').hasClass('active')){return}
+        let minute = 3;
+        let seconds = 0;
+        let time = minute + ':' + (seconds >= 10 ? seconds : '0' + seconds)
+        let mobileSeletor = $(this).prev().find('[data-input="mobile"]')
+        let confirmBoxSelector = $('.certificationBox');
+       
+        if(!inputValidation(mobileSeletor)){
+            mobileSeletor.focus();
+            errorMessageActive(mobileSeletor , inputValidation(mobileSeletor))
+        }else{
+            clearInterval(timer)
+            confirmBoxSelector.addClass('active');
+            confirmBoxSelector.find('time').html(time)
+            confirmBoxSelector.find('[data-input="confirm"]').val('').focus();
+            confirmBoxSelector.find('[data-input="confirm"]').attr('data-confirm' , 'false');
+            timer = setInterval(() => {
+                if(!!minute || !!seconds){
+                    if(!seconds){
+                        minute--;
+                        seconds = 59;
+                    }else{
+                        seconds--;
+                    }
+                }else{
+                    // 타이머 종료 시점
+                    clearInterval(timer)
+                    confirmBoxSelector.removeClass('active');
+                }
+                time = minute + ':' + (seconds >= 10 ? seconds : '0' + seconds)
+                confirmBoxSelector.find('time').html(time)
+            }, 1000);
+        }
+        
+    })
+
+    // 인증하기 버튼 클릭
+    $('[data-btn="confirm"]').click(function(){
+        let confirmSeletor = $(this).prev().find('[data-input="confirm"]')
+        let erroeMessageSelector = $(this).next('.errorText');
+        // 인증번호가 ex> 123456 이면
+        if(confirmSeletor.val() === '123456'){
+            // 속성 값을 변경하여 인증되었는 지 확인
+            confirmSeletor.attr('data-confirm' , 'true');
+            clearInterval(timer)
+        }else{
+            confirmSeletor.focus();
+            erroeMessageSelector.addClass('active');
+        }
+        submitActive();
     })
 }
 
