@@ -192,7 +192,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 
 /* 로그인 페이지 */
 .signPage{height: 100vh; display: flex; flex-direction: column; }
-.signPage input{padding: 0 15px;}
+.signPage input:not([type="submit"]){padding: 0 15px;}
 .signPage input[type="checkbox"]{display: none;}
 .signPage input[type="checkbox"] + label{display: inline-flex; align-items: center; font-size: 14px; line-height: 0.5;}
 .signPage input[type="checkbox"] + label::before{content: ''; width: 15px; height: 15px; border: 1px solid #d9d9d9; border-radius: 100%; margin-right: 5px; box-sizing: border-box;}

@@ -84,6 +84,7 @@ function inputValidation(selector){
     attrName === 'password' && (boolean = /[a-zA-Z0-9]{6,6}/.test($(selector).val()));
     attrName === 'password-re' && (boolean = $(selector).val() === $('[data-input="password"]').val());
     attrName === 'confirm' && (boolean = /^\d{6,6}/.test($(selector).val()));
+    attrName === 'checkbox' && (boolean = $(selector).is(':checked'));
     return boolean;
 }
 
@@ -92,6 +93,34 @@ function inputInput(){
         const boolean = inputValidation($(this))
         errorMessageActive($(this) , boolean);
         submitActive();
+    })
+
+    // 동의
+    $('.agreeArea').length && inputCheckbox();
+}
+
+// 동의
+function inputCheckbox(){
+    // 체크 박스  전체 동의
+    $('#allAgree').click(function(){
+        if($(this).is(':checked')){
+            $('input[type="checkbox"]').prop('checked', true)
+        }else{
+            $('input[type="checkbox"]').prop('checked', false)
+        }
+        submitActive();
+    })
+
+    // 체크 박스 개별
+    $('[type="checkbox"]').not('#allAgree').on('input',function(){
+        let test = $('[type="checkbox"]').not('#allAgree').get().every((c)=>{
+            return $(c).is(':checked');
+        });
+        if(test){
+            $('#allAgree').prop('checked', true)
+        }else{
+            $('#allAgree').prop('checked', false)
+        }
     })
 }
 
@@ -113,7 +142,6 @@ function submitActive(){
 
 
     // 인증이 완료 되었는 지 확인
-    // console.log(!!$('[data-boolean]').length);
     if(!!$('[data-boolean]').length){
         let test = $('[data-boolean]').get().find(function(b){
             console.log($(b));
@@ -124,10 +152,6 @@ function submitActive(){
         if(!test){
             return
         }
-       /*  if(!JSON.parse($('[data-input="confirm"]').attr('data-confirm'))){
-            console.log(JSON.parse($('[data-input="confirm"]').attr('data-confirm')));
-            return
-        } */
     }
 
     // input 값 , 에러메세지가 둘 다 true 면 submit 버튼에 active 클래스 추가
@@ -178,7 +202,8 @@ function submitClick(){
             inputValue[i] = {
                 selector : $(this),
                 name : $(this).attr(inputAttr),
-                value : $(this).val(),
+                // value : $(this).val(),
+                value : $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked'),
                 errorSelector : $(this).parent().siblings('.errorText')
             };
         })
@@ -189,13 +214,12 @@ function submitClick(){
             inputValue.push( {
                 selector : $(this),
                 name : $(this).attr(inputAttr),
-                // value : $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked'),
+                value : $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked'),
                 errorSelector : $(this).parent().siblings('.errorText')
             });
-            inputValue[(inputValue.length - 1) + i].value = $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked')
+            // inputValue[(inputValue.length - 1) + i].value = $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked')
         })
 
-        console.log($(this).closest('form').find('input'));
         console.log(inputValue);
         
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn');
@@ -203,6 +227,7 @@ function submitClick(){
 
         $(this).attr('id') === 'mobileConfirm' && mobileConfirm();
         $(this).attr('id') === 'passwordChange' && passwordChange();
+        $(this).attr('id') === 'firstSingUp' && firstSingUp();
 
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
         inputValue.find((v)=>{
@@ -254,6 +279,11 @@ function submitClick(){
     // 간편 비밀번호 변경 페이지 submit클릭
     function passwordChange(){
         console.log('간편 비밀번호 변경');
+    }
+
+    // 최초 회원가입 페이지
+    function firstSingUp(){
+        console.log('최초 회원가입');
     }
 }
 
