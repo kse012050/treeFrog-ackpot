@@ -200,7 +200,7 @@ function submitClick(){
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn');
         // $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange');
 
-        $(this).attr('id') === 'newMobile' && newMobile();
+        $(this).attr('id') === 'mobileConfirm' && mobileConfirm();
 
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
         inputValue.find((v)=>{
@@ -209,7 +209,7 @@ function submitClick(){
 
     })
 
-    // 로그인 페이지 submit 클릭
+    // 로그인 , 휴대폰 전화번호 변동 페이지 submit 클릭
     function mobileAndPW(pageName){
         let testID = '01092931656';
         let testPW = '123456'
@@ -244,13 +244,22 @@ function submitClick(){
         }
     }
 
-    function newMobile(){
+    // 신규 전화번호 인증 , 회원가입 페이지 submit 클릭
+    function mobileConfirm(){
         console.log('신규 전화번호 인증');
     }
 }
 
 // 핸드폰 번호 인증번호 전송
 function mobileConfirm(){
+    $('input[data-input="mobile"]').on('input',function(){
+        if($('[data-btn="sendConfirm"]').html() === '재전송'){
+            console.log(1);
+            $('[data-btn="sendConfirm"]').html('인증번호 전송');
+            $('.certificationBox').removeClass('active');
+            clearInterval(timer)
+        }
+    })
     let timer;
     // 인증번호 전송 버튼 클릭
     $('[data-btn="sendConfirm"]').click(function(){
@@ -260,12 +269,12 @@ function mobileConfirm(){
         let time = minute + ':' + (seconds >= 10 ? seconds : '0' + seconds)
         let mobileSeletor = $(this).prev().find('[data-input="mobile"]')
         let confirmBoxSelector = $('.certificationBox');
-       
         if(!inputValidation(mobileSeletor)){
             mobileSeletor.focus();
             errorMessageActive(mobileSeletor , inputValidation(mobileSeletor))
         }else{
             clearInterval(timer)
+            $(this).html('재전송')
             confirmBoxSelector.addClass('active');
             confirmBoxSelector.find('time').html(time)
             confirmBoxSelector.find('[data-input="confirm"]').val('').focus();
