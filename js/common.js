@@ -82,6 +82,7 @@ function inputValidation(selector){
     let boolean;
     attrName === 'mobile' && (boolean = /^01(\d{9,9})/.test($(selector).val()));
     attrName === 'password' && (boolean = /[a-zA-Z0-9]{6,6}/.test($(selector).val()));
+    attrName === 'password-re' && (boolean = $(selector).val() === $('[data-input="password"]').val());
     attrName === 'confirm' && (boolean = /^\d{6,6}/.test($(selector).val()));
     return boolean;
 }
@@ -201,6 +202,7 @@ function submitClick(){
         // $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange');
 
         $(this).attr('id') === 'mobileConfirm' && mobileConfirm();
+        $(this).attr('id') === 'passwordChange' && passwordChange();
 
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
         inputValue.find((v)=>{
@@ -247,6 +249,11 @@ function submitClick(){
     // 신규 전화번호 인증 , 회원가입 페이지 submit 클릭
     function mobileConfirm(){
         console.log('신규 전화번호 인증');
+    }
+
+    // 간편 비밀번호 변경 페이지 submit클릭
+    function passwordChange(){
+        console.log('간편 비밀번호 변경');
     }
 }
 

@@ -25,7 +25,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 [class*="submit"].active{background-image: linear-gradient(to right, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f);}
 
 /* 에러 메세지 */
-.errorText{display: none; font-size: 14px; color: #ee2222; margin-top: 6px;}
+.errorText{display: none; width: 100%; font-size: 14px; color: #ee2222; margin-top: 6px;}
 .errorText.active{display: block;}
 
 /* 팝업 */
