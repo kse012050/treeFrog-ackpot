@@ -8,7 +8,7 @@
     <title>게스트 회원가입 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../../css/import.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../../js/common.js"></script>
 </head>
 <body>
     <div class="signPage">
@@ -24,21 +24,29 @@
                     <!-- 입력 영역 -->
                     <div class="inputArea">
                         <div>
-                            <input type="text" placeholder="간편비밀번호 6자리를 등록해주세요." maxlength="11">
+                            <div>
+                                <input type="text" placeholder="간편비밀번호 6자리를 등록해주세요." maxlength="6" data-input="password" id="userPassword" required>
+                            </div>
                             <p class="errorText">* 올바른 비밀번호를 입력해주세요.</p>
                         </div>
                         <div>
-                            <input type="text" placeholder="비밀번호를 한번 더 입력해주세요." maxlength="11">
+                            <div>
+                                <input type="text" placeholder="비밀번호를 한번 더 입력해주세요." maxlength="6" data-input="password-re" id="password-re" required>
+                            </div>
                             <p class="errorText">* 비밀번호가 맞지 않습니다.</p>
                         </div>
                         <div>
-                            <input type="text" placeholder="이름을 입력해주세요. (수정불가)">
-                            <button>확인</button>
+                            <div>
+                                <input type="text" placeholder="이름을 입력해주세요. (수정불가)" data-boolean="false" required id="userName" data-input="name">
+                            </div>
+                            <button data-btn="name">확인</button>
                             <p class="errorText">* 올바른 이름을 입력해주세요.</p>
                         </div>
                         <div>
-                            <input type="text" placeholder="닉네임을 입력해주세요.">
-                            <button>중복 확인</button>
+                            <div>
+                                <input type="text" placeholder="닉네임을 입력해주세요." data-boolean="false" required id="userNickName" data-input="nickName">
+                            </div>
+                            <button data-btn="nickName">중복 확인</button>
                             <p class="errorText">* 닉네임이 중복 되어 다시 입력해주세요.</p>
                         </div>
                     </div>
@@ -49,24 +57,48 @@
                         <input type="checkbox" id="allAgree"><label for="allAgree">전체 동의</label>
                         <ul>
                             <li>
-                                <input type="checkbox" required id="termsOfService">
+                                <input type="checkbox" required id="termsOfService" data-input="checkbox">
                                 <label for="termsOfService">서비스 이용약관 동의</label>
-                                <button>보기</button>
+                                <button data-popup="next">보기</button>
+                                <div class="popupArea">
+                                    <div>
+                                        서비스 이용약관 동의 팝업
+                                        <button data-popup="close">팝업 닫기</button>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <input type="checkbox" required id="collectionAndUse">
+                                <input type="checkbox" required id="collectionAndUse" data-input="checkbox">
                                 <label for="collectionAndUse">개인정보 수집 및 이용 동의</label>
-                                <button>보기</button>
+                                <button data-popup="next">보기</button>
+                                <div class="popupArea">
+                                    <div>
+                                        개인정보 수집 및 이용 동의 팝업
+                                        <button data-popup="close">팝업 닫기</button>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <input type="checkbox" required id="providedByThirdParties">
+                                <input type="checkbox" required id="providedByThirdParties" data-input="checkbox">
                                 <label for="providedByThirdParties">개인정보 제3자 제공</label>
-                                <button>보기</button>
+                                <button data-popup="next">보기</button>
+                                <div class="popupArea">
+                                    <div>
+                                        개인정보 제3자 제공 팝업
+                                        <button data-popup="close">팝업 닫기</button>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <input type="checkbox" id="marketingReception">
                                 <label for="marketingReception">마케팅 정보 수신 동의</label>
-                                <button>보기</button>
+                                <button data-popup="next">보기</button>
+                                <div class="popupArea">
+                                    <div>
+                                        마케팅 정보 수신 동의 팝업
+                                        <button data-popup="close">팝업 닫기</button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>

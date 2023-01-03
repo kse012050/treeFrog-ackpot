@@ -217,6 +217,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 .signPage .signArea form fieldset .inputArea div:not(:first-child){margin-top: 16px;}
 .signPage .signArea form fieldset .inputArea div input{flex: 1; height: 50px;}
 .signPage .signArea form fieldset .inputArea div button{width: 120px; line-height: 50px; color: white; background-color: #1c1c1c; border-radius: 10px; margin-left: 10px;}
+.signPage .signArea form fieldset .inputArea div button.active{background-image: linear-gradient(to right, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f);}
 .signPage .signArea form fieldset .inputArea div div{flex: 1; position: relative;}
 .signPage .signArea form fieldset .inputArea div div time{position: absolute; right: 18px; top: 0; height: 100%; display: flex; align-items: center; color: #ee2222;}
 .signPage .signArea form fieldset .inputArea > label{margin-top: 10px;}

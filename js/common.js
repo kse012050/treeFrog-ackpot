@@ -14,9 +14,11 @@ $(document).ready(function(){
     // 팝업 관련 클릭 이벤트
     popupClick();
 
-    
-    
+    // 핸드폰 인증
     $('.certificationBox').length && mobileConfirm();
+
+    // 이름 닉네임 버튼
+    !!$('[data-input="nickName"] , [data-input="name"]').length && nameNickname();
 })
 
 function mainSlider(){
@@ -85,6 +87,16 @@ function inputValidation(selector){
     attrName === 'password-re' && (boolean = $(selector).val() === $('[data-input="password"]').val());
     attrName === 'confirm' && (boolean = /^\d{6,6}/.test($(selector).val()));
     attrName === 'checkbox' && (boolean = $(selector).is(':checked'));
+    attrName === 'name' && (boolean = /^[가-힣]{2,4}$/.test($(selector).val()));
+    // 닉네임 중복 확인
+    if(attrName === 'nickName') {
+        // boolean   false 중복O ,  true 중복X
+        if($(selector).val() === '테스트' || $(selector).val() === ''){
+            boolean = false;
+        }else{
+            boolean = true;
+        }
+    };
     return boolean;
 }
 
@@ -93,6 +105,11 @@ function inputInput(){
         const boolean = inputValidation($(this))
         errorMessageActive($(this) , boolean);
         submitActive();
+
+        if(!!$(this).attr('data-boolean')){
+            let buttonSelector = $(this).parent().siblings('button');
+            boolean ? buttonSelector.addClass('active') : buttonSelector.removeClass('active');
+        }
     })
 
     // 동의
@@ -144,11 +161,11 @@ function submitActive(){
     // 인증이 완료 되었는 지 확인
     if(!!$('[data-boolean]').length){
         let test = $('[data-boolean]').get().find(function(b){
-            console.log($(b));
-            console.log($(b).attr('data-boolean'));
+            // console.log($(b));
+            // console.log($(b).attr('data-boolean'));
             return JSON.parse($(b).attr('data-boolean'));
         })
-        console.log(test);
+        // console.log(test);
         if(!test){
             return
         }
@@ -344,12 +361,40 @@ function mobileConfirm(){
         if(confirmSeletor.val() === '123456'){
             // 속성 값을 변경하여 인증되었는 지 확인
             confirmSeletor.attr('data-boolean' , 'true');
+            $(this).removeClass('active')
             clearInterval(timer)
         }else{
             confirmSeletor.focus();
             erroeMessageSelector.addClass('active');
         }
         submitActive();
+    })
+}
+
+// 이름 , 닉네임
+function nameNickname(){
+    $('[data-btn="name"]').click(function(){
+        let attrName = $(this).attr('data-btn');
+        let nameSelector = $(this).prev().find('[data-input="'+attrName+'"]');
+        let boolean = inputValidation(nameSelector)
+        if(boolean){
+            nameSelector.attr('data-boolean' , 'true');
+            $(this).removeClass('active')
+        }else{
+            nameSelector.focus();
+        }
+    })
+    $('[data-btn="nickName"]').click(function(){
+        let attrName = $(this).attr('data-btn');
+        let nickNameSelector = $(this).prev().find('[data-input="'+attrName+'"]');
+        let boolean = inputValidation(nickNameSelector)
+        let doubleCheck = true;
+        if(boolean && doubleCheck){
+            nickNameSelector.attr('data-boolean' , 'true');
+            $(this).removeClass('active')
+        }else{
+            nickNameSelector.focus();
+        }
     })
 }
 
