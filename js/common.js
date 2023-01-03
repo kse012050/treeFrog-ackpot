@@ -130,10 +130,10 @@ function inputCheckbox(){
 
     // 체크 박스 개별
     $('[type="checkbox"]').not('#allAgree').on('input',function(){
-        let test = $('[type="checkbox"]').not('#allAgree').get().every((c)=>{
+        let agreeCheck = $('[type="checkbox"]').not('#allAgree').get().every((c)=>{
             return $(c).is(':checked');
         });
-        if(test){
+        if(agreeCheck){
             $('#allAgree').prop('checked', true)
         }else{
             $('#allAgree').prop('checked', false)
@@ -160,13 +160,10 @@ function submitActive(){
 
     // 인증이 완료 되었는 지 확인
     if(!!$('[data-boolean]').length){
-        let test = $('[data-boolean]').get().find(function(b){
-            // console.log($(b));
-            // console.log($(b).attr('data-boolean'));
+        let confirmChack = $('[data-boolean]').get().find(function(b){
             return JSON.parse($(b).attr('data-boolean'));
         })
-        // console.log(test);
-        if(!test){
+        if(!confirmChack){
             return
         }
     }
