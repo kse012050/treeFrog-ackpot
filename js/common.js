@@ -445,7 +445,9 @@ function livingEvent(){
     $('.livingPage .contentArea section .chattingArea').scrollTop($('.livingPage .contentArea section .chattingArea > .scrollHeight').innerHeight())
     // 채팅 스크롤에 따라 상단 타이틀 영역 blur 처리
     $('.livingPage .contentArea section .chattingArea').scroll(function(){
-        $(this).scrollTop() > 0 ? $('.livingPage .contentArea section .titleArea').addClass('blur') : $('.livingPage .contentArea section .titleArea').removeClass('blur')
+        ($(this).scrollTop() > 0 && !$('.livingPage .contentArea section .noticeArea').hasClass('active')) ?
+            $('.livingPage .contentArea section .titleArea').addClass('blur') :
+            $('.livingPage .contentArea section .titleArea').removeClass('blur') ;
     })
 
     // 좌우 메뉴 열기 / 접기
@@ -456,10 +458,14 @@ function livingEvent(){
     // 채팅 공지사항 열기
     $('[data-notice="open"]').click(function(){
         $('.noticeArea').addClass('active');
+        $('.livingPage .contentArea section .titleArea').removeClass('blur')
     })
     // 채팅 공지사항 닫기
     $('[data-notice="close"]').click(function(){
         $('.noticeArea').removeClass('active');
+        $('.livingPage .contentArea section .chattingArea').scrollTop() > 0 ?
+            $('.livingPage .contentArea section .titleArea').addClass('blur') :
+            $('.livingPage .contentArea section .titleArea').removeClass('blur');
     })
 
     // 참여 인원 드랍박스

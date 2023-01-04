@@ -118,7 +118,7 @@
 .livingPage .contentArea section .titleArea > button{position: absolute; top: calc(100% + 12px); right: 30px; width: 46px; height: 46px; background: white url('../images/icon-notice-open.png') no-repeat center / 21px; border-radius: 100%;  text-indent: -9999px;  box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.1);}
 .livingPage .contentArea section .noticeArea{position: absolute; top: 100%; left: 0; width: 100%; display: none; flex-wrap: wrap; background-color: white; border: 1px solid #d9d9d9;}
 .livingPage .contentArea section .noticeArea.active{display: flex;}
-.livingPage .contentArea section .noticeArea p{width: 100%; font-size: 15px; line-height: 22px; display: flex; align-items: center; padding: 30px; border-bottom: 1px solid #d9d9d9;}
+.livingPage .contentArea section .noticeArea p{width: 100%; font-size: 15px; color: #1c1c1c; line-height: 22px; display: flex; align-items: center; padding: 30px; border-bottom: 1px solid #d9d9d9;}
 .livingPage .contentArea section .noticeArea p::before{content: ''; width: 26px; height: 24px; background: url('../images/icon-notice.png') no-repeat center / cover; margin-right: 15px; flex-shrink: 0;}
 .livingPage .contentArea section .noticeArea button{flex: 1; font-size: 12px; line-height: 30px;}
 .livingPage .contentArea section .noticeArea button:not(:last-of-type){border-right: 1px solid #d9d9d9;}
