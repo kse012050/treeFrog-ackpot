@@ -3,7 +3,7 @@ $(document).ready(function(){
     $('.mainPage').length && mainSlider();
 
     // 메인 페이지를 제외한 나머지 페이지 탭 공통
-    !$('.mainPage').length && tabClick();
+    tabClick();
 
     // 인풋 유효성 검사
     inputInput()
@@ -13,6 +13,8 @@ $(document).ready(function(){
 
     // 팝업 관련 클릭 이벤트
     popupClick();
+
+    $('.livingPage').length && livingEvent();
 
     // 핸드폰 인증
     $('.certificationBox').length && mobileConfirm();
@@ -396,9 +398,11 @@ function nameNickname(){
 }
 
 function popupClick(){
-    $('body:has([class*="popup"].active)').click(function(){
-        console.log($('[class*="popup"]').hasClass('active'));
-        $('[class|="popup"]').hasClass('active') && popupClose($('[class*="popup"]'))
+    // body 클릭시 서브 팝업 닫기
+    $('body').click(function(){
+        $('[class|="popup"]').hasClass('active') && popupClose($('[class|="popup"]'));
+
+        $('[class|="popup"]').removeClass('active');
     })
     // form 태그 안에 있는 button 클릭 자동 새로고침 막기
     $('button').click(function(e){
@@ -408,6 +412,8 @@ function popupClick(){
         attrName === 'next' ? 
             $(this).next().fadeIn().css('display','flex').addClass('active') :
             $(`.popup-${attrName}`).fadeIn().addClass('active');
+
+        attrName === 'share' && $(`.popup-${attrName} .errorText`).removeClass('active')
     })
     // 팝업 검은 배경
     $('.popupArea').click(function(){
@@ -431,3 +437,47 @@ function popupClick(){
     }
 }
 
+
+
+function livingEvent(){
+
+    // 채팅 스크롤 최하단으로 내리기
+    $('.livingPage .contentArea section .chattingArea').scrollTop($('.livingPage .contentArea section .chattingArea > .scrollHeight').innerHeight())
+    // 채팅 스크롤에 따라 상단 타이틀 영역 blur 처리
+    $('.livingPage .contentArea section .chattingArea').scroll(function(){
+        $(this).scrollTop() > 0 ? $('.livingPage .contentArea section .titleArea').addClass('blur') : $('.livingPage .contentArea section .titleArea').removeClass('blur')
+    })
+
+    // 좌우 메뉴 열기 / 접기
+    $('.livingPage :is(.leftAside , .rightAside) > button').click(function(){
+        $(this).parent().toggleClass('active');
+    })
+
+    // 채팅 공지사항 열기
+    $('[data-notice="open"]').click(function(){
+        $('.noticeArea').addClass('active');
+    })
+    // 채팅 공지사항 닫기
+    $('[data-notice="close"]').click(function(){
+        $('.noticeArea').removeClass('active');
+    })
+
+    // 참여 인원 드랍박스
+    $('[data-btn="drop"]').click(function(){
+        $(this).next().stop().slideToggle()
+    })
+
+    // 링크 복사
+    $('[data-btn="copyLink"]').click(function(){
+        var link = $(this).prev().html();
+		copyClip(link);
+        $(this).parent().siblings('.errorText').addClass('active');
+    })
+    function copyClip(url){
+		var $temp = $('<input>');
+		$('body').append($temp);
+		$temp.val(url).select();
+		document.execCommand('copy');
+		$temp.remove();
+	}
+}

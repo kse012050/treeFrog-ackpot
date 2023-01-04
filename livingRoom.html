@@ -241,7 +241,7 @@
                 <div class="titleArea">
                     <h3>[VVIP]노블레스 종합반-단기 스윙</h3>
                     <p>운용2팀 소액반G353</p>
-                    <button>공지 열기</button>
+                    <button data-notice="open">공지 열기</button>
                     <div class="noticeArea">
                         <p>
                             공지 오픈시 위 타이틀 배경 흐림효과 삭제, opacity 100% 변경. 좌우 여백 30px 안 까지 길어지며 그 이상인 경우 드랍됩니다.<br>
@@ -249,155 +249,157 @@
                             공지 오픈시 위 타이틀 배경 흐림효과 삭제, opacity 100% 변경. 좌우 여백 30px 안 까지 길어지며 그 이상인 경우 드랍됩니다.
                         </p>
                         <button>다시 열지 않음</button>
-                        <button>접어두기</button>
+                        <button data-notice="close">접어두기</button>
                     </div>
                 </div>
                 <div class="chattingArea">
-                    <!-- 
-                        data-type
-                            최고관리자 : manager-best , 전문가 : manager-expert
-                            일반유저 : user 
-                            (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
-                            자신 : me
-                     -->
-                    <div class="moneyArea" style="background-image: url('images/money-10.png');">
-                        <span>돈풍선 선물 알림</span>
-                        <strong>
-                            <mark class="orange">유저닉네임</mark> 회원님께서 <mark class="orange">김전문 전문가</mark> 에게 <br>
-                            돈풍선 <mark>1</mark>개 선물!
-                        </strong>
-                        <p>
-                            늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.<br>
-                            늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.<br>
-                            늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.
-                        </p>
-                    </div>
-                    <div data-type="manager-best">
-                        <div class="profileImg">
-                            <img src="images/expert-img.png" alt="">
+                    <div class="scrollHeight">
+                        <!-- 
+                            data-type
+                                최고관리자 : manager-best , 전문가 : manager-expert
+                                일반유저 : user 
+                                (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
+                                자신 : me
+                        -->
+                        <div class="moneyArea" style="background-image: url('images/money-10.png');">
+                            <span>돈풍선 선물 알림</span>
+                            <strong>
+                                <mark class="orange">유저닉네임</mark> 회원님께서 <mark class="orange">김전문 전문가</mark> 에게 <br>
+                                돈풍선 <mark>1</mark>개 선물!
+                            </strong>
+                            <p>
+                                늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.<br>
+                                늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.<br>
+                                늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.
+                            </p>
                         </div>
-                        <div class="messageArea">
-                            <p>김전문 <span>전문가</span></p>
-                            <!-- 
-                                class : textBox , 일반 텍스트
-                                    data-type이 없으면 일반 ( 하얀색 )
-                                    매도 : sell , 매수 : buy , 알림 : alarm , 비밀 : secret (data-to : 사용자 닉네임)
-                             -->
-                            <div class="textBox">
-                                같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
-                                알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
-                                그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
-                                *이것도 카톡과 동일
-                                <time>오후 1:47</time>
+                        <div data-type="manager-best">
+                            <div class="profileImg">
+                                <img src="images/expert-img.png" alt="">
+                            </div>
+                            <div class="messageArea">
+                                <p>김전문 <span>전문가</span></p>
+                                <!-- 
+                                    class : textBox , 일반 텍스트
+                                        data-type이 없으면 일반 ( 하얀색 )
+                                        매도 : sell , 매수 : buy , 알림 : alarm , 비밀 : secret (data-to : 사용자 닉네임)
+                                -->
+                                <div class="textBox">
+                                    같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                    알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                    그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                    *이것도 카톡과 동일
+                                    <time>오후 1:47</time>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div data-type="me">
-                        <div class="profileImg">
-                            <img src="images/expert-img.png" alt="">
-                        </div>
-                        <div class="messageArea">
-                            <p>김전문 <span>전문가</span></p>
-                            <div class="textBox" data-type="secret" data-to="사용자닉네임">
-                                알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 
-                                <time>오후 1:47</time>
+                        <div data-type="me">
+                            <div class="profileImg">
+                                <img src="images/expert-img.png" alt="">
+                            </div>
+                            <div class="messageArea">
+                                <p>김전문 <span>전문가</span></p>
+                                <div class="textBox" data-type="secret" data-to="사용자닉네임">
+                                    알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 알림입니다 
+                                    <time>오후 1:47</time>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div data-type="user" data-user="5">
-                        <div class="profileImg">
-                            <img src="images/chatting-user.png" alt="">
-                        </div>
-                        <div class="messageArea">
-                            <p>김전문 <span>전문가</span></p>
-                            <div class="imgBox">
-                                <div><img src="images/board-img.png" alt=""></div>
-                                <time>오후 1:47</time>
+                        <div data-type="user" data-user="5">
+                            <div class="profileImg">
+                                <img src="images/chatting-user.png" alt="">
+                            </div>
+                            <div class="messageArea">
+                                <p>김전문 <span>전문가</span></p>
+                                <div class="imgBox">
+                                    <div><img src="images/board-img.png" alt=""></div>
+                                    <time>오후 1:47</time>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div data-type="me">
-                        <div class="profileImg">
-                            <img src="images/chatting-user.png" alt="">
-                        </div>
-                        <div class="messageArea">
-                            <p>유저 사용자</p>
-                            <div class="imgBox">
-                                <div>
-                                    <img src="images/board-img.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="images/board-img.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="images/board-img.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="images/board-img.png" alt="">
-                                </div>
-                                <div>
-                                    <img src="images/board-img.png" alt="">
-                                </div>
-                                <time>오후 1:47</time>
+                        <div data-type="me">
+                            <div class="profileImg">
+                                <img src="images/chatting-user.png" alt="">
                             </div>
-                        </div>
-                    </div>
-                    <div data-type="manager-expert">
-                        <div class="profileImg">
-                            <img src="images/expert-img.png" alt="">
-                        </div>
-                        <div class="messageArea">
-                            <p>유저 사용자</p>
-                            <div class="videoBox">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/5E43yI-ACMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <time>오후 1:47</time>
-                            </div>
-                        </div>
-                    </div>
-                    <div data-type="manager-expert">
-                        <div class="profileImg">
-                            <img src="images/expert-img.png" alt="">
-                        </div>
-                        <div class="messageArea">
-                            <p>유저 사용자</p>
-                            <!-- data-type 
-                                이미지 : img , 문서 : document , 비디오 : mp , 압축 : compression
-                            -->
-                            <div class="fileBox" data-type="compression">
-                                <div>
-                                    <p>단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip</p>
-                                    <span class="validity">2022.06.10</span>
-                                    <span class="volume">1.40MB</span>
-                                    <div class="btnArea">
-                                        <button>열기</button>
-                                        <button>저장</button>
+                            <div class="messageArea">
+                                <p>유저 사용자</p>
+                                <div class="imgBox">
+                                    <div>
+                                        <img src="images/board-img.png" alt="">
                                     </div>
+                                    <div>
+                                        <img src="images/board-img.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="images/board-img.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="images/board-img.png" alt="">
+                                    </div>
+                                    <div>
+                                        <img src="images/board-img.png" alt="">
+                                    </div>
+                                    <time>오후 1:47</time>
                                 </div>
-                                <time>오후 1:47</time>
                             </div>
                         </div>
-                    </div>
-
-                    <div data-type="manager-expert">
-                        <div class="profileImg">
-                            <img src="images/expert-img.png" alt="">
+                        <div data-type="manager-expert">
+                            <div class="profileImg">
+                                <img src="images/expert-img.png" alt="">
+                            </div>
+                            <div class="messageArea">
+                                <p>유저 사용자</p>
+                                <div class="videoBox">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5E43yI-ACMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <time>오후 1:47</time>
+                                </div>
+                            </div>
                         </div>
-                        <div class="messageArea">
-                            <p>유저 사용자</p>
-                            <!-- data-type 
-                                이미지 : img , 문서 : document , 비디오 : mp , 압축 : compression
-                            -->
-                            <div class="linkBox">
-                                <div class="thumbnail">
-                                    <img src="images/board-img.png" alt="">
+                        <div data-type="manager-expert">
+                            <div class="profileImg">
+                                <img src="images/expert-img.png" alt="">
+                            </div>
+                            <div class="messageArea">
+                                <p>유저 사용자</p>
+                                <!-- data-type 
+                                    이미지 : img , 문서 : document , 비디오 : mp , 압축 : compression
+                                -->
+                                <div class="fileBox" data-type="compression">
+                                    <div>
+                                        <p>단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip단기스윙 1분기 수익률.zip</p>
+                                        <span class="validity">2022.06.10</span>
+                                        <span class="volume">1.40MB</span>
+                                        <div class="btnArea">
+                                            <button>열기</button>
+                                            <button>저장</button>
+                                        </div>
+                                    </div>
+                                    <time>오후 1:47</time>
                                 </div>
-                                <div class="textArea">
-                                    <strong>청개구리투자클럽 - VIP</strong>
-                                    <span>개인투자자를 위한 주식 정보회사</span>
-                                    <a href="">https://smkt.co.kr/ad/software/c/projects/DAEBAK/boardDAEBAK/board</a>
+                            </div>
+                        </div>
+
+                        <div data-type="manager-expert">
+                            <div class="profileImg">
+                                <img src="images/expert-img.png" alt="">
+                            </div>
+                            <div class="messageArea">
+                                <p>유저 사용자</p>
+                                <!-- data-type 
+                                    이미지 : img , 문서 : document , 비디오 : mp , 압축 : compression
+                                -->
+                                <div class="linkBox">
+                                    <div class="thumbnail">
+                                        <img src="images/board-img.png" alt="">
+                                    </div>
+                                    <div class="textArea">
+                                        <strong>청개구리투자클럽 - VIP</strong>
+                                        <span>개인투자자를 위한 주식 정보회사</span>
+                                        <a href="">https://smkt.co.kr/ad/software/c/projects/DAEBAK/boardDAEBAK/board</a>
+                                    </div>
+                                    <time>오후 1:47</time>
                                 </div>
-                                <time>오후 1:47</time>
                             </div>
                         </div>
                     </div>
@@ -466,7 +468,7 @@
                 <div>
                     <ul>
                         <li class="dropArea">
-                            <button>참여 인원 리스트</button>
+                            <button data-btn="drop">참여 인원 리스트</button>
                             <div class="scrollBox dropBox">
                                 <p><b>156</b>/ 1000</p>
                                 <ul class="expertArea">
@@ -663,10 +665,10 @@
                                 <div class="borderRadius30">
                                     <strong>투자내역</strong>
                                     <ul class="tabBtn">
-                                        <li class="active"><button>전체</button></li>
-                                        <li><button>수익</button></li>
-                                        <li><button>손절</button></li>
-                                        <li><button>보합</button></li>
+                                        <li class="active"><button data-tab="all">전체</button></li>
+                                        <li><button data-tab="revenue">수익</button></li>
+                                        <li><button data-tab="loss">손절</button></li>
+                                        <li><button data-tab="bohab">보합</button></li>
                                     </ul>
                                     <div class="board-investmentDetails">
                                         <div class="boardTitle">
@@ -674,18 +676,18 @@
                                             <b>상태</b>
                                             <b>최종매도일</b>
                                         </div>
-                                        <ul>
-                                            <li data-type="revenue">
+                                        <ul data-tab="contentArea">
+                                            <li data-tab="revenue">
                                                 <p>이름이긴코퍼레이션우</p>
                                                 <span>수익</span>
                                                 <time>2021-11-21</time>
                                             </li>
-                                            <li data-type="stopLoss">
+                                            <li data-tab="bohab">
                                                 <p>이름이긴코퍼레이션우</p>
                                                 <span>보합</span>
                                                 <time>2021-11-21</time>
                                             </li>
-                                            <li>
+                                            <li data-tab="loss">
                                                 <p>이름이긴코퍼레이션우</p>
                                                 <span>손실</span>
                                                 <time>2021-11-21</time>
@@ -1049,8 +1051,8 @@
                         <div class="popup-share">
                             <strong>채팅방 공유하기</strong>
                             <div>
-                                <p>https://open.chatdaebak01.com/linkopen.chatdaebak0.com/...</p>
-                                <button>복사</button>
+                                <p>https://open.chatdaebak01.com/linkopen.chatdaebak0.comlinkopen.chatdaebak0.com</p>
+                                <button data-btn="copyLink">복사</button>
                             </div>
                             <p class="errorText">*복사되었습니다.</p>
                         </div>

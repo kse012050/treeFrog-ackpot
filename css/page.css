@@ -2,7 +2,7 @@
 .livingPage{overflow: hidden;}
 .livingPage .errorText{font-size: 12px;}
 .livingPage header{position: relative; z-index: 10;}
-.livingPage :is(.leftAside , .rightAside){position: relative;}
+.livingPage :is(.leftAside , .rightAside){position: relative; transition: width 0.5s;}
 .livingPage :is(.leftAside , .rightAside) > button{position: absolute; top: 30px; width: 36px; height: 36px; border-radius: 100%;  box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.1); background-color: white; background-repeat: no-repeat; background-position: center; background-size: cover; z-index: 5; font-size: 10px; color: transparent;}
 .livingPage .leftAside > button{right: -18px; background-image: url('../images/icon-arrow-right.png'); transform: rotate(180deg);}
 .livingPage .rightAside > button{left: -18px; background-image: url('../images/icon-arrow-right.png');}
@@ -72,8 +72,8 @@
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(1){width: 47.92%;}
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(2){width: 3.84%;}
 .livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails :is(.boardTitle , ul li) > *:nth-child(3){width: 26.03%;}
-.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails ul li[data-type="revenue"] span{color: #ee2222;}
-.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails ul li[data-type="stopLoss"] span{color: #2c75d4;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails ul li[data-tab="revenue"] span{color: #ee2222;}
+.livingPage .rightAside .asidePosition > div > ul > li.investmentDetails .board-investmentDetails ul li[data-tab="loss"] span{color: #2c75d4;}
 /* 게시판 */
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div{overflow: hidden; padding-left: 0; padding-right: 0; padding-bottom: 0;}
 .livingPage .rightAside .asidePosition > div > ul > li.boardArea .popupArea > div .tabBtn{padding: 0 30px; margin-bottom: 20px;}
@@ -110,7 +110,8 @@
 /* 리빙 채팅 전체 틀*/
 .livingPage .contentArea section{position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px 24px; box-sizing: border-box;}
 /* 리빙 채팅 상단 타이틀 */
-.livingPage .contentArea section .titleArea{position: absolute; left: 0; top: 0; width: 100%; height: 147px; display: flex; flex-direction: column; justify-content: center; padding: 0 52px; background-color: #e9e9e9; backdrop-filter: blur(30px); box-sizing: border-box; z-index: 1;}
+.livingPage .contentArea section .titleArea{position: absolute; left: 0; top: 0; width: 100%; height: 147px; display: flex; flex-direction: column; justify-content: center; padding: 0 52px; background-color: #e9e9e9; backdrop-filter: blur(30px); box-sizing: border-box; z-index: 1; transition: background 0.5s;}
+.livingPage .contentArea section .titleArea.blur{background-color: unset; -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px);}
 .livingPage .contentArea section .titleArea h3{font-size: 24px; font-weight: 700;}
 .livingPage .contentArea section .titleArea p{font-size: 14px; color: #9d9d9d; margin-top: 12px;}
 /* 리빙 채팅 상단 공지사항 */
@@ -162,99 +163,99 @@
 .livingPage .contentArea section .chattingArea{overflow: auto; padding-top: 147px; padding-bottom: 20px;}
 .livingPage .contentArea section .chattingArea::-webkit-scrollbar{width: 5px;}
 .livingPage .contentArea section .chattingArea::-webkit-scrollbar-thumb{width: 5px; background-color: rgba(92, 92, 92, 0.3); border-radius: 100px;}
-.livingPage .contentArea section .chattingArea > [data-type]{display: flex; align-items: flex-start; max-width: 60%;}
-.livingPage .contentArea section .chattingArea > div:not(:last-of-type){margin-bottom: 20px;}
-.livingPage .contentArea section .chattingArea > [data-type] .profileImg{position: relative; width: 53px; height: 53px; margin-right: 9px; border-radius: 20px; line-height: 0;}
-.livingPage .contentArea section .chattingArea > [data-type] .profileImg img{flex-shrink: 0;}
-.livingPage .contentArea section .chattingArea > [data-type|="manager"] .profileImg::after{content: ''; position: absolute; right: -2px; bottom: -3px; width: 22px; height: 22px; background-position: center; background-size: cover;}
-.livingPage .contentArea section .chattingArea > [data-type|="manager"] .profileImg img{width: 53px; height: 53px; border-radius: 20px; }
-.livingPage .contentArea section .chattingArea > [data-type="manager-best"] .profileImg::after{background-image: url('../images/chatting-best.png');}
-.livingPage .contentArea section .chattingArea > [data-type="manager-expert"] .profileImg::after{background-image: url('../images/chatting-expert.png');}
-.livingPage .contentArea section .chattingArea > [data-type="user"] .profileImg{display: flex; justify-content: center; align-items: flex-end; overflow: hidden;}
-.livingPage .contentArea section .chattingArea > [data-type="user"] .profileImg img{width: 43.4px; height: 38.2px; border-radius: 0;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="1"] .profileImg{background-color: #eeeeee;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="2"] .profileImg{background-color: #fff9e8;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="3"] .profileImg{background-color: #ffeee8;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="4"] .profileImg{background-color: #ffe8f2;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="5"] .profileImg{background-color: #f4e8ff;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="6"] .profileImg{background-color: #e8ecff;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="7"] .profileImg{background-color: #e8f3ff;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="8"] .profileImg{background-color: #e9ffe8;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="9"] .profileImg{background-color: #f3ffe8;}
-.livingPage .contentArea section .chattingArea > [data-type="user"][data-user="10"] .profileImg{background-color: #e8ffff;}
-.livingPage .contentArea section .chattingArea > [data-type="me"]{margin-left: auto; justify-content: flex-end; margin-right: 12px;}
-.livingPage .contentArea section .chattingArea > [data-type="me"] .profileImg{display: none;}
-.livingPage .contentArea section .chattingArea > [data-type="me"] .messageArea > p{display: none;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea{position: relative;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea > p{font-size: 13px; font-weight: 500; line-height: 19px; margin-bottom: 8px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea > p span{color: #929292;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea :is(.textBox , .imgBox div , .videoBox , .fileBox , .linkBox){border-radius: 10px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox{font-size: 15px; line-height: 22px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox{ padding: 12px 15px; box-sizing: border-box; position: relative; }
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type]{color: white;}
+.livingPage .contentArea section .chattingArea > div > [data-type]{display: flex; align-items: flex-start; max-width: 60%;}
+.livingPage .contentArea section .chattingArea > div > div:not(:last-of-type){margin-bottom: 20px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .profileImg{position: relative; width: 53px; height: 53px; margin-right: 9px; border-radius: 20px; line-height: 0;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .profileImg img{flex-shrink: 0;}
+.livingPage .contentArea section .chattingArea > div > [data-type|="manager"] .profileImg::after{content: ''; position: absolute; right: -2px; bottom: -3px; width: 22px; height: 22px; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > div > [data-type|="manager"] .profileImg img{width: 53px; height: 53px; border-radius: 20px; }
+.livingPage .contentArea section .chattingArea > div > [data-type="manager-best"] .profileImg::after{background-image: url('../images/chatting-best.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type="manager-expert"] .profileImg::after{background-image: url('../images/chatting-expert.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"] .profileImg{display: flex; justify-content: center; align-items: flex-end; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"] .profileImg img{width: 43.4px; height: 38.2px; border-radius: 0;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="1"] .profileImg{background-color: #eeeeee;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="2"] .profileImg{background-color: #fff9e8;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="3"] .profileImg{background-color: #ffeee8;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="4"] .profileImg{background-color: #ffe8f2;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="5"] .profileImg{background-color: #f4e8ff;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="6"] .profileImg{background-color: #e8ecff;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="7"] .profileImg{background-color: #e8f3ff;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="8"] .profileImg{background-color: #e9ffe8;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="9"] .profileImg{background-color: #f3ffe8;}
+.livingPage .contentArea section .chattingArea > div > [data-type="user"][data-user="10"] .profileImg{background-color: #e8ffff;}
+.livingPage .contentArea section .chattingArea > div > [data-type="me"]{margin-left: auto; justify-content: flex-end; margin-right: 12px;}
+.livingPage .contentArea section .chattingArea > div > [data-type="me"] .profileImg{display: none;}
+.livingPage .contentArea section .chattingArea > div > [data-type="me"] .messageArea > p{display: none;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea{position: relative;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea > p{font-size: 13px; font-weight: 500; line-height: 19px; margin-bottom: 8px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea > p span{color: #929292;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea :is(.textBox , .imgBox div , .videoBox , .fileBox , .linkBox){border-radius: 10px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox{font-size: 15px; line-height: 22px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox{ padding: 12px 15px; box-sizing: border-box; position: relative; }
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type]{color: white;}
 /* 배경 */
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:not([data-type]){background-color: white;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="sell"]{background-color: #ee2222;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="buy"]{background-color: #2c75d4;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="alarm"]{background-color: #ffa129;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="secret"]{background-color: #929292;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:not([data-type]){background-color: white;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="sell"]{background-color: #ee2222;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="buy"]{background-color: #2c75d4;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="alarm"]{background-color: #ffa129;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="secret"]{background-color: #929292;}
 /* 말풍선 */
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:first-of-type::after{content: ''; position: absolute;  top: -8px; width: 30px; height: 32px; background-repeat: repeat; background-position: center; background-size: cover;}
-.livingPage .contentArea section .chattingArea > div:not([data-type="me"]) .messageArea .textBox:first-of-type::after{left: -12px;}
-.livingPage .contentArea section .chattingArea > div[data-type="me"] .messageArea .textBox:first-of-type::after{right: -12px; transform: rotateY(180deg);}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:not([data-type]){background-image: url('../images/chatting-message-normal.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="sell"]::after{background-image: url('../images/chatting-message-sell.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="buy"]::after{background-image: url('../images/chatting-message-buy.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="alarm"]::after{background-image: url('../images/chatting-message-alarm.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="secret"]::after{background-image: url('../images/chatting-message-secret.png')}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:first-of-type::after{content: ''; position: absolute;  top: -8px; width: 30px; height: 32px; background-repeat: repeat; background-position: center; background-size: cover;}
+.livingPage .contentArea section .chattingArea > div > div:not([data-type="me"]) .messageArea .textBox:first-of-type::after{left: -12px;}
+.livingPage .contentArea section .chattingArea > div > div[data-type="me"] .messageArea .textBox:first-of-type::after{right: -12px; transform: rotateY(180deg);}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:not([data-type]){background-image: url('../images/chatting-message-normal.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="sell"]::after{background-image: url('../images/chatting-message-sell.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="buy"]::after{background-image: url('../images/chatting-message-buy.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="alarm"]::after{background-image: url('../images/chatting-message-alarm.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="secret"]::after{background-image: url('../images/chatting-message-secret.png')}
 /*  */
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"] , [data-type="alarm"]){display: flex; align-items: center; }
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"] , [data-type="alarm"])::before{flex-shrink: 0;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"])::before{width: 41px; font-size: 16px; text-align: center; margin-right: 10px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div{font-size: 15px; line-height: 22px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div strong{display: block; font-weight: 700;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div p::before{content: '▶ ';}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="sell"]::before{content: '매수';}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="buy"]::before{content: '매도';}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="alarm"]::before{content: ''; width: 17px; height: 16px; background: url('../images/icon-alarm.png') no-repeat center / cover; margin-right: 15px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox[data-type="secret"]::before{content: 'To 'attr(data-to); display: block; font-size: 13px; color: rgba(255, 255, 255, 0.5); font-weight: 500; display: block; padding-left: 22px; background: url('../images/icon-secret.png') no-repeat left center / 14px; margin-bottom: 4px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox:not(:last-of-type){margin-bottom: 8px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .textBox{position: relative;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea time{font-size: 11px; color: #929292;}
-.livingPage .contentArea section .chattingArea > [data-type]:not([data-type="me"]) .messageArea time{position: absolute; right: 0; bottom: 0; transform: translateX(calc(100% + 10px)); font-size: 11px; color: #929292;}
-.livingPage .contentArea section .chattingArea > [data-type="me"] .messageArea time{position: absolute; left: 0; bottom: 0; transform: translateX(calc(-100% - 10px)); font-size: 11px; color: #929292;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea > .messageArea > time{position: absolute; right: 0; bottom: 0;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea:has(.imgBox , .videoBox){flex: 1;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox{display: flex; flex-wrap: wrap; gap: 2px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div{flex: 1; min-width: calc((100% - 4px) / 3); max-height: 197px; line-height: 0; border: 1px solid black; box-sizing: border-box; overflow: hidden;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div:only-of-type{max-height: 341px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .imgBox div img{width: 100%;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox{height: 314px; border: 1px solid black; overflow: hidden; position: relative;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .videoBox :is(video , iframe){width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox{min-height: 142px; display: flex; padding: 12px 16px; background-color: white; box-sizing: border-box;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox::after{content: ''; width: 84px; height: 84px; border-radius: 10px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center; background-size: 45px; flex-shrink: 0; margin-left: 18px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="img"]::after{background-image: url('../images/file-img.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="document"]::after{background-image: url('../images/file-document.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="mp"]::after{background-image: url('../images/file-mp.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox[data-type="compression"]::after{background-image: url('../images/file-compression.png');}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div{display: flex; flex-direction: column;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div p{font-size: 16px; font-weight: 700; line-height: 22px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span:first-of-type{margin-top: 4px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span{display: block; font-size: 12px; color: #929292; line-height: 18px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span.validity::before{content: '유효기간 ~ ';}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div span.volume::before{content: '용량 : ';}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea{margin-top: auto; display: flex;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button{font-size: 14px; line-height: 20px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .fileBox > div .btnArea button:not(:last-child){margin-right: 14px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column; overflow: hidden;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .thumbnail{height: 186px; position: relative; overflow: hidden;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .thumbnail img{width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea{flex: 1; padding: 16px; display: flex; flex-direction: column;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea > *{line-height: 1;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea strong{font-size: 15px; font-weight: 500;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea span{font-size: 13px; color: #929292; margin-top: 6px;}
-.livingPage .contentArea section .chattingArea > [data-type] .messageArea .linkBox .textArea a{margin-top: auto; width: 100%; font-size: 12px; color: #2c75d4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"] , [data-type="alarm"]){display: flex; align-items: center; }
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"] , [data-type="alarm"])::before{flex-shrink: 0;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"])::before{width: 41px; font-size: 16px; text-align: center; margin-right: 10px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div{font-size: 15px; line-height: 22px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div strong{display: block; font-weight: 700;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:is([data-type="sell"] , [data-type="buy"]) div p::before{content: '▶ ';}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="sell"]::before{content: '매수';}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="buy"]::before{content: '매도';}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="alarm"]::before{content: ''; width: 17px; height: 16px; background: url('../images/icon-alarm.png') no-repeat center / cover; margin-right: 15px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox[data-type="secret"]::before{content: 'To 'attr(data-to); display: block; font-size: 13px; color: rgba(255, 255, 255, 0.5); font-weight: 500; display: block; padding-left: 22px; background: url('../images/icon-secret.png') no-repeat left center / 14px; margin-bottom: 4px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox:not(:last-of-type){margin-bottom: 8px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .textBox{position: relative;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea time{font-size: 11px; color: #929292;}
+.livingPage .contentArea section .chattingArea > div > [data-type]:not([data-type="me"]) .messageArea time{position: absolute; right: 0; bottom: 0; transform: translateX(calc(100% + 10px)); font-size: 11px; color: #929292;}
+.livingPage .contentArea section .chattingArea > div > [data-type="me"] .messageArea time{position: absolute; left: 0; bottom: 0; transform: translateX(calc(-100% - 10px)); font-size: 11px; color: #929292;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea > .messageArea > time{position: absolute; right: 0; bottom: 0;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea:has(.imgBox , .videoBox){flex: 1;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .imgBox{display: flex; flex-wrap: wrap; gap: 2px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .imgBox div{flex: 1; min-width: calc((100% - 4px) / 3); max-height: 197px; line-height: 0; border: 1px solid black; box-sizing: border-box; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .imgBox div:only-of-type{max-height: 341px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .imgBox div img{width: 100%;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .videoBox{height: 314px; border: 1px solid black; overflow: hidden; position: relative;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .videoBox :is(video , iframe){width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox{min-height: 142px; display: flex; padding: 12px 16px; background-color: white; box-sizing: border-box;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox::after{content: ''; width: 84px; height: 84px; border-radius: 10px; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center; background-size: 45px; flex-shrink: 0; margin-left: 18px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox[data-type="img"]::after{background-image: url('../images/file-img.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox[data-type="document"]::after{background-image: url('../images/file-document.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox[data-type="mp"]::after{background-image: url('../images/file-mp.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox[data-type="compression"]::after{background-image: url('../images/file-compression.png');}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div{display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div p{font-size: 16px; font-weight: 700; line-height: 22px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div span:first-of-type{margin-top: 4px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div span{display: block; font-size: 12px; color: #929292; line-height: 18px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div span.validity::before{content: '유효기간 ~ ';}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div span.volume::before{content: '용량 : ';}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div .btnArea{margin-top: auto; display: flex;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div .btnArea button{font-size: 14px; line-height: 20px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div .btnArea button:hover{font-size: 14px; font-weight: 700;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .fileBox > div .btnArea button:not(:last-child){margin-right: 14px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox{width: 365px; min-height: 286px; background-color: white; display: flex; flex-direction: column; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .thumbnail{height: 186px; position: relative; overflow: hidden;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .thumbnail img{width: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%);}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .textArea{flex: 1; padding: 16px; display: flex; flex-direction: column;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .textArea > *{line-height: 1;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .textArea strong{font-size: 15px; font-weight: 500;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .textArea span{font-size: 13px; color: #929292; margin-top: 6px;}
+.livingPage .contentArea section .chattingArea > div > [data-type] .messageArea .linkBox .textArea a{margin-top: auto; width: 100%; font-size: 12px; color: #2c75d4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 /* 리빙 채팅 돈풍선 */
 .livingPage .contentArea section .chattingArea .moneyArea{background-color: white; padding: 20px 20px 20px 260px; border-radius: 10px; background-repeat: no-repeat; background-position: left 20px center; background-size: 220px;}
