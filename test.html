@@ -4,12 +4,149 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>자바 스크립트 다이나믹 캘린더 | CSS Glassmorphism Calendar UI 디자인</title>
+    <link rel="stylesheet" href="css/dycalendar.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            dycalendar.draw({
+                target: '#dycalendar',
+                type: 'month',
+                // dayformat: 'full',
+                // monthformat:'full',
+                // highlighttargetdate:true,
+                prevnextbutton:'show'
+            })
+
+            $('#dycalendar td').click(function(){
+                $(this).addClass('active')
+            })
+
+            console.log($('.dycalendar-span-month-year').html());
+        })
+    </script>
     <style>
-        textarea{min-height: 50px; overflow: visible;}
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+        section{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #161623;
+            overflow: hidden;
+        }
+        section::before{
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(#ffc107,#e91e63);
+            border-radius: 50%;
+            transform: translate(-250px,-120px);
+        }
+        section::after{
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(#2196f3,#31ff38);
+            border-radius: 50%;
+            transform: translate(250px,150px);
+        }
+        .box{
+            position: relative;
+            z-index: 1000;
+        }
+        .container{
+            position: relative;
+            width: 400px;
+            min-height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(25px);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #dycalendar{
+            width: 100%;
+            padding: 20px;
+        }
+        #dycalendar table{
+            width: 100%;
+            margin-top: 40px;
+            border-spacing: 5px;
+        }
+        #dycalendar table tr:nth-child(1) td{
+            background: #fff;
+            color: #111;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        #dycalendar table td{
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #dycalendar table td:hover{
+            background: #fff;
+            color: #111 !important;
+        }
+        .dycalendar-month-container .dycalendar-target-date, 
+        .dycalendar-month-container .dycalendar-today-date{
+            background: #fff;
+            color: #111 !important;
+        }
+        .dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn{
+            background: #fff;
+            color: #111;
+            width: 44px;
+            height: 38px;
+            left: 4px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn{
+            background: #fff;
+            color: #111;
+            width: 44px;
+            height: 38px;
+            right: 4px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .dycalendar-month-container .dycalendar-span-month-year{
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+    </style>
+    <style>
+        #dycalendar table td.active{background-color: white; color: black;}
     </style>
 </head>
 <body>
-    <textarea></textarea>
+    <section>
+        <div class="box">
+            <div class="container">
+                <div id="dycalendar"></div>
+            </div>
+        </div>
+    </section>
+    <script src="js/dycalendar.js"></script>
+   
 </body>
 </html>
