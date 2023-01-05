@@ -8,7 +8,7 @@
     <title>알림 설정 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../css/import.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 <body>
     <div class="contentPage settingPage">
@@ -65,7 +65,7 @@
                     <legend>알림설정</legend>
                     <ul>
                         <li>
-                            <input type="checkbox" id="allSet" class="case01" checked>
+                            <input type="checkbox" id="allSet" class="case01">
                             <label for="allSet">
                                 전체 설정
                                 <span>
@@ -73,7 +73,7 @@
                             </label>
                         </li>
                         <li>
-                            <input type="checkbox" id="readingNotice" class="case01">
+                            <input type="checkbox" id="readingNotice" class="case01" checked>
                             <label for="readingNotice">
                                 리딩방 알림
                                 <span>
@@ -106,11 +106,11 @@
                         </li>
                     </ul>
                 </fieldset>
-                <input type="submit" value="적용" class="submit160 active">
+                <input type="submit" value="적용" class="submit160" id="alram">
                 <div class="confirmPopup">
                     <div class="borderRadius30">
                         <p>수정 되었습니다.</p>
-                        <button class="submit160 active">확인</button>
+                        <button class="submit160 active" data-popup="close">확인</button>
                     </div>
                 </div>
             </form>

@@ -21,6 +21,9 @@ $(document).ready(function(){
 
     // 이름 닉네임 버튼
     !!$('[data-input="nickName"] , [data-input="name"]').length && nameNickname();
+
+    // 셋팅 알람
+    $('.alramPage').length && alremEvent();
 })
 
 function mainSlider(){
@@ -104,6 +107,7 @@ function inputValidation(selector){
     return boolean;
 }
 
+// input 입력 했을 때
 function inputInput(){
     $('[data-input]').on('input' , function(){
         const boolean = inputValidation($(this))
@@ -117,13 +121,13 @@ function inputInput(){
     })
 
     // 동의
-    $('.agreeArea').length && inputCheckbox();
+    $('[id*="all"]').length && inputCheckbox();
 }
 
 // 동의
 function inputCheckbox(){
     // 체크 박스  전체 동의
-    $('#allAgree').click(function(){
+    $('[id*="all"]').on('input',function(){
         if($(this).is(':checked')){
             $('input[type="checkbox"]').prop('checked', true)
         }else{
@@ -133,15 +137,16 @@ function inputCheckbox(){
     })
 
     // 체크 박스 개별
-    $('[type="checkbox"]').not('#allAgree').on('input',function(){
-        let agreeCheck = $('[type="checkbox"]').not('#allAgree').get().every((c)=>{
+    $('[type="checkbox"]').not('[id*="all"]').on('input',function(){
+        let agreeCheck = $('[type="checkbox"]').not('[id*="all"]').get().every((c)=>{
             return $(c).is(':checked');
         });
         if(agreeCheck){
-            $('#allAgree').prop('checked', true)
+            $('[id*="all"]').prop('checked', true)
         }else{
-            $('#allAgree').prop('checked', false)
+            $('[id*="all"]').prop('checked', false)
         }
+        submitActive();
     })
 }
 
@@ -156,8 +161,8 @@ function submitActive(){
     
     // 에러메세지가 있는지 없는지 확인
     let errorBoolean = !errorTextConfirm();
-
-
+    
+    
     // 인증이 완료 되었는 지 확인
     if(!!$('[data-boolean]').length){
         let confirmChack = $('[data-boolean]').get().every(function(b){
@@ -166,6 +171,16 @@ function submitActive(){
         if(!confirmChack){
             return
         }
+    } 
+
+    // 알람 페이지 초기값 변경값 비교
+    if(!!$('[data-checked]').length){
+        let alramChack = $('[data-checked]').get().every(function(c){
+            return JSON.parse($(c).attr('data-checked')) === $(c).is(':checked');
+        })
+        alramChack ? 
+            inputBoolean = false : 
+            inputBoolean = true;
     }
 
     // input 값 , 에러메세지가 둘 다 true 면 submit 버튼에 active 클래스 추가
@@ -242,7 +257,10 @@ function submitClick(){
         inputValue.map((v)=>{
             resultValue[v.name] = v.value
         })
+        e.preventDefault();
+        console.log(resultValue);
         
+        // 로그인 관련 
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn' , e);
         $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange' , e);
 
@@ -253,11 +271,13 @@ function submitClick(){
         $(this).attr('id') === 'passwordChange' && passwordChange(e);
         $(this).attr('id') === 'firstSingUp' && firstSingUp(e);
         $(this).attr('id') === 'guestSingUp' && guestSingUp(e);
-
+        
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
         inputValue.find((v)=>{
             return v.errorSelector.hasClass('active') && v.selector.focus();
         })
+        
+        $(this).attr('id') === 'alram' && alram(e);
 
     })
 
@@ -386,6 +406,22 @@ function submitClick(){
         e.preventDefault();
         location.href = '../../index.html'
     }
+
+    // 셋팅 알림
+    function alram(e){
+        console.log('셋팅 알람');
+        // resultValue : 최종 값
+        // resultValue.allSet : 전체 설정 ( boolean )
+        // resultValue.readingNotice : 리빙방 알림 ( boolean )
+        // resultValue.readingSignals : 리딩방 매수 / 매도 신호 ( boolean )
+        // resultValue.receivePush : 푸시 수신 ( boolean )
+        // resultValue.receiveText : 문자 수신 ( boolean )
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+
+        $('.confirmPopup').fadeIn().css('display','flex');
+    }
 }
 
 // 핸드폰 번호 인증번호 전송
@@ -498,6 +534,7 @@ function nameNickname(){
     })
 }
 
+// 팝업 클릭
 function popupClick(){
     // body 클릭시 서브 팝업 닫기
     $('body').click(function(){
@@ -517,11 +554,11 @@ function popupClick(){
         attrName === 'share' && $(`.popup-${attrName} .errorText`).removeClass('active')
     })
     // 팝업 검은 배경
-    $('.popupArea').click(function(){
+    $('.popupArea , .confirmPopup').click(function(){
         popupClose($(this))
     })
     // 팝업 내용 영역
-    $('.popupArea > div').click(function(e){
+    $(':is(.popupArea , .confirmPopup) > div').click(function(e){
         e.stopPropagation();
     })
     $('[class|="popup"]').click(function(e){
@@ -529,7 +566,7 @@ function popupClick(){
     })
     // 팝업 X 버튼
     $('[data-popup="close"]').click(function(){
-        popupClose($(this).closest('[class*="popup"]'))
+        popupClose($(this).closest('[class*="popup"] , .confirmPopup'))
     })
    
 
@@ -538,8 +575,7 @@ function popupClick(){
     }
 }
 
-
-
+// 리빙방 전용 이벤트
 function livingEvent(){
 
     // 채팅 스크롤 최하단으로 내리기
@@ -587,4 +623,11 @@ function livingEvent(){
 		document.execCommand('copy');
 		$temp.remove();
 	}
+}
+
+// 셋팅 알람 전용 이벤트
+function alremEvent(){
+    $('input[type="checkbox"]').each(function(){
+        $(this).is(':checked') ? $(this).attr('data-checked' , 'true') : $(this).attr('data-checked' , 'false');
+    })
 }
