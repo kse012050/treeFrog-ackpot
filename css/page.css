@@ -324,7 +324,7 @@
 .settingPage .historyPage section > div:not(:last-of-type){margin-bottom: 30px;}
 .settingPage .historyPage section .moneyArea > div{display: flex; justify-content: space-between; align-items: flex-end;}
 .settingPage .historyPage section .moneyArea > div mark{font-size: 36px; font-weight: 700; display: flex; align-items: center;}
-.settingPage .historyPage section .moneyArea > div mark::after{content: '개'; font-size: 26px; font-weight: 400; margin-top: 5px;}
+.settingPage .historyPage section .moneyArea > div mark::after{content: '원'; font-size: 26px; font-weight: 400; margin-top: 5px;}
 /* 돈풍선 충전 / 내역 - 게시판 공통 */
 /* 기간 */
 .settingPage .historyPage section > div:not(.moneyArea){position: relative;}

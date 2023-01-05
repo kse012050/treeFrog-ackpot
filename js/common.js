@@ -22,8 +22,12 @@ $(document).ready(function(){
     // 이름 닉네임 버튼
     !!$('[data-input="nickName"] , [data-input="name"]').length && nameNickname();
 
+    // 셋팅 프로필
+    $('.profilePage').length && profileEvent();
     // 셋팅 알람
     $('.alramPage').length && alremEvent();
+    // 셋팅 돈풍선 충전 내역
+    $('.historyPage').length && moneyHistory()
 })
 
 function mainSlider(){
@@ -104,6 +108,8 @@ function inputValidation(selector){
             boolean = true;
         }
     };
+
+    attrName === 'charge' && (boolean = $(selector).val() !== '');
     return boolean;
 }
 
@@ -113,7 +119,6 @@ function inputInput(){
         const boolean = inputValidation($(this))
         errorMessageActive($(this) , boolean);
         submitActive();
-
         if(!!$(this).attr('data-boolean')){
             let buttonSelector = $(this).parent().siblings('button');
             boolean ? buttonSelector.addClass('active') : buttonSelector.removeClass('active');
@@ -158,7 +163,7 @@ function submitActive(){
         let boolean = inputValidation(a)
         return boolean === true;
     })
-    
+
     // 에러메세지가 있는지 없는지 확인
     let errorBoolean = !errorTextConfirm();
     
@@ -247,7 +252,7 @@ function submitClick(){
         })
 
         // 인풋에서 받아 온 필수가 아닌 값
-        $(this).closest('form').find('input').not('[required]').not('[type="submit"]').each(function(i){
+        $(this).closest('form').find('input').not('[required]').not('[type="submit"]').not('[type="radio"]').each(function(i){
             if(!$(this).attr(inputAttr)) return;
             inputValue.push( {
                 selector : $(this),
@@ -290,8 +295,9 @@ function submitClick(){
         //     return v.errorSelector.hasClass('active') && v.selector.focus();
         // })
         
-        $(this).attr('id') === 'alram' && settingAlram(e);
         $(this).attr('id') === 'profile' && settingProfile(e);
+        $(this).attr('id') === 'alram' && settingAlram(e);
+        $(this).attr('id') === 'chargeSubmit' && settingHistory_charge(e);
 
     })
 
@@ -421,6 +427,19 @@ function submitClick(){
         location.href = '../../index.html'
     }
 
+    // 셋팅 프로필
+    function settingProfile(e){
+        console.log('셋팅 프로필');
+        // resultValue : 최종 값
+        // resultValue.userNickName : 닉네임
+        // resultValue.userMessage : 메세지
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+
+        $('.confirmPopup').fadeIn().css('display' , 'flex')
+    }
+
     // 셋팅 알림
     function settingAlram(e){
         console.log('셋팅 알람');
@@ -435,19 +454,18 @@ function submitClick(){
         e.preventDefault();
 
         $('.confirmPopup').fadeIn().css('display','flex');
+        $('input[type="submit"]').removeClass('active');
+        alremEvent();
     }
 
-    // 셋팅 프로필
-    function settingProfile(e){
-        console.log('셋팅 알람');
+    // 셋팅 돈풍선 충전 내역 - 충전
+    function settingHistory_charge(e){
+        console.log('셋팅 돈풍선 충전 내역 - 충전');
         // resultValue : 최종 값
-        // resultValue.userNickName : 닉네임
-        // resultValue.userMessage : 메세지
+        // resultValue.charge : 충전금액 ( string )
+        // resultValue.paymentAgree : 결제 및 약관 동의 ( boolean )
 
-        // 폼으로 데이터 전송 시 삭제
-        e.preventDefault();
-
-        $('.confirmPopup').fadeIn().css('display' , 'flex')
+        $('.popupArea').fadeOut();
     }
 }
 
@@ -581,15 +599,11 @@ function popupClick(){
             popupSelector = $(`.popup-${attrName}`);
 
         popupSelector.fadeIn().css('display','flex').addClass('active')
-        popupSelector.find('input ,textarea').not('[type="submit"]').val('');
-        popupSelector.find('[type="submit"]').removeClass('active');
 
         attrName === 'share' && $(`.popup-${attrName} .errorText`).removeClass('active')
-
-
     })
     // 팝업 검은 배경
-    $('.popupArea , .confirmPopup').mousedown(function(){
+    $('.popupArea').mousedown(function(){
         popupClose($(this))
     })
     // 팝업 내용 영역
@@ -601,16 +615,24 @@ function popupClick(){
     })
     // 팝업 X 버튼
     $('[data-popup="close"]').click(function(){
-        popupClose($('[class*="popup"] , .confirmPopup'))
-        if($(this).closest('.confirmPopup').length){
-            $('input[type="submit"]').removeClass('active');
-            alremEvent();
-        }
+        popupClose($('[class*="popup"]'))
     })
-   
+
+    // 컨펌 팝업 배경 , 확인 버튼
+    $('.confirmPopup , [data-confirm="close"]').mousedown(function(){
+        confirmClose()
+    })
+    
 
     function popupClose(selector){ 
         selector.stop().fadeOut();
+    }
+
+    function confirmClose(){
+        popupClose($('.confirmPopup'))
+        if($('.profilePage').length){
+            popupClose($('[class*="popup"]'));
+        }
     }
 }
 
@@ -664,9 +686,51 @@ function livingEvent(){
 	}
 }
 
+// 셋팅 프로필 전용 이벤트
+function profileEvent(){
+    $('.popupArea , .confirmPopup , [data-confirm="close"]').mousedown(function(){
+        $('form').find('input[type="text"] ,textarea').val('');
+        $('form').find('[type="submit"]').removeClass('active');
+    })
+}
+
 // 셋팅 알람 전용 이벤트
 function alremEvent(){
     $('input[type="checkbox"]').each(function(){
         $(this).is(':checked') ? $(this).attr('data-checked' , 'true') : $(this).attr('data-checked' , 'false');
+    })
+}
+
+// 셋팅 돈풍선 충전 내역
+function moneyHistory(){
+    $('input[name="chargeCount"]').on('input',function(){
+        if(!$(this).val()){
+            paymentPrice('')
+            $('input[type="number"]').prop('readonly' , false).val('').focus();
+        }else{
+            $('input[type="number"]').prop('readonly' , true).val($(this).val())
+            paymentPrice($(this).val());
+        }
+
+        submitActive();
+    })
+
+    $('input[type="number"]').on('input',function(){
+        paymentPrice($(this).val())
+    })
+
+    function paymentPrice(price){
+        price = String(Number(price) * 1000);
+        $('#paymentPrice').html(price.replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    }
+
+    $('#chargeSubmit').click(function(){
+        !$(this).hasClass('active') && $('.confirmPopup').fadeIn().css('display','flex')
+    })
+
+    $('[data-popup="next"]').click(function(){
+        $('.popupArea form :is(input[type="radio"] , input[type="checkbox"])').prop('checked' , false)
+        $('.popupArea form input[type="number"]').val('');
+        $('#paymentPrice').html('');
     })
 }

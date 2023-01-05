@@ -8,7 +8,7 @@
     <title>돈풍선 충전 / 내역 설정 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../css/import.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 <body>
     <div class="contentPage settingPage">
@@ -66,7 +66,7 @@
                     <h4>대박이 돈풍선</h4>
                     <div>
                         <mark>999,999,999,999</mark>
-                        <button class="submit140 active">충전</button>
+                        <button class="submit140 active" data-popup="next">충전</button>
                         <div class="popupArea">
                             <div>
                                 <strong>돈풍선 충전하기</strong>
@@ -76,55 +76,55 @@
                                             <li>
                                                 <ol>
                                                     <li>
-                                                        <input type="radio" name="chargeCount" id="pieces1000" checked>
+                                                        <input type="radio" name="chargeCount" id="pieces1000" value="1000">
                                                         <label for="pieces1000">1,000</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="chargeCount" id="pieces500">
+                                                        <input type="radio" name="chargeCount" id="pieces500" value="500">
                                                         <label for="pieces500">500</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="chargeCount" id="pieces100">
+                                                        <input type="radio" name="chargeCount" id="pieces100" value="100">
                                                         <label for="pieces100">100</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="chargeCount" id="pieces50">
+                                                        <input type="radio" name="chargeCount" id="pieces50" value="50">
                                                         <label for="pieces50">50</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="chargeCount" id="pieces10">
+                                                        <input type="radio" name="chargeCount" id="pieces10" value="10">
                                                         <label for="pieces10">10</label>
                                                     </li>
                                                     <li>
-                                                        <input type="radio" name="chargeCount" id="pieces">
+                                                        <input type="radio" name="chargeCount" id="pieces" value="">
                                                         <label for="pieces">직접입력</label>
                                                     </li>
                                                 </ol>
                                             </li>
                                             <li>
-                                                <label for="">충전개수</label>
-                                                <input type="number" placeholder="돈풍선 개수를 입력해주세요.">
+                                                <label for="charge">충전개수</label>
+                                                <input type="number" placeholder="돈풍선 개수를 입력해주세요." id="charge" readonly required data-input="charge">
                                             </li>
                                             <li>
                                                 <p>결제금액</p>
-                                                <mark>1,000,000</mark>
+                                                <mark id="paymentPrice"></mark>
                                             </li>
                                             <li>
-                                                <input type="checkbox" id="paymentAgree">
+                                                <input type="checkbox" id="paymentAgree" required data-input="checkbox">
                                                 <label for="paymentAgree">결제 및 약관에 동의합니다.</label>
                                                 <button>자세히 보기</button>
                                             </li>
                                         </ul>
                                     </fieldset>
-                                    <input type="submit" value="충전" class="submit160 active">
+                                    <input type="submit" value="충전" class="submit160" id="chargeSubmit">
                                 </form>
-                                <button>팝업 닫기</button>
+                                <button data-popup="close">팝업 닫기</button>
                             </div>
                         </div>
                         <div class="confirmPopup">
                             <div class="borderRadius30">
                                 <p>다시 확인해주세요.</p>
-                                <button class="submit160 active">확인</button>
+                                <button class="submit160 active" data-confirm="close">확인</button>
                             </div>
                         </div>
                     </div>
