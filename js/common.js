@@ -118,7 +118,7 @@ function inputInput(){
     $('[data-input]').on('input' , function(){
         const boolean = inputValidation($(this))
         errorMessageActive($(this) , boolean);
-        submitActive();
+        submitActive($(this).closest('form'));
         if(!!$(this).attr('data-boolean')){
             let buttonSelector = $(this).parent().siblings('button');
             boolean ? buttonSelector.addClass('active') : buttonSelector.removeClass('active');
@@ -138,7 +138,7 @@ function inputCheckbox(){
         }else{
             $('input[type="checkbox"]').prop('checked', false)
         }
-        submitActive();
+        submitActive($(this).closest('form'));
     })
 
     // 체크 박스 개별
@@ -151,25 +151,25 @@ function inputCheckbox(){
         }else{
             $('[id*="all"]').prop('checked', false)
         }
-        submitActive();
+        submitActive($(this).closest('form'));
     })
 }
 
 
 // 유효성 검사 통과하면 submit 색상
-function submitActive(){
+function submitActive(selector){
     // 필수항목 입력 값 유효성 검사
-    let inputBoolean = $('[required]').get().every((a)=>{
+    let inputBoolean = selector.find('[required]').get().every((a)=>{
         let boolean = inputValidation(a)
         return boolean === true;
     })
-
+    console.log(inputBoolean);
     // 에러메세지가 있는지 없는지 확인
     let errorBoolean = !errorTextConfirm();
     
     
     // 인증이 완료 되었는 지 확인
-    if(!!$('[data-boolean]').length){
+    if(!!selector.find('[data-boolean]').length){
         let confirmChack = $('[data-boolean]').get().every(function(b){
             return JSON.parse($(b).attr('data-boolean'));
         })
@@ -179,8 +179,8 @@ function submitActive(){
     } 
 
     // 알람 페이지 초기값 변경값 비교
-    if(!!$('[data-checked]').length){
-        let alramChack = $('[data-checked]').get().every(function(c){
+    if(!!selector.find('[data-checked]').length){
+        let alramChack = selector.find('[data-checked]').get().every(function(c){
             return JSON.parse($(c).attr('data-checked')) === $(c).is(':checked');
         })
         alramChack ? 
@@ -190,9 +190,9 @@ function submitActive(){
 
     // input 값 , 에러메세지가 둘 다 true 면 submit 버튼에 active 클래스 추가
     if(inputBoolean && !errorBoolean){
-        $('input[type="submit"]').addClass('active')
+        selector.find('input[type="submit"]').addClass('active')
     }else{
-        $('input[type="submit"]').removeClass('active');
+        selector.find('input[type="submit"]').removeClass('active');
     }
 }
 
@@ -546,7 +546,7 @@ function mobileConfirm(){
             confirmSeletor.focus();
             erroeMessageSelector.addClass('active');
         }
-        submitActive();
+        submitActive($(this).closest('form'));
     })
 }
 
@@ -559,7 +559,7 @@ function nameNickname(){
         if(boolean){
             nameSelector.attr('data-boolean' , 'true');
             $(this).removeClass('active');
-            submitActive();
+            submitActive($(this).closest('form'));
         }else{
             nameSelector.focus();
         }
@@ -572,7 +572,7 @@ function nameNickname(){
         if(boolean && doubleCheck){
             nickNameSelector.attr('data-boolean' , 'true');
             $(this).removeClass('active');
-            submitActive();
+            submitActive($(this).closest('form'));
         }else{
             nickNameSelector.focus();
         }
@@ -712,7 +712,7 @@ function moneyHistory(){
             paymentPrice($(this).val());
         }
 
-        submitActive();
+        submitActive($(this).closest('form'));
     })
 
     $('input[type="number"]').on('input',function(){
@@ -731,6 +731,7 @@ function moneyHistory(){
     $('[data-popup="next"]').click(function(){
         $('.popupArea form :is(input[type="radio"] , input[type="checkbox"])').prop('checked' , false)
         $('.popupArea form input[type="number"]').val('');
+        $('.popupArea form input[type="submit"]').removeClass('active');
         $('#paymentPrice').html('');
     })
 }
