@@ -499,7 +499,6 @@ function submitClick(){
         //                      reason03 다른 서버도 체험해보고 싶어서
         //                      reason04 기타
 
-        $('.popupArea').fadeOut();
 
          // 폼으로 데이터 전송 시 삭제
          e.preventDefault();
