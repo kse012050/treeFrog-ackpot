@@ -92,8 +92,10 @@ function inputValidation(selector){
     attrName === 'name' && (boolean = /^[가-힣]{2,4}$/.test($(selector).val()));
     // 닉네임 중복 확인
     if(attrName === 'nickName') {
-        // boolean   false 중복O ,  true 중복X
-        if($(selector).val() === '테스트' || $(selector).val() === ''){
+        let nickNameCheck = $(selector).val() === '테스트';
+        
+        // nickNameCheck true 중복X , false 중복O
+        if(nickNameCheck || $(selector).val() === ''){
             boolean = false;
         }else{
             boolean = true;
@@ -143,10 +145,6 @@ function inputCheckbox(){
     })
 }
 
-function errorMessageActive(selector , boolean){
-    const errorSeletor = selector.parent().siblings('.errorText');
-    boolean ? errorSeletor.removeClass('active') : errorSeletor.addClass('active');
-}
 
 // 유효성 검사 통과하면 submit 색상
 function submitActive(){
@@ -162,7 +160,7 @@ function submitActive(){
 
     // 인증이 완료 되었는 지 확인
     if(!!$('[data-boolean]').length){
-        let confirmChack = $('[data-boolean]').get().find(function(b){
+        let confirmChack = $('[data-boolean]').get().every(function(b){
             return JSON.parse($(b).attr('data-boolean'));
         })
         if(!confirmChack){
@@ -176,6 +174,12 @@ function submitActive(){
     }else{
         $('input[type="submit"]').removeClass('active');
     }
+}
+
+// 에러메세지 추가 / 제거
+function errorMessageActive(selector , boolean){
+    const errorSeletor = selector.parent().siblings('.errorText');
+    boolean ? errorSeletor.removeClass('active') : errorSeletor.addClass('active');
 }
 
 // 에레메시지 확인
@@ -234,13 +238,10 @@ function submitClick(){
             // inputValue[(inputValue.length - 1) + i].value = $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked')
         })
 
-        console.log(inputValue);
         // 최종 resultValue 값
         inputValue.map((v)=>{
             resultValue[v.name] = v.value
         })
-        console.log(resultValue);
-        // e.preventDefault();
         
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn' , e);
         $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange' , e);
@@ -251,6 +252,7 @@ function submitClick(){
 
         $(this).attr('id') === 'passwordChange' && passwordChange(e);
         $(this).attr('id') === 'firstSingUp' && firstSingUp(e);
+        $(this).attr('id') === 'guestSingUp' && guestSingUp(e);
 
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
         inputValue.find((v)=>{
@@ -261,6 +263,10 @@ function submitClick(){
 
     // 로그인 , 휴대폰 전화번호 변동 페이지 submit 클릭
     function mobileAndPW(pageName , e){
+        pageName === 'signIn' && console.log('로그인');
+        pageName === 'mobileChange' && console.log('휴대폰 전화번호 변동');
+
+        console.log(resultValue);
         // resultValue : 최종 값
         // resultValue.userMobile : 전화번호
         // resultValue.userPassword : 비밀번호
@@ -317,12 +323,17 @@ function submitClick(){
         pageName === 'newMobile' && console.log('신규 휴대폰 인증');
         pageName === 'firstSignIn' && console.log('최초 회원가입 휴대폰 인증');
         pageName === 'guestSignIn' && console.log('게스트 회원가입 휴대폰 인증');
+
+        console.log(resultValue);
         // resultValue : 최종 값
         // resultValue.mobile : 전화번호
         // resultValue.confirm : 인증번호 (여기까지 왔다면 인증 완료)
 
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
+        pageName === 'newMobile' && (location.href = 'mobileChange.html');
+        pageName === 'firstSignIn' && (location.href = 'singUp.html');
+        pageName === 'guestSignIn' && (location.href = 'singUp.html');
     }
 
     // 간편 비밀번호 변경 페이지 submit클릭
@@ -346,9 +357,34 @@ function submitClick(){
         // resultValue : 최종 값
         // resultValue.userPassword : 비밀번호
         // resultValue.password-re : 비밀번호 확인
+        // resultValue.allAgree : 전체 동의 ( boolean )
+        // resultValue.termsOfService : 서비스 이용 약관 동의 ( boolean )
+        // resultValue.collectionAndUse : 개인정보 수집 및 이용 동의 ( boolean )
+        // resultValue.providedByThirdParties : 개인정보 제3자 제공 ( boolean )
+        // resultValue.marketingReception : 마케팅 정보 수신 동의 ( boolean )
 
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
+        location.href = '../../index.html'
+    }
+
+    // 게스트 회원가입 페이지
+    function guestSingUp(e){
+        console.log('게스트 회원가입');
+        // resultValue : 최종 값
+        // resultValue.userPassword : 비밀번호
+        // resultValue.password-re : 비밀번호 확인
+        // resultValue.userName : 사용자 이름 (여기까지 왔다면 확인 완료)
+        // resultValue.userNicName : 사용자 닉네임 (여기까지 왔다면 중복 확인 완료)
+        // resultValue.allAgree : 전체 동의 ( boolean )
+        // resultValue.termsOfService : 서비스 이용 약관 동의 ( boolean )
+        // resultValue.collectionAndUse : 개인정보 수집 및 이용 동의 ( boolean )
+        // resultValue.providedByThirdParties : 개인정보 제3자 제공 ( boolean )
+        // resultValue.marketingReception : 마케팅 정보 수신 동의 ( boolean )
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+        location.href = '../../index.html'
     }
 }
 
@@ -441,7 +477,8 @@ function nameNickname(){
         let boolean = inputValidation(nameSelector)
         if(boolean){
             nameSelector.attr('data-boolean' , 'true');
-            $(this).removeClass('active')
+            $(this).removeClass('active');
+            submitActive();
         }else{
             nameSelector.focus();
         }
@@ -453,7 +490,8 @@ function nameNickname(){
         let doubleCheck = true;
         if(boolean && doubleCheck){
             nickNameSelector.attr('data-boolean' , 'true');
-            $(this).removeClass('active')
+            $(this).removeClass('active');
+            submitActive();
         }else{
             nickNameSelector.focus();
         }
