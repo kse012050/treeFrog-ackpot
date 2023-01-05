@@ -245,9 +245,12 @@ function submitClick(){
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn' , e);
         $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange' , e);
 
-        $(this).attr('id') === 'mobileConfirm' && mobileConfirm();
+        $(this).attr('id') === 'newMobile' && mobileConfirm('newMobile' , e);
+        $(this).attr('id') === 'firstSignIn' && mobileConfirm('firstSignIn' , e);
+        $(this).attr('id') === 'guestSignIn' && mobileConfirm('guestSignIn' , e);
+
         $(this).attr('id') === 'passwordChange' && passwordChange(e);
-        $(this).attr('id') === 'firstSingUp' && firstSingUp();
+        $(this).attr('id') === 'firstSingUp' && firstSingUp(e);
 
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
         inputValue.find((v)=>{
@@ -309,9 +312,17 @@ function submitClick(){
         }
     }
 
-    // 신규 전화번호 인증 , 회원가입 페이지 submit 클릭
-    function mobileConfirm(){
-        console.log('신규 전화번호 인증');
+    // 신규 전화번호 인증 , 회원가입 (게스트 , 최초) 페이지 submit 클릭
+    function mobileConfirm(pageName , e){
+        pageName === 'newMobile' && console.log('신규 휴대폰 인증');
+        pageName === 'firstSignIn' && console.log('최초 회원가입 휴대폰 인증');
+        pageName === 'guestSignIn' && console.log('게스트 회원가입 휴대폰 인증');
+        // resultValue : 최종 값
+        // resultValue.mobile : 전화번호
+        // resultValue.confirm : 인증번호 (여기까지 왔다면 인증 완료)
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
     }
 
     // 간편 비밀번호 변경 페이지 submit클릭
@@ -330,16 +341,25 @@ function submitClick(){
     }
 
     // 최초 회원가입 페이지
-    function firstSingUp(){
+    function firstSingUp(e){
         console.log('최초 회원가입');
+        // resultValue : 최종 값
+        // resultValue.userPassword : 비밀번호
+        // resultValue.password-re : 비밀번호 확인
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
     }
 }
 
 // 핸드폰 번호 인증번호 전송
 function mobileConfirm(){
     $('input[data-input="mobile"]').on('input',function(){
+        inputValidation($(this)) ? 
+            $('[data-btn="sendConfirm"]').addClass('active') : 
+            $('[data-btn="sendConfirm"]').removeClass('active');
+
         if($('[data-btn="sendConfirm"]').html() === '재전송'){
-            console.log(1);
             $('[data-btn="sendConfirm"]').html('인증번호 전송');
             $('.certificationBox').removeClass('active');
             clearInterval(timer)
@@ -349,6 +369,7 @@ function mobileConfirm(){
     // 인증번호 전송 버튼 클릭
     $('[data-btn="sendConfirm"]').click(function(){
         if($('input[type="submit"]').hasClass('active')){return}
+        $(this).removeClass('active');
         let minute = 3;
         let seconds = 0;
         let time = minute + ':' + (seconds >= 10 ? seconds : '0' + seconds)
@@ -358,6 +379,9 @@ function mobileConfirm(){
             mobileSeletor.focus();
             errorMessageActive(mobileSeletor , inputValidation(mobileSeletor))
         }else{
+            // * 인증번호 보내는 코드 넣는 곳
+
+
             clearInterval(timer)
             $(this).html('재전송')
             confirmBoxSelector.addClass('active');
@@ -390,6 +414,7 @@ function mobileConfirm(){
         let erroeMessageSelector = $(this).next('.errorText');
         let confirmChack;
 
+        // * 인증번호가 맞는 지 확인하는 코드 넣는 곳
         // 인증번호가 ex> 123456 이면
         confirmChack = confirmSeletor.val() === '123456'
 
