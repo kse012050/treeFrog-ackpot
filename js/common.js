@@ -32,6 +32,8 @@ $(document).ready(function(){
     $('.paymentPage').length && paymentEvent()
     // 셋팅 전문가 추가 / 변경 신청
     $('.expertPage').length && expertEvent()
+    // 셋팅 로그인
+    $('.loginPage').length && settingLoginEvent();
 })
 
 function mainSlider(){
@@ -98,6 +100,10 @@ function inputValidation(selector){
     attrName === 'mobile' && (boolean = /^01(\d{9,9})/.test($(selector).val()));
     attrName === 'password' && (boolean = /[a-zA-Z0-9]{6,6}/.test($(selector).val()));
     attrName === 'password-re' && (boolean = $(selector).val() === $('[data-input="password"]').val());
+    if(attrName === 'oldPassword'){
+        // 셋팅 로그인 간편 비밀번호 - 기존 비밀번호
+        boolean = $(selector).val() === '123456'
+    }
     attrName === 'confirm' && (boolean = /^\d{6,6}/.test($(selector).val()));
     attrName === 'checkbox' && (boolean = $(selector).is(':checked'));
     attrName === 'name' && (boolean = /^[가-힣]{2,4}$/.test($(selector).val()));
@@ -182,7 +188,7 @@ function submitActive(selector){
         }
     } 
 
-    // 알람 페이지 초기값 변경값 비교
+    // 셋팅 알람 , 셋팅 로그인 페이지 초기값 변경값 비교
     if(!!selector.find('[data-checked]').length){
         let alramChack = selector.find('[data-checked]').get().every(function(c){
             return JSON.parse($(c).attr('data-checked')) === $(c).is(':checked');
@@ -324,6 +330,8 @@ function submitClick(){
         $(this).attr('id') === 'alram' && settingAlram(e);
         $(this).attr('id') === 'chargeSubmit' && settingHistory_charge(e);
         $(this).attr('id') === 'expert' && settingExpert(e);
+        $(this).attr('id') === 'loginSetting' && settingLogin_setting(e);
+        $(this).attr('id') === 'loginPassword' && settingLogin_password(e);
 
     })
 
@@ -488,17 +496,9 @@ function submitClick(){
     function settingHistory_charge(e){
         console.log('셋팅 돈풍선 충전 내역 - 충전');
         // resultValue : 최종 값
-        // resultValue.search : 전문가 이름
-        // resultValue.userMessage : 메세지
-        // resultValue.furtherChange : 전문가 추가 / 변경
-        //                      expertFurther 추가
-        //                      expertChange 변경
-        // resultValue.reason : 사유
-        //                      reason01 수익률이 좋지 못해서
-        //                      reason02 리딩 스타일이 마음에 들지 않아서
-        //                      reason03 다른 서버도 체험해보고 싶어서
-        //                      reason04 기타
-
+        // resultValue.charge : 충전금액 ( string )
+        // resultValue.paymentAgree : 결제 및 약관 동의 ( boolean )
+        
 
          // 폼으로 데이터 전송 시 삭제
          e.preventDefault();
@@ -507,13 +507,46 @@ function submitClick(){
     // 전문가 추가 / 변경 신청
     function settingExpert(e){
         console.log('전문가 추가 / 변경 신청');
-
         // resultValue : 최종 값
-        // resultValue.charge : 충전금액 ( string )
-        // resultValue.paymentAgree : 결제 및 약관 동의 ( boolean )
+        // resultValue.search : 전문가 이름
+        // resultValue.furtherChange : 전문가 추가 / 변경
+        //                      expertFurther 추가
+        //                      expertChange 변경
+        // resultValue.reason : 사유
+        //                      reason01 수익률이 좋지 못해서
+        //                      reason02 리딩 스타일이 마음에 들지 않아서
+        //                      reason03 다른 서버도 체험해보고 싶어서
+        //                      reason04 기타
+        // resultValue.userMessage : 메세지
 
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
+    }
+
+    // 셋팅 로그인 - 설정
+    function settingLogin_setting(e){
+        console.log('셋팅 로그인 - 설정');
+        // resultValue : 최종 값
+        // resultValue.autoLogin : 자동로그인 ( boolean )
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+
+        settingLoginEvent();
+        $('input[type="submit"]').removeClass('active');
+    }
+
+    // 셋팅 로그인 - 간편 비밀번호 변경
+    function settingLogin_password(e){
+        console.log('셋팅 로그인 - 간편 비밀번호 변경');
+        // resultValue : 최종 값
+        // resultValue.oldPassword : 기존 비밀번호
+        // resultValue.newPassword : 새 비밀번호
+        // resultValue.password-re : 새 비밀번호 확인
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+        $('.confirmPopup').fadeIn().css('display','flex');
     }
 }
 
@@ -902,4 +935,23 @@ function expertEvent(){
 
         submitActive($('#search').closest('form'));
     }
+}
+
+// 셋팅 로그인 설정
+function settingLoginEvent(){
+    $('input[type="checkbox"]').each(function(){
+        $(this).is(':checked') ? $(this).attr('data-checked' , 'true') : $(this).attr('data-checked' , 'false');
+    })
+    $('input[type="checkbox"]').on('input',function(){
+        submitActive($(this).closest('form'))
+    })
+
+    $('[data-popup="password"]').click(function(){
+        $('.popup-password').find('input').not('[type="submit"]').val('');
+        $('.popup-password').find('.errorText , [type="submit"]').removeClass('active');
+    })
+
+    $('.confirmPopup , [data-confirm="close"]').mousedown(function(){
+        $('.confirmPopup , .popupArea').fadeOut();
+    })
 }

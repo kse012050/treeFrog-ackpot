@@ -8,7 +8,7 @@
     <title>로그인 설정 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../css/import.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 <body>
     <div class="contentPage settingPage">
@@ -74,42 +74,51 @@
                         </li>
                         <li>
                             <b>간편비밀번호 변경</b>
-                            <button>변경</button>
-                            <div class="popupArea">
-                                <div>
-                                    <strong>간편 비밀번호 변경</strong>
-                                    <ul>
-                                        <li>
-                                            <label for="">기존 비밀번호 입력</label>
-                                            <input type="text" placeholder="기존 비밀번호를 입력해주세요.">
-                                            <p class="errorText active">* 올바른  번호를 입력해주세요.</p>
-                                        </li>
-                                        <li>
-                                            <label for="">새 비밀번호 입력</label>
-                                            <input type="text" placeholder="새 비밀번호를 입력해주세요.">
-                                            <p class="errorText">* 번호 자리수를 확인해주세요.</p>
-                                        </li>
-                                        <li>
-                                            <label for="">새 비밀번호 확인</label>
-                                            <input type="text" placeholder="새 비밀번호를 다시 한 번 입력해주세요.">
-                                            <p class="errorText">* 새 비밀번호를 다시 입력해주세요.</p>
-                                        </li>
-                                    </ul>
-                                    <button class="submit160 active">수정</button>
-                                    <button>팝업 닫기</button>
-                                </div>
-                            </div>
-                            <div class="confirmPopup">
-                                <div class="borderRadius30">
-                                    <p>적용 되었습니다.</p>
-                                    <button class="submit160 active">확인</button>
-                                </div>
-                            </div>
+                            <button data-popup="password">변경</button>
                         </li>
                     </ul>
                 </fieldset>
-                <input type="submit" value="적용" class="submit140 active">
+                <input type="submit" value="적용" class="submit140" id="loginSetting">
             </form>
+            <div class="popupArea popup-password">
+                <div>
+                    <form action="">
+                        <strong>간편 비밀번호 변경</strong>
+                        <ul>
+                            <li>
+                                <label for="">기존 비밀번호 입력</label>
+                                <div>
+                                    <input type="text" placeholder="기존 비밀번호를 입력해주세요." maxlength="6" data-input="oldPassword" id="oldPassword" required>
+                                </div>
+                                <p class="errorText">* 올바른  번호를 입력해주세요.</p>
+                            </li>
+                            <li>
+                                <label for="">새 비밀번호 입력</label>
+                                <div>
+                                    <input type="text" placeholder="새 비밀번호를 입력해주세요." maxlength="6" data-input="password" id="newPassword" required>
+                                </div>
+                                <!-- <input type="text" placeholder="새 비밀번호를 입력해주세요."> -->
+                                <p class="errorText">* 번호 자리수를 확인해주세요.</p>
+                            </li>
+                            <li>
+                                <label for="">새 비밀번호 확인</label>
+                                <div>
+                                    <input type="text" placeholder="비밀번호를 한번 더 입력해주세요." maxlength="6" data-input="password-re" id="password-re" required>
+                                </div>
+                                <p class="errorText">* 새 비밀번호를 다시 입력해주세요.</p>
+                            </li>
+                        </ul>
+                        <input type="submit" class="submit160" value="수정" id="loginPassword">
+                    </form>
+                    <button>팝업 닫기</button>
+                </div>
+            </div>
+            <div class="confirmPopup">
+                <div class="borderRadius30">
+                    <p>적용 되었습니다.</p>
+                    <button class="submit160 active" data-confirm="close">확인</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
