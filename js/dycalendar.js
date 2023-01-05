@@ -31,7 +31,7 @@
 
         //월 이름
         monthName = {
-            full: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            full: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
             mmm: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
 
@@ -165,9 +165,9 @@
         elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-month-year");
         if (option.monthformat === "mmm") {
-            elem.innerHTML = data.monthName + " " + data.year;
+            elem.innerHTML = data.year + "." + data.monthName;
         } else if (option.monthformat === "full") {
-            elem.innerHTML = data.monthNameFull + " " + data.year;
+            elem.innerHTML =  data.year + "." + data.monthNameFull;
         }
 
         // 헤더 div에 월 범위 추가

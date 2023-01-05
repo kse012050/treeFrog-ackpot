@@ -80,7 +80,7 @@ function tabClick(){
     })
 }
 
-// 인풋 유효성 검사
+// input 유효성 검사
 function inputValidation(selector){
     const attrName = $(selector).attr('data-input');
     let boolean;
@@ -189,8 +189,10 @@ function errorTextConfirm(){
 function submitClick(){
     let inputAttr = 'id';
     let inputValue = []
+    let resultValue = {}
     $('input[type="submit"]').click(function(e){
         inputValue = []
+        resultValue = {}
         if(!$(this).hasClass('active')){ 
             e.preventDefault();
             // input 값이 잘 못 되었다면
@@ -209,8 +211,7 @@ function submitClick(){
         
 
 
-        // 폼으로 데이터 전송 시 삭제
-        e.preventDefault();
+        
 
         // 인풋에서 받아 온 필수 값
         $(this).closest('form').find('[required]').each(function(i){
@@ -223,7 +224,7 @@ function submitClick(){
                 errorSelector : $(this).parent().siblings('.errorText')
             };
         })
-
+        console.log($(this).closest('form').find('input'));
         // 인풋에서 받아 온 필수가 아닌 값
         $(this).closest('form').find('input').not('[required]').not('[type="submit"]').each(function(i){
             if(!$(this).attr(inputAttr)) return;
@@ -237,9 +238,15 @@ function submitClick(){
         })
 
         console.log(inputValue);
+        // 최종 resultValue 값
+        inputValue.map((v)=>{
+            resultValue[v.name] = v.value
+        })
+        console.log(resultValue);
+        e.preventDefault();
         
-        $(this).attr('id') === 'signIn' && mobileAndPW('signIn');
-        // $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange');
+        $(this).attr('id') === 'signIn' && mobileAndPW('signIn' , e);
+        $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange' , e);
 
         $(this).attr('id') === 'mobileConfirm' && mobileConfirm();
         $(this).attr('id') === 'passwordChange' && passwordChange();
@@ -253,37 +260,56 @@ function submitClick(){
     })
 
     // 로그인 , 휴대폰 전화번호 변동 페이지 submit 클릭
-    function mobileAndPW(pageName){
+    function mobileAndPW(pageName , e){
+        console.log(1);
         let testID = '01092931656';
         let testPW = '123456'
         let IDCheck;
         let PWCheck;
-        // 값 판별
-        inputValue.map((v)=>{
-            v.name === 'userMobile' && (IDCheck = v.value !== testID);
-            if(v.name === 'userPassword') {
-                if(v.value !== testPW){
-                    errorMessageActive(v.selector , false);
-                    v.selector.val('');
-                }
-            };
-        })
+        // resultValue : 최종 값
+        // resultValue.userMobile : 전화번호
+        // resultValue.userPassword : 비밀번호
+        // resultValue.autoSignIn : 자동로그인 (boolean)
 
-        
+
+        // 나중에 삭제
+        resultValue.userMobile === testID ? (IDCheck = true) : (IDCheck = false);
+        resultValue.userPassword === testPW ? (PWCheck = true) : (PWCheck = false);
+
+        // 아이디가 없으면
+        if(!IDCheck){
+            inputValue.map((v)=>{
+                v.name === 'userMobile' && (v.selector.focus() , v.errorSelector.addClass('active'));
+                v.name === 'userPassword' && v.selector.val('')
+            })
+        }
+        // 아이디가 있고 비밀번호가 틀리면
+        if(IDCheck && !PWCheck){
+            inputValue.map((v)=>{
+                if(v.name === 'userPassword'){
+                    v.selector.focus();
+                    v.selector.val('');
+                    v.errorSelector.addClass('active');
+                }
+            })
+        }
+
 
         // 에러 메세지가 없으면  
         var result = errorTextConfirm();
 
-        if($('input[type="submit"]').hasClass('active')){ 
-            pageName === 'mobileChange' && $('.popupArea').fadeIn().css('display','flex')
-        }
-
-        // 페이지 이동
+        
+        // 값이 맞으면
         if(result){
-            // pageName === 'signIn' && (location.href = '../index.html');
-            // pageName === 'mobileChange' && (location.href = 'newMobile.html');
+            // 폼으로 데이터 전송 시 삭제
+            e.preventDefault();
+            pageName === 'signIn' && (location.href = '../index.html');
+            pageName === 'mobileChange' && (location.href = 'newMobile.html');
+            // 폼으로 데이터 전송 시 삭제 fin
         }else{
+            pageName === 'mobileChange' && $('.popupArea').fadeIn().css('display','flex')
             $('input[type="submit"').removeClass('active');
+            e.preventDefault();
         }
     }
 
