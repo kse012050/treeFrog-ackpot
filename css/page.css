@@ -444,7 +444,9 @@ form.expertBox fieldset ul li:first-child input[type="radio"]#expertFurther:chec
 form.expertBox fieldset ul li:first-child input[type="radio"]#expertChange:checked ~ div > label:first-child::before{content: '변경';}
 form.expertBox fieldset ul li:first-child > div{width: 100%;}
 form.expertBox fieldset ul li :is(label , strong):first-child{display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px;}
+form.expertBox fieldset ul li input[type="checkbox"]{display: none;}
 form.expertBox fieldset ul li input[type="checkbox"] + label{display: flex; margin-bottom: 10px;}
+form.expertBox fieldset ul li input[type="radio"].case01 + label{display: flex; margin-bottom: 10px;}
 form.expertBox fieldset ul li textarea{width: 100%; height: 105px; font-size: 14px;}
 form.expertBox input[type="submit"]{display: block; margin: 0 auto;}
 

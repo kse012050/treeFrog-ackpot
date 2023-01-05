@@ -30,6 +30,8 @@ $(document).ready(function(){
     $('.historyPage').length && moneyHistory()
     // 셋팅 간편 결제 정보
     $('.paymentPage').length && paymentEvent()
+    // 셋팅 전문가 추가 / 변경 신청
+    $('.expertPage').length && expertEvent()
 })
 
 function mainSlider(){
@@ -165,7 +167,7 @@ function submitActive(selector){
         let boolean = inputValidation(a)
         return boolean === true;
     })
-    console.log(inputBoolean);
+    
     // 에러메세지가 있는지 없는지 확인
     let errorBoolean = !errorTextConfirm();
     
@@ -188,6 +190,16 @@ function submitActive(selector){
         alramChack ? 
             inputBoolean = false : 
             inputBoolean = true;
+    }
+
+    // 전문가 검색
+    if(!!selector.find('[data-expert]').length){
+        let expertChack = selector.find('[data-expert]').get().every(function(c){
+            return JSON.parse($(c).attr('data-expert'));
+        })
+        expertChack ? 
+            inputBoolean = true :
+            inputBoolean = false;
     }
 
     // input 값 , 에러메세지가 둘 다 true 면 submit 버튼에 active 클래스 추가
@@ -273,11 +285,22 @@ function submitClick(){
             });
         })
 
+        // 전문가 검색
+        if($('.expertBox').length){
+            $(this).closest('form').find('[type="radio"]:checked').each(function(){
+                inputValue.push( {
+                    selector : $(this),
+                    name : $(this).attr('name'),
+                    value : $(this).attr('id')
+                });
+            })
+        }
+
         // 최종 resultValue 값
         inputValue.map((v)=>{
             resultValue[v.name] = v.value
         })
-        e.preventDefault();
+        // e.preventDefault();
         console.log(resultValue);
         
         // 로그인 관련 
@@ -300,6 +323,7 @@ function submitClick(){
         $(this).attr('id') === 'profile' && settingProfile(e);
         $(this).attr('id') === 'alram' && settingAlram(e);
         $(this).attr('id') === 'chargeSubmit' && settingHistory_charge(e);
+        $(this).attr('id') === 'expert' && settingExpert(e);
 
     })
 
@@ -464,10 +488,33 @@ function submitClick(){
     function settingHistory_charge(e){
         console.log('셋팅 돈풍선 충전 내역 - 충전');
         // resultValue : 최종 값
+        // resultValue.search : 전문가 이름
+        // resultValue.userMessage : 메세지
+        // resultValue.furtherChange : 전문가 추가 / 변경
+        //                      expertFurther 추가
+        //                      expertChange 변경
+        // resultValue.reason : 사유
+        //                      reason01 수익률이 좋지 못해서
+        //                      reason02 리딩 스타일이 마음에 들지 않아서
+        //                      reason03 다른 서버도 체험해보고 싶어서
+        //                      reason04 기타
+
+        $('.popupArea').fadeOut();
+
+         // 폼으로 데이터 전송 시 삭제
+         e.preventDefault();
+    }
+
+    // 전문가 추가 / 변경 신청
+    function settingExpert(e){
+        console.log('전문가 추가 / 변경 신청');
+
+        // resultValue : 최종 값
         // resultValue.charge : 충전금액 ( string )
         // resultValue.paymentAgree : 결제 및 약관 동의 ( boolean )
 
-        $('.popupArea').fadeOut();
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
     }
 }
 
@@ -785,5 +832,75 @@ function paymentEvent(){
         $('.paymentPage .slideBox .swiper-slide').length >= 4 ? 
             $('.paymentPage section').addClass('addPadding') :
             $('.paymentPage section').removeClass('addPadding');
+    }
+}
+
+// 셋팅 전문가 추가 / 변경 신청
+function expertEvent(){
+    // 전문가 리스트
+    let expertList = [
+        "이효중",
+        "강윤석",
+        "김진아",
+        "성지윤",
+        "이서연",
+        "이정현",
+        "이준희",
+        "장혜령",
+        "최혜나",
+        "김성은",
+    ]
+    let searchArray = []
+    let suggestion = '';
+    $('#search').on('input',function(){
+        $('.searchArea .scrollBox').html('');
+        suggestion ='';
+        let searchValue = $(this).val();
+        searchArray = expertList.filter((data)=>{
+            return data.includes(searchValue)
+        })
+        searchArray = searchArray.map((data)=>{
+            return data = '<button>'+ data +'</button>'
+        })
+        !!searchValue ? $('.searchArea .scrollBox').addClass('active') : $('.searchArea .scrollBox').removeClass('active');
+        
+        
+        // 추천 전문가
+        suggestion += '<div><b>추천전문가</b>'
+        expertList.map((data)=>{
+            suggestion += '<button>'+ data +'</button>';
+        })
+        suggestion += '</div>';
+        (!!searchValue && !searchArray.length) ?
+            $('.searchArea .scrollBox').append('<p>검색한 전문가가 없습니다.</p>' + suggestion) :
+            $('.searchArea .scrollBox').append(searchArray);
+
+
+        $('.searchArea .scrollBox button').off('click');
+        expertListClick();
+
+        expertBoolean();
+        
+
+    })
+
+    function expertListClick(){
+        $('.searchArea .scrollBox button').click(function(e){
+            e.preventDefault();
+            $('#search').val($(this).html())
+            expertBoolean();
+        })
+    }
+
+    function expertBoolean(){
+        let boolean = expertList.find(function(e){
+            return e === $('#search').val();
+        })
+        boolean = !!boolean;
+        boolean ? 
+            $('#search').attr('data-expert' , 'true') :
+            $('#search').attr('data-expert' , 'false');
+
+        submitActive($('#search').closest('form'));
     }
 }
