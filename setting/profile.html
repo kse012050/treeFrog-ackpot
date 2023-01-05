@@ -8,7 +8,7 @@
     <title>프로필 설정 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../css/import.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 <body>
     <div class="contentPage settingPage">
@@ -65,7 +65,7 @@
                     <h3>프로필</h3>
                     <div class="imgArea">
                         <img src="../images/test01.png" alt="">
-                        <button>수정</button>
+                        <button data-popup="profile">수정</button>
                     </div>
                     <p>
                         안녕하세요,<br/>
@@ -75,8 +75,8 @@
                         <b>프로필 메세지</b>
                         <p>돈을 열심히 벌어보자 돈을 열심히 벌어보자 돈을 열심히 벌어보자! 돈을  열심히 벌어보자! 돈을 열심히 벌어보자 돈을 열심히 벌어보자 돈을 열심히 벌어보자! 돈을 열심히</p>
                     </div>
-                    <button class="btn">설정</button>
-                    <div class="popupArea">
+                    <button class="btn" data-popup="next">설정</button>
+                    <div class="popupArea popup-profile">
                         <div class="borderRadius30">
                             <strong>프로필 설정</strong>
                             <form>
@@ -84,25 +84,27 @@
                                     <ul>
                                         <li>
                                             <label>닉네임</label>
-                                            <input type="text" placeholder="닉네임을 입력해주세요.">
+                                            <div>
+                                                <input type="text" placeholder="닉네임을 입력해주세요."  required id="userNickName" data-input="nickName">
+                                            </div>
                                             <p class="errorText">* 닉네임이 중복 되어 다시 입력해주세요.</p>
                                         </li>
                                         <li>
                                             <label>프로필 메세지</label>
-                                            <textarea placeholder="프로필 메시지를 입력해주세요."></textarea>
+                                            <textarea placeholder="프로필 메시지를 입력해주세요." id="userMessage"></textarea>
                                         </li>
                                     </ul>
                                 </fieldset>
-                                <input type="submit" value="수정" class="submit140">
+                                <input type="submit" value="수정" class="submit140" id="profile">
                             </form>
-                            <button>팝업 닫기</button>
+                            <button data-popup="close">팝업 닫기</button>
                         </div>
                     </div>
 
                     <div class="confirmPopup">
                         <div class="borderRadius30">
                             <p>수정 되었습니다.</p>
-                            <button class="submit160 active">확인</button>
+                            <button class="submit160 active" data-popup="close">확인</button>
                         </div>
                     </div>
                 </div>

@@ -272,8 +272,8 @@
 .settingPage .contentBox{padding: 30px;}
 :is(.settingPage , .livingPage) .submit140{width: 140px; line-height: 42px;}
 :is(.settingPage , .livingPage) .submit160{width: 160px; line-height: 42px;}
-.settingPage .btn{min-width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: #ee2222; padding: 0 10px; box-sizing: border-box;}
-.settingPage .btn:hover{background-color: black;}
+.settingPage .btn{min-width: 72px; font-size: 13px; color: white; line-height: 28px; text-align: center; border-radius: 100px; background-color: black; padding: 0 10px; box-sizing: border-box;}
+.settingPage .btn:hover{background-color: #ee2222;}
 :is(.settingPage , .livingPage) input:is([type="text"] , [type="number"]){height: 46px;}
 :is(.settingPage , .livingPage) :is(input[type="text"] , textarea){font-size: 14px; font-weight: 400;}
 :is(.settingPage , .livingPage) :is(input:is([type="text"] , [type="number"]) , textarea){padding: 13px 15px; box-sizing: border-box;}

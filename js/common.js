@@ -194,7 +194,12 @@ function submitActive(){
 // 에러메세지 추가 / 제거
 function errorMessageActive(selector , boolean){
     const errorSeletor = selector.parent().siblings('.errorText');
-    boolean ? errorSeletor.removeClass('active') : errorSeletor.addClass('active');
+    (boolean) ? 
+        errorSeletor.removeClass('active') : 
+        errorSeletor.addClass('active');
+
+    (selector.attr('data-input') === 'nickName' && !selector.val()) &&
+        errorSeletor.removeClass('active')
 }
 
 // 에레메시지 확인
@@ -220,7 +225,7 @@ function submitClick(){
                 errorMessageActive($(this) , boolean);
             })
             let invalidInput = $('[required]').get().find((v)=>{
-                return $(v).parent().siblings('.errorText').hasClass('active') && $(v).focus();
+                return $(v).parent().siblings('.errorText').hasClass('active') || !$(v).val();
             })
             if(invalidInput){
                 invalidInput.focus();
@@ -253,6 +258,14 @@ function submitClick(){
             // inputValue[(inputValue.length - 1) + i].value = $(this).attr('type') !== 'checkbox' ? $(this).val() : $(this).is(':checked')
         })
 
+        $(this).closest('form').find('textarea').each(function(){
+            inputValue.push( {
+                selector : $(this),
+                name : $(this).attr(inputAttr),
+                value : $(this).val()
+            });
+        })
+
         // 최종 resultValue 값
         inputValue.map((v)=>{
             resultValue[v.name] = v.value
@@ -273,11 +286,12 @@ function submitClick(){
         $(this).attr('id') === 'guestSingUp' && guestSingUp(e);
         
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
-        inputValue.find((v)=>{
-            return v.errorSelector.hasClass('active') && v.selector.focus();
-        })
+        // inputValue.find((v)=>{
+        //     return v.errorSelector.hasClass('active') && v.selector.focus();
+        // })
         
-        $(this).attr('id') === 'alram' && alram(e);
+        $(this).attr('id') === 'alram' && settingAlram(e);
+        $(this).attr('id') === 'profile' && settingProfile(e);
 
     })
 
@@ -408,7 +422,7 @@ function submitClick(){
     }
 
     // 셋팅 알림
-    function alram(e){
+    function settingAlram(e){
         console.log('셋팅 알람');
         // resultValue : 최종 값
         // resultValue.allSet : 전체 설정 ( boolean )
@@ -421,6 +435,19 @@ function submitClick(){
         e.preventDefault();
 
         $('.confirmPopup').fadeIn().css('display','flex');
+    }
+
+    // 셋팅 프로필
+    function settingProfile(e){
+        console.log('셋팅 알람');
+        // resultValue : 최종 값
+        // resultValue.userNickName : 닉네임
+        // resultValue.userMessage : 메세지
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+
+        $('.confirmPopup').fadeIn().css('display' , 'flex')
     }
 }
 
@@ -542,23 +569,31 @@ function popupClick(){
 
         $('[class|="popup"]').removeClass('active');
     })
-    // form 태그 안에 있는 button 클릭 자동 새로고침 막기
+    
     $('button').click(function(e){
+        // form 태그 안에 있는 button 클릭 자동 새로고침 막기
         e.stopPropagation();
-        const attrName = $(this).attr('data-popup');
         e.preventDefault();
+        const attrName = $(this).attr('data-popup');
+        let popupSelector;
         attrName === 'next' ? 
-            $(this).next().fadeIn().css('display','flex').addClass('active') :
-            $(`.popup-${attrName}`).fadeIn().addClass('active');
+            popupSelector = $(this).next() :
+            popupSelector = $(`.popup-${attrName}`);
+
+        popupSelector.fadeIn().css('display','flex').addClass('active')
+        popupSelector.find('input ,textarea').not('[type="submit"]').val('');
+        popupSelector.find('[type="submit"]').removeClass('active');
 
         attrName === 'share' && $(`.popup-${attrName} .errorText`).removeClass('active')
+
+
     })
     // 팝업 검은 배경
-    $('.popupArea , .confirmPopup').click(function(){
+    $('.popupArea , .confirmPopup').mousedown(function(){
         popupClose($(this))
     })
     // 팝업 내용 영역
-    $(':is(.popupArea , .confirmPopup) > div').click(function(e){
+    $(':is(.popupArea , .confirmPopup) > div').mousedown(function(e){
         e.stopPropagation();
     })
     $('[class|="popup"]').click(function(e){
@@ -566,7 +601,11 @@ function popupClick(){
     })
     // 팝업 X 버튼
     $('[data-popup="close"]').click(function(){
-        popupClose($(this).closest('[class*="popup"] , .confirmPopup'))
+        popupClose($('[class*="popup"] , .confirmPopup'))
+        if($(this).closest('.confirmPopup').length){
+            $('input[type="submit"]').removeClass('active');
+            alremEvent();
+        }
     })
    
 
