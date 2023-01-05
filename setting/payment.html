@@ -7,8 +7,10 @@
     <!-- Iphone 모바일 확대 방지  maximum-scale=1.0, user-scalable=0-->
     <title>간편 결제 정보 설정 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../css/import.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="js/common.js"></script>
+    <script src="../js/common.js"></script>
 </head>
 <body>
     <div class="contentPage settingPage">
@@ -63,17 +65,25 @@
             <section class="contentBox">
                 <h3>간편 결제 정보</h3>
                 <p>카드 또는 계좌를 등록하고 편리하게 사용하세요.</p>
-                <ul class="slider">
-                    <li>
-                        <p>신한카드</p>
-                        <strong>0000-****-****-0000</strong>
-                        <button>삭제</button>
-                    </li>
-                    <li class="addBtn"><button>간편결제를 등록 해주세요.</button></li>
-                </ul>
+                <div class="slideBox">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide cardBox">
+                                <p>신한카드</p>
+                                <strong>0000-****-****-0000</strong>
+                                <button data-btn="delete">삭제</button>
+                            </div>
+                            <div class="swiper-slide">
+                                <button>간편결제를 등록 해주세요.</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
                 <ul class="btnArea">
                     <li><button class="btn">비밀번호 변경</button></li>
-                    <li><button class="btn">카드 등록</button></li>
+                    <li><button class="btn" data-btn="card">카드 등록</button></li>
                     <li><button class="btn">계좌 등록</button></li>
                 </ul>
             </section>

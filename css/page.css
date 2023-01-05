@@ -413,16 +413,22 @@
 
 /* 간편 결제 정보 */
 .settingPage .paymentPage section{width: 977px; position: relative;}
-.settingPage .paymentPage section .slider{display: flex; gap: 16px;}
-.settingPage .paymentPage section .slider li{width: 270px; height: 150px; border-radius: 20px;}
-.settingPage .paymentPage section .slider li:not(:last-child){display: flex; flex-direction: column; justify-content: center; color: white; padding: 25px; box-sizing: border-box;  background-image: linear-gradient(118deg, #f51515 5%, #fc4516 50%, #f44a2f 70%, #f4582f 96%);}
-.settingPage .paymentPage section .slider li:not(:last-child) p{font-size: 14px; margin-bottom: 10px;}
-.settingPage .paymentPage section .slider li:not(:last-child) strong{font-size: 20px; font-weight: 500; margin-bottom: 20px;}
-.settingPage .paymentPage section .slider li:not(:last-child) button{width: 48px; line-height: 28px; font-size: 13px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid white; border-radius: 100px; box-sizing: border-box;}
-.settingPage .paymentPage section .slider li:not(:last-child) button:hover{color: #ee2222; background-color: white; border: none;}
-.settingPage .paymentPage section .slider li:last-child{border: 1px dashed #e9e9e9; overflow: hidden;}
-.settingPage .paymentPage section .slider li:last-child button{width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; color: #bcbcbc; background-color: #fbfbfb;}
-.settingPage .paymentPage section .slider li:last-child button::before{content: ''; width: 34px; height: 34px; background: url('../images/icon-plus.png') no-repeat center / cover; margin-bottom: 10px;}
+.settingPage .paymentPage section.addPadding{padding-left: 0; padding-right: 0;}
+.settingPage .paymentPage section.addPadding > :is(h3 , p){padding: 0 30px;}
+.settingPage .paymentPage section .slideBox{position: relative;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide{width: 270px; height: 150px; border-radius: 20px;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide.cardBox{display: flex; flex-direction: column; justify-content: center; color: white; padding: 25px; box-sizing: border-box;  background-image: linear-gradient(118deg, #f51515 5%, #fc4516 50%, #f44a2f 70%, #f4582f 96%);}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide.cardBox p{font-size: 14px; margin-bottom: 10px;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide.cardBox strong{font-size: 20px; font-weight: 500; margin-bottom: 20px;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide.cardBox button{width: 48px; line-height: 28px; font-size: 13px; background-color: rgba(255, 255, 255, 0.2); border: 1px solid white; border-radius: 100px; box-sizing: border-box;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide.cardBox button:hover{color: #ee2222; background-color: white; border: none;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide:has(button:only-child){border: 1px dashed #e9e9e9; overflow: hidden;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide button:only-child{width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; color: #bcbcbc; background-color: #fbfbfb;}
+.settingPage .paymentPage section .slideBox .swiper .swiper-slide button:only-child::before{content: ''; width: 34px; height: 34px; background: url('../images/icon-plus.png') no-repeat center / cover; margin-bottom: 10px;}
+.settingPage .paymentPage section .slideBox :is(.swiper-button-next, .swiper-button-prev){width: 63px; height: 63px; background-repeat: no-repeat; background-position: center; background-size: cover;}
+.settingPage .paymentPage section .slideBox :is(.swiper-button-next, .swiper-button-prev)::after{display: none;}
+.settingPage .paymentPage section .slideBox .swiper-button-prev{background-image: url('../images/icon-slider-prev.png'); left: -30px;}
+.settingPage .paymentPage section .slideBox .swiper-button-next{background-image: url('../images/icon-slider-next.png'); right: -30px;}
 .settingPage .paymentPage section .btnArea{position: absolute; right: 30px; top: 30px; display: flex; gap: 5px;}
 
 /* 전문가 추가/변경 신청 */

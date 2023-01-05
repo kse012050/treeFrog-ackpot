@@ -28,6 +28,8 @@ $(document).ready(function(){
     $('.alramPage').length && alremEvent();
     // 셋팅 돈풍선 충전 내역
     $('.historyPage').length && moneyHistory()
+    // 셋팅 간편 결제 정보
+    $('.paymentPage').length && paymentEvent()
 })
 
 function mainSlider(){
@@ -734,4 +736,54 @@ function moneyHistory(){
         $('.popupArea form input[type="submit"]').removeClass('active');
         $('#paymentPrice').html('');
     })
+}
+
+// 셋팅 간편 결제 정보
+function paymentEvent(){
+    var paymentSwiper = new Swiper(".paymentPage .slideBox .swiper", {
+        slidesPerView: 3,
+        spaceBetween: 16,
+        freeMode: true,
+        slidesPerView: "auto",
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+    $('[data-btn="card"]').click(function(){
+        // 카드 추가 코드
+        const addCard = '<div class="swiper-slide cardBox">' +
+            '<p>신한카드</p>' +
+            '<strong>0000-****-****-0000</strong>' +
+            '<button data-btn="delete">삭제</button>' +
+            '</div>';
+        $('.paymentPage .slideBox .swiper-wrapper').prepend(addCard);
+        paymentSwiper.update();
+
+        // 카드삭제버튼 
+        $('[data-btn="delete"]').off('click');
+        cardDelete();
+
+        // 패딩 변경
+        addPadding();
+    })
+    
+    cardDelete()
+    // 카드삭제버튼 
+    function cardDelete(){
+        $('[data-btn="delete"]').on('click',function(){
+            $(this).closest('.swiper-slide').remove();
+            paymentSwiper.update();
+
+            // 패딩 변경
+            addPadding();
+        })
+    }
+
+    function addPadding(){
+        $('.paymentPage .slideBox .swiper-slide').length >= 4 ? 
+            $('.paymentPage section').addClass('addPadding') :
+            $('.paymentPage section').removeClass('addPadding');
+    }
 }
