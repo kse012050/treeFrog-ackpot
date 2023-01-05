@@ -210,9 +210,6 @@ function submitClick(){
         };
         
 
-
-        
-
         // 인풋에서 받아 온 필수 값
         $(this).closest('form').find('[required]').each(function(i){
             if(!$(this).attr(inputAttr)) return;
@@ -224,7 +221,7 @@ function submitClick(){
                 errorSelector : $(this).parent().siblings('.errorText')
             };
         })
-        console.log($(this).closest('form').find('input'));
+
         // 인풋에서 받아 온 필수가 아닌 값
         $(this).closest('form').find('input').not('[required]').not('[type="submit"]').each(function(i){
             if(!$(this).attr(inputAttr)) return;
@@ -243,13 +240,13 @@ function submitClick(){
             resultValue[v.name] = v.value
         })
         console.log(resultValue);
-        e.preventDefault();
+        // e.preventDefault();
         
         $(this).attr('id') === 'signIn' && mobileAndPW('signIn' , e);
         $(this).attr('id') === 'mobileChange' && mobileAndPW('mobileChange' , e);
 
         $(this).attr('id') === 'mobileConfirm' && mobileConfirm();
-        $(this).attr('id') === 'passwordChange' && passwordChange();
+        $(this).attr('id') === 'passwordChange' && passwordChange(e);
         $(this).attr('id') === 'firstSingUp' && firstSingUp();
 
         // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
@@ -261,18 +258,17 @@ function submitClick(){
 
     // 로그인 , 휴대폰 전화번호 변동 페이지 submit 클릭
     function mobileAndPW(pageName , e){
-        console.log(1);
-        let testID = '01092931656';
-        let testPW = '123456'
-        let IDCheck;
-        let PWCheck;
         // resultValue : 최종 값
         // resultValue.userMobile : 전화번호
         // resultValue.userPassword : 비밀번호
         // resultValue.autoSignIn : 자동로그인 (boolean)
-
-
-        // 나중에 삭제
+        let IDCheck;
+        let PWCheck;
+        
+        
+        // 테스트용 나중에 삭제
+        let testID = '01092931656';
+        let testPW = '123456'
         resultValue.userMobile === testID ? (IDCheck = true) : (IDCheck = false);
         resultValue.userPassword === testPW ? (PWCheck = true) : (PWCheck = false);
 
@@ -319,8 +315,18 @@ function submitClick(){
     }
 
     // 간편 비밀번호 변경 페이지 submit클릭
-    function passwordChange(){
+    function passwordChange(e){
         console.log('간편 비밀번호 변경');
+        // resultValue : 최종 값
+        // resultValue.mobile : 전화번호
+        // resultValue.userPassword : 비밀번호
+        // resultValue.password-re : 비밀번호 확인
+        // resultValue.confirm : 인증번호 (여기까지 왔다면 인증 완료)
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
+        location.href = '../index.html'
+        // 폼으로 데이터 전송 시 삭제 fin
     }
 
     // 최초 회원가입 페이지
@@ -382,8 +388,14 @@ function mobileConfirm(){
     $('[data-btn="confirm"]').click(function(){
         let confirmSeletor = $(this).prev().find('[data-input="confirm"]')
         let erroeMessageSelector = $(this).next('.errorText');
+        let confirmChack;
+
         // 인증번호가 ex> 123456 이면
-        if(confirmSeletor.val() === '123456'){
+        confirmChack = confirmSeletor.val() === '123456'
+
+        // confirmChack가 true면 인증번호가 맞고 ,
+        // confirmChack가 false면 인증번호가 틀리다
+        if(confirmChack){
             // 속성 값을 변경하여 인증되었는 지 확인
             confirmSeletor.attr('data-boolean' , 'true');
             $(this).removeClass('active')
