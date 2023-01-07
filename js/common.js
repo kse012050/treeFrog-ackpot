@@ -22,6 +22,9 @@ $(document).ready(function(){
     // 이름 닉네임 버튼
     !!$('[data-input="nickName"] , [data-input="name"]').length && nameNickname();
 
+    // 전문가 추가 / 변경 신청
+    $('.expertBox').length && expertEvent()
+
     // 셋팅 프로필
     $('.profilePage').length && profileEvent();
     // 셋팅 알람
@@ -30,8 +33,6 @@ $(document).ready(function(){
     $('.historyPage').length && moneyHistory()
     // 셋팅 간편 결제 정보
     $('.paymentPage').length && paymentEvent()
-    // 셋팅 전문가 추가 / 변경 신청
-    $('.expertPage').length && expertEvent()
     // 셋팅 로그인
     $('.loginPage').length && settingLoginEvent();
 })
