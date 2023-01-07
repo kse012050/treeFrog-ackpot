@@ -7,6 +7,7 @@
     <!-- Iphone 모바일 확대 방지  maximum-scale=1.0, user-scalable=0-->
     <title>돈풍선 충전 / 내역 설정 - 청개구리 대박이</title> 
     <link rel="stylesheet" href="../css/import.css">
+    <link rel="stylesheet" href="../css/dycalendar.min.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="../js/common.js"></script>
 </head>
@@ -158,12 +159,22 @@
                             <a href="">다음</a>
                         </div>
                     </div>
-                    <form>
-                        <input type="date" id="charge-start" required data-input="">
-                        <label for="charge-start">2021.11.1</label>
+                    <form class="calenderBox">
+                        <div>
+                            <input type="date" id="charge-start" required data-input="">
+                            <button data-popup="calender">2021.11.1</button>
+                            <div class="calender-1">
+
+                            </div>
+                        </div>
                         <span>-</span>
-                        <input type="date" id="charge-end" required data-input="">
-                        <label for="charge-end">2021.11.30</label>
+                        <div>
+                            <input type="date" id="charge-end" required data-input="">
+                            <button>2021.11.30</button>
+                            <!-- <div class="calender-2">
+
+                            </div> -->
+                        </div>
                         <input type="submit" value="검색" class="btn">
                     </form>
                 </div>
@@ -258,5 +269,6 @@
             </section>
         </div>
     </div>
+    <script src="../js/dycalendar.js"></script>
 </body>
 </html>

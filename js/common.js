@@ -14,6 +14,7 @@ $(document).ready(function(){
     // 팝업 관련 클릭 이벤트
     popupClick();
 
+    // 리딩방
     $('.livingPage').length && livingEvent();
 
     // 핸드폰 인증
@@ -816,6 +817,30 @@ function moneyHistory(){
         $('.popupArea form input[type="submit"]').removeClass('active');
         $('#paymentPrice').html('');
     })
+
+    $('[class|="calender"]').each(function(){
+        dycalendar.draw({
+            target : "." +$(this).attr('class'),
+            type : 'month',
+            prevnextbutton : 'show',
+            year : 2017,
+            month : 2
+        })
+    })
+    $('[class|="calender"]').each(function(){
+        dycalendar.draw({
+            target : "." +$(this).attr('class'),
+            type : 'month',
+            prevnextbutton : 'show',
+            year : 2018,
+            month : 2
+        })
+    })
+   /*  dycalendar.draw({
+        target : ".calenderArea",
+        type : 'month',
+        prevnextbutton : 'show'
+    }) */
 }
 
 // 셋팅 간편 결제 정보
