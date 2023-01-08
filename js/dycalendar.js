@@ -165,9 +165,9 @@
         elem = document.createElement("span");
         elem.setAttribute("class", "dycalendar-span-month-year");
         if (option.monthformat === "mmm") {
-            elem.innerHTML = data.year + "." + data.monthName;
+            elem.innerHTML = '<span data-userYear>' +  data.year + '</span>' + "." + '<span data-userMonth>' + data.monthName; + '</span>'
         } else if (option.monthformat === "full") {
-            elem.innerHTML =  data.year + "." + data.monthNameFull;
+            elem.innerHTML = '<span data-userYear>' +  data.year + '</span>' + "." + '<span data-userMonth>' + data.monthNameFull + '</span>';
         }
 
         // 헤더 div에 월 범위 추가
@@ -390,7 +390,7 @@
     }
 
     /**
-     * this function will handle the on click event.
+     * 이 함수는 on click 이벤트를 처리합니다.
      */
     function onClick() {
 
@@ -567,10 +567,10 @@
         }
     }
 
-    //events
-    onClick();
-
+    
     //attach to global window object
     global.dycalendar = dycalendar;
+    //events
+    onClick();
 
 }(typeof window !== "undefined" ? window : this));

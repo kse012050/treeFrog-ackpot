@@ -161,19 +161,13 @@
                     </div>
                     <form class="calenderBox">
                         <div>
-                            <input type="date" id="charge-start" required data-input="">
+                            <input type="date" id="charge-start" required data-input="yearMonthDay">
                             <button data-popup="calender">2021.11.1</button>
-                            <div class="calender-1">
-
-                            </div>
                         </div>
                         <span>-</span>
                         <div>
-                            <input type="date" id="charge-end" required data-input="">
+                            <input type="date" id="charge-end" required data-input="yearMonthDay">
                             <button>2021.11.30</button>
-                            <!-- <div class="calender-2">
-
-                            </div> -->
                         </div>
                         <input type="submit" value="검색" class="btn">
                     </form>
@@ -208,14 +202,18 @@
                             <a href="">다음</a>
                         </div>
                     </div>
-                    <div>
-                        <input type="date">
-                        <label for="">2021.11.1</label>
+                    <form class="calenderBox">
+                        <div>
+                            <input type="date" id="charge-start" required data-input="yearMonthDay">
+                            <button data-popup="calender">2021.11.1</button>
+                        </div>
                         <span>-</span>
-                        <input type="date">
-                        <label for="">2021.11.30</label>
-                        <button class="btn">검색</button>
-                    </div>
+                        <div>
+                            <input type="date" id="charge-end" required data-input="yearMonthDay">
+                            <button>2021.11.30</button>
+                        </div>
+                        <input type="submit" value="검색" class="btn">
+                    </form>
                 </div>
                 <div class="contentBox">
                     <h4>돈풍선 사용 내역</h4>
@@ -252,19 +250,23 @@
                             <a href="">다음</a>
                         </div>
                     </div>
-                    <div>
+                    <form class="calenderBox">
                         <select>
                             <option value="">전체</option>
                             <option value="">충전</option>
                             <option value="">사용</option>
                         </select>
-                        <input type="date">
-                        <label for="">2021.11.1</label>
-                        <span>~</span>
-                        <input type="date">
-                        <label for="">2021.11.30</label>
-                        <button class="btn">검색</button>
-                    </div>
+                        <div>
+                            <input type="date" id="charge-start" required data-input="yearMonthDay">
+                            <button data-popup="calender">2021.11.1</button>
+                        </div>
+                        <span>-</span>
+                        <div>
+                            <input type="date" id="charge-end" required data-input="yearMonthDay">
+                            <button>2021.11.30</button>
+                        </div>
+                        <input type="submit" value="검색" class="btn">
+                    </form>
                 </div>
             </section>
         </div>

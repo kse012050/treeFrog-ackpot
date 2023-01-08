@@ -120,8 +120,8 @@ function inputValidation(selector){
             boolean = true;
         }
     };
-
     attrName === 'charge' && (boolean = $(selector).val() !== '');
+    attrName === 'yearMonthDay' && (boolean = $(selector).val() !== '');
     return boolean;
 }
 
@@ -818,29 +818,67 @@ function moneyHistory(){
         $('#paymentPrice').html('');
     })
 
-    $('[class|="calender"]').each(function(){
-        dycalendar.draw({
-            target : "." +$(this).attr('class'),
+    $('body').click(function(e){
+        ($(e.target).closest('.calenderArea').length || $(e.target).hasClass('dycalendar-prev-next-btn')) || $('.calenderArea').remove();
+        $(e.target).hasClass('dycalendar-prev-next-btn') && calenderAreaClick();
+    })
+
+
+    $('.calenderBox button').click(function(e){
+        $('.calenderArea').remove();
+        $(this).after('<div class="calenderArea"></div>')
+        console.log(Number($(this).attr('data-selectmonth')) - 1);
+        let test = {
+            target : '.calenderArea',
             type : 'month',
             prevnextbutton : 'show',
-            year : 2017,
-            month : 2
+            highlighttargetdate:true,
+        };
+        if(!!$(this).attr('data-selectday')){
+            // test = {
+            //     // target : '.calenderArea',
+            //     // type : 'month',
+            //     // prevnextbutton : 'show',
+            //     // highlighttargetdate:true,
+            //     year : Number($(this).attr('data-selectyear')),
+            //     month : Number($(this).attr('data-selectmonth')) - 1,
+            //     date : Number($(this).attr('data-selectday')),
+            // }
+            test.year = Number($(this).attr('data-selectyear'));
+            test.month =  Number($(this).attr('data-selectmonth')) - 1;
+            test.date = Number($(this).attr('data-selectday'));
+        }
+        
+        console.log(test);
+        dycalendar.draw(test)
+        calenderAreaClick();
+    });
+
+    function calenderAreaClick(){
+        // $('.calenderArea').off('click')
+        $('.calenderArea .dycalendar-body tr td').off('click');
+        $('.calenderArea .dycalendar-body tr td').click(function(){
+            $('.calenderArea td').removeClass('dycalendar-target-date')
+            $(this).addClass('dycalendar-target-date')
+
+            let year = $(this).closest('.dycalendar-month-container').find('[data-userYear]').html();
+            let month = $(this).closest('.dycalendar-month-container').find('[data-userMonth]').html();
+            let day = $(this).html();
+            
+            $(this).closest('.calenderArea').siblings('button').addClass('active');
+            $(this).closest('.calenderArea').siblings('button').attr('data-selectyear' , year)
+            $(this).closest('.calenderArea').siblings('button').attr('data-selectmonth' , month)
+            $(this).closest('.calenderArea').siblings('button').attr('data-selectday' , day)
+            month = month.length === 1 ? '0' + month : month;
+            day = (day.length === 1) ? '0' + day : day;
+            $(this).closest('.calenderArea').siblings('button').html(year+'-'+month+'-'+day)
+            $(this).closest('.calenderArea').siblings('[type="date"]').val(year+'-'+month+'-'+day)
+
+            submitActive($(this).closest('form'));
+            $('.calenderArea').remove();
         })
-    })
-    $('[class|="calender"]').each(function(){
-        dycalendar.draw({
-            target : "." +$(this).attr('class'),
-            type : 'month',
-            prevnextbutton : 'show',
-            year : 2018,
-            month : 2
-        })
-    })
-   /*  dycalendar.draw({
-        target : ".calenderArea",
-        type : 'month',
-        prevnextbutton : 'show'
-    }) */
+    }
+
 }
 
 // 셋팅 간편 결제 정보
