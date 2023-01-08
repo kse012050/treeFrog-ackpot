@@ -82,17 +82,30 @@ function mainSlider(){
 }
 
 function tabClick(){
-    $('.tabBtn li button').click(function(){
+    $('.tabBtn li button , .tabBtn-collect li button').click(function(){
         $(this).parent().addClass('active').siblings().removeClass('active');
-        const tabName = $(this).attr('data-tab');
-        if(tabName === 'all'){
-            $(`[data-tab="contentArea"] [data-tab]`).stop().fadeIn();
-        }else{
-            $(`[data-tab="contentArea"] [data-tab]`).hide();
-            $(`[data-tab="contentArea"] [data-tab="${tabName}"]`).stop().fadeIn();
+        let dataTabName = 'data-tab';
+        let tabName = $(this).attr(dataTabName);
+        if(!tabName){
+            dataTabName = 'data-tab2';
+            tabName = $(this).attr('data-tab2');
+        }
+        if(!tabName){
+            dataTabName = 'data-tab3';
+            tabName = $(this).attr('data-tab3');
         }
 
+        if(tabName === 'all'){
+            $(`[${dataTabName}="contentArea"] [${dataTabName}]`).stop().fadeIn();
+        }else{
+            $(`[${dataTabName}="contentArea"] [${dataTabName}]`).hide();
+            tabName !== 'collect' ?
+                $(`[${dataTabName}="contentArea"] [${dataTabName}="${tabName}"]`).stop().fadeIn() :
+                $(`[${dataTabName}="contentArea"] [${dataTabName}="${tabName}"]`).stop().fadeIn().css('display','flex');
+        }
     })
+
+    
 }
 
 // input 유효성 검사
@@ -767,6 +780,72 @@ function livingEvent(){
 		document.execCommand('copy');
 		$temp.remove();
 	}
+
+    // 게시판 분류 클릭시 상세 제거
+    $('.tabBtn li button[data-tab2]').click(function(){
+        $('.detailBox').hide();
+    })
+
+    // 게시판 - 게시글 , 공지사항 클릭시 상세 제거
+    $('[data-tab2="contentArea"] .content-board > .scrollBox-board ul li a').click(function(e){
+        e.preventDefault();
+        $('.detailBox').stop().fadeIn();
+    })
+    
+    // 게시판 - 게시글 , 공지사항 - 상세 하단 버튼 - 목록
+    $('[data-tab2="contentArea"] .detail-btnArea [data-btn="listPost"]').click(function(){
+        $('.detailBox').stop().fadeOut();
+
+        let title = '목록 클릭 글'
+        let time = '목록 클릭글 시간'
+        let expertName = '전문가 이름'
+        let content = '글 내용'
+        // boardDetail(title , time , expertName , content);
+    })
+    // 게시판 - 게시글 , 공지사항 - 상세 하단 버튼 - 이전글
+    $('[data-tab2="contentArea"] .detail-btnArea [data-btn="prevPost"]').click(function(){
+        let title = '이전글'
+        let time = '이전글 시간'
+        let expertName = '전문가 이름'
+        let content = '글 내용'
+        boardDetail(title , time , expertName , content);
+    })
+    // 게시판 - 게시글 , 공지사항 - 상세 하단 버튼 - 다음글
+    $('[data-tab2="contentArea"] .detail-btnArea [data-btn="nextPost"]').click(function(){
+        let title = '다음글'
+        let time = '다음글 시간'
+        let expertName = '전문가 이름'
+        let content = '글 내용'
+        boardDetail(title , time , expertName , content);
+    })
+    
+    function boardDetail(title , time , expertName , content){
+        $('.detailBox .detail-title p').html(title);
+        $('.detailBox .detail-title small').html(`<time>${time}</time>${expertName}`);
+        $('.detailBox .scrollBox .detail-content').html(content);
+    }
+
+    // 게시판 - 게시글 , 공지사항 - 모아보기
+    $('.tabBtn-collect li button').click(function(){
+        $('[data-tab3="contentArea"] > div .tabContent-collect > ul li').removeClass('active');
+        $('[data-tab3="contentArea"] .downloadArea *').hide();
+    })
+    $('[data-tab3="contentArea"] > div .tabContent-collect > ul li').click(function(){
+        $(this).toggleClass('active')
+        let activeLength = $(this).closest('.tabContent-collect').find('li.active').length;
+        if(!activeLength){
+            $('[data-tab3="contentArea"] .downloadArea *').hide();
+        }else{
+            $('[data-tab3="contentArea"] .downloadArea *').show();
+            $('[data-tab3="contentArea"] .downloadArea').find('p').html(activeLength)
+        }
+    })
+    $('.downloadArea [data-type="delete"]').click(function(){
+        alert('누르면 어떻게 되는거지..?')
+    })
+    $('.downloadArea [data-type="download"]').click(function(){
+        alert('다운로드 버튼')
+    })
 }
 
 // 셋팅 프로필 전용 이벤트
