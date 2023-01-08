@@ -94,6 +94,10 @@ function tabClick(){
             dataTabName = 'data-tab3';
             tabName = $(this).attr('data-tab3');
         }
+        if(!tabName){
+            dataTabName = 'data-tab4';
+            tabName = $(this).attr('data-tab4');
+        }
 
         if(tabName === 'all'){
             $(`[${dataTabName}="contentArea"] [${dataTabName}]`).stop().fadeIn();
@@ -736,7 +740,7 @@ function popupClick(){
 function livingEvent(){
 
     // 채팅 스크롤 최하단으로 내리기
-    $('.livingPage .contentArea section .chattingArea').scrollTop($('.livingPage .contentArea section .chattingArea > .scrollHeight').innerHeight())
+    $('.chattingArea').scrollTop($('.scrollHeight').innerHeight())
     // 채팅 스크롤에 따라 상단 타이틀 영역 blur 처리
     $('.livingPage .contentArea section .chattingArea').scroll(function(){
         ($(this).scrollTop() > 0 && !$('.livingPage .contentArea section .noticeArea').hasClass('active')) ?
@@ -846,6 +850,11 @@ function livingEvent(){
     $('.downloadArea [data-type="download"]').click(function(){
         alert('다운로드 버튼')
     })
+
+    // 매수 / 매도 내역 버튼
+   
+    
+
 }
 
 // 셋팅 프로필 전용 이벤트

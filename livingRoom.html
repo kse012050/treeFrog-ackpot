@@ -273,7 +273,7 @@
                                 늘 감사하게 생각하고 있습니다. 오늘 아침에도 유익한 정보 기대하겠습니다.
                             </p>
                         </div>
-                        <div data-type="manager-best">
+                        <div data-type="user">
                             <div class="profileImg">
                                 <img src="images/expert-img.png" alt="">
                             </div>
@@ -541,13 +541,6 @@
                                         <strong>유저닉네임</strong>
                                     </li>
                                 </ul>
-                                <!-- <div class="popupArea active">
-                                    <div class="borderRadius30">
-                                        <strong>지난 대화 내역</strong>
-                                    
-                                        <button data-popup="close">팝업 닫기</button>
-                                    </div>
-                                </div> -->
                             </div>
                         </li>
                         <li class="lastConversation">
@@ -555,7 +548,87 @@
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>지난 대화 내역</strong>
-                                
+                                    <div class="yearArea">
+                                        <button data-btn="prev">이전</button>
+                                        <p>11월 24일 (목)</p>
+                                        <button data-btn="next">다음</button>
+                                    </div>
+                                    <div class="contentArea">
+                                        <div class="scrollBox chattingArea">
+                                            <div class="scrollHeight" data-tab5="contentArea">
+                                                <!-- 
+                                                    data-type
+                                                        최고관리자 : manager-best , 전문가 : manager-expert
+                                                        일반유저 : user 
+                                                        (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
+                                                        자신 : me
+                                                -->
+                                                <div data-type="manager-expert" data-tab5="sell">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <!-- 
+                                                            class : textBox , 일반 텍스트
+                                                                data-type이 없으면 일반 ( 하얀색 )
+                                                                매도 : sell , 매수 : buy , 알림 : alarm , 비밀 : secret (data-to : 사용자 닉네임)
+                                                        -->
+                                                        <div class="textBox">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-type="manager-expert" data-tab4="alarm">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <div class="textBox" data-type="sell">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-type="manager-expert">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <div class="textBox">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-type="me">
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <div class="textBox">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>*지난 5일간의 대화내역만 볼 수 있습니다.</p>
                                     <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>
@@ -654,7 +727,95 @@
                             <div class="popupArea">
                                 <div class="borderRadius30">
                                     <strong>매수/매도 내역</strong>
-                                
+                                    <div class="yearArea">
+                                        <button data-btn="prev">이전</button>
+                                        <p>11월 24일 (목)</p>
+                                        <button data-btn="next">다음</button>
+                                    </div>
+                                    <div class="contentArea">
+                                        <ul class="tabBtn">
+                                            <li class="active"><button data-tab4="all">전체</button></li>
+                                            <li><button data-tab4="sell">매수</button></li>
+                                            <li><button data-tab4="buy">매도</button></li>
+                                        </ul>
+                                        <div class="scrollBox chattingArea">
+                                            <div class="scrollHeight" data-tab4="contentArea">
+                                                <!-- 
+                                                    data-type
+                                                        최고관리자 : manager-best , 전문가 : manager-expert
+                                                        일반유저 : user 
+                                                        (user일 경우 data-user 값 1 ~ 10 넣어주면 랜덤 배경)
+                                                        자신 : me
+                                                -->
+                                                <div data-type="manager-expert" data-tab4="sell">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <!-- 
+                                                            class : textBox , 일반 텍스트
+                                                                data-type이 없으면 일반 ( 하얀색 )
+                                                                매도 : sell , 매수 : buy , 알림 : alarm , 비밀 : secret (data-to : 사용자 닉네임)
+                                                        -->
+                                                        <div class="textBox" data-type="sell">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-type="manager-expert" data-tab4="sell">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <div class="textBox" data-type="sell">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-type="manager-expert" data-tab4="buy">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <div class="textBox" data-type="buy">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-type="manager-expert" data-tab4="buy">
+                                                    <div class="profileImg">
+                                                        <img src="images/expert-img.png" alt="">
+                                                    </div>
+                                                    <div class="messageArea">
+                                                        <p>김전문 <span>전문가</span></p>
+                                                        <div class="textBox" data-type="buy">
+                                                            같은 시간에 작성할때 전송을 다르게<br/> 누르면 이렇게되며
+                                                            알트+엔터로 글 단락을 나누면  이렇게 드랍됨<br/>
+                                                            그리고 말풍선 옆 시간표시는 마지막에 보낸 메세지 옆에
+                                                            *이것도 카톡과 동일
+                                                            <time>오후 1:47</time>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>*지난 5일간의 대화내역만 볼 수 있습니다.</p>
                                     <button data-popup="close">팝업 닫기</button>
                                 </div>
                             </div>

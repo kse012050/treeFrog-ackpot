@@ -249,7 +249,7 @@ input[type="checkbox"].case01:checked + label > span::before{margin-left: 28px;}
 
 
 /* 페이지 */
-.contentPage{display: flex; height: 100vh;}
+.contentPage{display: flex; height: 100vh; min-width: 1600px; min-height: 800px;}
 .contentPage header{width: 230px; background-image: linear-gradient(to bottom, #f51515, #fc4516 49%, #f44a2f 71%, #f4582f); display: flex; flex-direction: column; justify-content: space-between;}
 .contentPage header .topArea{height: 51.85%; max-height: 560px; display: flex; flex-direction: column; justify-content: space-between;}
 .contentPage header .topArea .profileArea{min-height: 263.5px; padding: 0 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.2);}
