@@ -340,10 +340,6 @@ function submitClick(){
         $(this).attr('id') === 'firstSingUp' && firstSingUp(e);
         $(this).attr('id') === 'guestSingUp' && guestSingUp(e);
         
-        // 값이 맞지 않으면 값이 맞지 않는 첫번째 input 포커스
-        // inputValue.find((v)=>{
-        //     return v.errorSelector.hasClass('active') && v.selector.focus();
-        // })
         
         $(this).attr('id') === 'profile' && settingProfile(e);
         $(this).attr('id') === 'alram' && settingAlram(e);
@@ -351,6 +347,9 @@ function submitClick(){
         $(this).attr('id') === 'expert' && settingExpert(e);
         $(this).attr('id') === 'loginSetting' && settingLogin_setting(e);
         $(this).attr('id') === 'loginPassword' && settingLogin_password(e);
+        $(this).attr('id') === 'historyCharge' && settingHistory_search('historyCharge' , e);
+        $(this).attr('id') === 'historyGift' && settingHistory_search('historyGift' , e);
+        $(this).attr('id') === 'historyUse' && settingHistory_search('historyUse' , e);
 
     })
 
@@ -566,6 +565,18 @@ function submitClick(){
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
         $('.confirmPopup').fadeIn().css('display','flex');
+    }
+
+    function settingHistory_search(pageName , e){
+        pageName === 'historyCharge' && console.log('셋팅 내역페이지 - 돈풍선 충전 내역');
+        pageName === 'historyGift' && console.log('셋팅 내역페이지 - 선물한 돈풍선 내역');
+        pageName === 'historyUse' && console.log('셋팅 내역페이지 - 돈풍선 사용 내역');
+        // resultValue : 최종 값
+        // resultValue.charge-start : 검색 시작 날짜
+        // resultValue.charge-end : 검색 종료 날짜
+
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
     }
 }
 
@@ -915,35 +926,23 @@ function moneyHistory(){
     $('.calenderBox button').click(function(e){
         $('.calenderArea').remove();
         $(this).after('<div class="calenderArea"></div>')
-        console.log(Number($(this).attr('data-selectmonth')) - 1);
-        let test = {
+        let calenderAPI = {
             target : '.calenderArea',
             type : 'month',
             prevnextbutton : 'show',
             highlighttargetdate:true,
         };
         if(!!$(this).attr('data-selectday')){
-            // test = {
-            //     // target : '.calenderArea',
-            //     // type : 'month',
-            //     // prevnextbutton : 'show',
-            //     // highlighttargetdate:true,
-            //     year : Number($(this).attr('data-selectyear')),
-            //     month : Number($(this).attr('data-selectmonth')) - 1,
-            //     date : Number($(this).attr('data-selectday')),
-            // }
-            test.year = Number($(this).attr('data-selectyear'));
-            test.month =  Number($(this).attr('data-selectmonth')) - 1;
-            test.date = Number($(this).attr('data-selectday'));
+            calenderAPI.year = Number($(this).attr('data-selectyear'));
+            calenderAPI.month =  Number($(this).attr('data-selectmonth')) - 1;
+            calenderAPI.date = Number($(this).attr('data-selectday'));
         }
         
-        console.log(test);
-        dycalendar.draw(test)
+        dycalendar.draw(calenderAPI)
         calenderAreaClick();
     });
 
     function calenderAreaClick(){
-        // $('.calenderArea').off('click')
         $('.calenderArea .dycalendar-body tr td').off('click');
         $('.calenderArea .dycalendar-body tr td').click(function(){
             $('.calenderArea td').removeClass('dycalendar-target-date')
