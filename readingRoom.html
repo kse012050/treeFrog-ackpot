@@ -426,20 +426,14 @@
                                         <li>
                                             <b>선물 받을 전문가</b>
                                             <div class="searchArea">
-                                                <div class="inputArea">
-                                                    <input type="text" placeholder="전문가를 검색해주세요.">
-                                                    <button>검색</button>
-                                                </div>
-                                                <!-- active 클래스 추가시 생성 -->
-                                                <div class="scrollBox active">
-                                                    <div>
-                                                        <b>현 채팅방 참여 전문가</b>
-                                                        <button>김전문가 닉네임 글자수20자 제한맞춤</button>
-                                                        <button>김OO</button>
-                                                        <button>김OO</button>
-                                                        <button>김OO</button>
-                                                        <button>김OO</button>
-                                                        <button>김OO</button>
+                                                <div class="searchArea">
+                                                    <div class="inputArea">
+                                                        <input type="text" placeholder="전문가를 검색해주세요." id="search2" required data-expert="false">
+                                                        <button>검색</button>
+                                                    </div>
+                                                    <!-- active 클래스 추가시 생성 -->
+                                                    <div class="scrollBox">
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -447,20 +441,21 @@
                                         <li>
                                             <b>현재보유 돈풍선
                                                 <!-- 보유 돈풍선 -->
-                                                <mark>300</mark>
+                                                <mark id="checkCount">300</mark>
                                             </b>
                                             <button>구매하기</button>
                                             <div class="numberArea">
-                                                <input type="number" placeholder="돈풍선 개수를 입력해주세요." min="0">
+                                                <!-- 위에 mark 태그 #checkCount 와 갯수 비교 -->
+                                                <input type="number" placeholder="돈풍선 개수를 입력해주세요." id="moneyGift" min="0" required data-input="moneyCount">
                                             </div>
-                                            <p class="errorText">* 돈풍선 개수를 확인해주세요.</p>
+                                            <p class="errorText active">* 돈풍선 개수를 확인해주세요.</p>
                                         </li>
                                         <li>
-                                            <textarea placeholder="돈풍선 금액 및 메세지가 공개적으로 표시됩니다."></textarea>
+                                            <textarea placeholder="돈풍선 금액 및 메세지가 공개적으로 표시됩니다." id="moneyMessage"></textarea>
                                         </li>
                                     </ul>
                                 </fieldset>
-                                <input type="submit" value="선물하기" class="submit160"/>
+                                <input type="submit" value="선물하기" class="submit160" id="readingGift"/>
                             </form>
                             <button data-popup="close">닫기</button>
                         </div>  <!-- 돈풍선 선풀 팝업 -->

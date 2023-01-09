@@ -139,6 +139,7 @@ function inputValidation(selector){
     };
     attrName === 'charge' && (boolean = $(selector).val() !== '');
     attrName === 'yearMonthDay' && (boolean = $(selector).val() !== '');
+    attrName === 'moneyCount' && (boolean = (Number(selector.val()) <= Number($('#checkCount').html())));
     return boolean;
 }
 
@@ -192,7 +193,6 @@ function submitActive(selector){
         let boolean = inputValidation(a)
         return boolean === true;
     })
-    
     // 에러메세지가 있는지 없는지 확인
     let errorBoolean = !errorTextConfirm();
     
@@ -341,6 +341,7 @@ function submitClick(){
         $(this).attr('id') === 'guestSingUp' && guestSingUp(e);
         
         
+        $(this).attr('id') === 'readingGift' && readingGift(e);
         $(this).attr('id') === 'profile' && settingProfile(e);
         $(this).attr('id') === 'alram' && settingAlram(e);
         $(this).attr('id') === 'chargeSubmit' && settingHistory_charge(e);
@@ -477,6 +478,19 @@ function submitClick(){
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
         location.href = '../../index.html'
+    }
+
+    // 리딩방 돈풍선 선물
+    function readingGift(e){
+        console.log('리딩방 돈풍선 선물');
+        // resultValue : 최종 값
+        // resultValue.search2 : 전문가 이름
+        // resultValue.moneyGift : 돈풍선 갯수 (string)
+        // resultValue.moneyMessage : 선물 메세지
+
+        
+        // 폼으로 데이터 전송 시 삭제
+        e.preventDefault();
     }
 
     // 셋팅 프로필
@@ -709,11 +723,14 @@ function popupClick(){
         e.preventDefault();
         const attrName = $(this).attr('data-popup');
         let popupSelector;
-        attrName === 'next' ? 
-            popupSelector = $(this).next() :
+        if(attrName === 'next'){ 
+            popupSelector = $(this).next()
+            popupSelector.fadeIn().css('display','flex').addClass('active')
+        }else{
             popupSelector = $(`.popup-${attrName}`);
+            popupSelector.fadeIn().addClass('active')
+        }
 
-        popupSelector.fadeIn().css('display','flex').addClass('active')
 
         attrName === 'share' && $(`.popup-${attrName} .errorText`).removeClass('active')
     })
@@ -1115,17 +1132,18 @@ function expertEvent(){
     ]
     let searchArray = []
     let suggestion = '';
-    $('#search').on('input',function(){
+    $('#search , #search2').on('input',function(){
         $('.searchArea .scrollBox').html('');
         suggestion ='';
         let searchValue = $(this).val();
+        let searchResultBox = $(this).closest('.searchArea').find('.scrollBox');
         searchArray = expertList.filter((data)=>{
             return data.includes(searchValue)
         })
         searchArray = searchArray.map((data)=>{
             return data = '<button>'+ data +'</button>'
         })
-        !!searchValue ? $('.searchArea .scrollBox').addClass('active') : $('.searchArea .scrollBox').removeClass('active');
+        !!searchValue ? searchResultBox.addClass('active') : searchResultBox.removeClass('active');
         
         
         // 추천 전문가
@@ -1135,36 +1153,39 @@ function expertEvent(){
         })
         suggestion += '</div>';
         (!!searchValue && !searchArray.length) ?
-            $('.searchArea .scrollBox').append('<p>검색한 전문가가 없습니다.</p>' + suggestion) :
-            $('.searchArea .scrollBox').append(searchArray);
+            searchResultBox.append('<p>검색한 전문가가 없습니다.</p>' + suggestion) :
+            searchResultBox.append(searchArray);
 
 
         $('.searchArea .scrollBox button').off('click');
         expertListClick();
 
-        expertBoolean();
+        expertBoolean($(this));
         
 
     })
 
+    
+
     function expertListClick(){
         $('.searchArea .scrollBox button').click(function(e){
             e.preventDefault();
-            $('#search').val($(this).html())
-            expertBoolean();
+            // $('#search').val($(this).html())
+            $(this).closest('.searchArea').find('[type="text"]').val($(this).html())
+            expertBoolean($(this).closest('.searchArea').find('[type="text"]'));
         })
     }
 
-    function expertBoolean(){
+    function expertBoolean(selector){
         let boolean = expertList.find(function(e){
-            return e === $('#search').val();
+            return e === selector.val();
         })
         boolean = !!boolean;
         boolean ? 
-            $('#search').attr('data-expert' , 'true') :
-            $('#search').attr('data-expert' , 'false');
+            selector.attr('data-expert' , 'true') :
+            selector.attr('data-expert' , 'false');
 
-        submitActive($('#search').closest('form'));
+        submitActive(selector.closest('form'));
     }
 }
 
