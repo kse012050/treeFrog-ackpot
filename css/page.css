@@ -1,3 +1,7 @@
+/* 메인 */
+.mainPage [class*="scrollBox"]:not(:has(:not(ul:only-child))){display: flex; justify-content: center; align-items: center;}
+.mainPage [class*="scrollBox"]:not(:has(:not(ul:only-child)))::after{content: '매칭된 리딩방이 없습니다.'; font-size: 16px; font-weight: 400; color: #bcbcbc;}
+
 /* 리빙방 */
 .readingPage{overflow: hidden;}
 .readingPage .errorText{font-size: 12px;}
