@@ -15,7 +15,7 @@ $(document).ready(function(){
     popupClick();
 
     // 리딩방
-    $('.livingPage').length && livingEvent();
+    $('.livingPage').length && readingEvent();
 
     // 핸드폰 인증
     $('.certificationBox').length && mobileConfirm();
@@ -752,7 +752,7 @@ function popupClick(){
 }
 
 // 리빙방 전용 이벤트
-function livingEvent(){
+function readingEvent(){
 
     // 채팅 스크롤 최하단으로 내리기
     $('.chattingArea').scrollTop($('.scrollHeight').innerHeight())
@@ -889,6 +889,7 @@ function alremEvent(){
 
 // 셋팅 돈풍선 충전 내역
 function moneyHistory(){
+    // 충전 
     $('input[name="chargeCount"]').on('input',function(){
         if(!$(this).val()){
             paymentPrice('')
@@ -921,6 +922,7 @@ function moneyHistory(){
         $('#paymentPrice').html('');
     })
 
+    // 달력
     $('body').click(function(e){
         ($(e.target).closest('.calenderArea').length || $(e.target).hasClass('dycalendar-prev-next-btn')) || $('.calenderArea').remove();
         $(e.target).hasClass('dycalendar-prev-next-btn') && calenderAreaClick();
