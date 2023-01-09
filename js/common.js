@@ -755,7 +755,10 @@ function popupClick(){
 function readingEvent(){
 
     // 채팅 스크롤 최하단으로 내리기
-    $('.chattingArea').scrollTop($('.scrollHeight').innerHeight())
+    chattingScrollBottom()
+    function chattingScrollBottom(){
+        $('.chattingArea').scrollTop($('.scrollHeight').innerHeight())
+    }
     $('[data-popup="next"]').click(function(){
         let nextSelector = $(this).next();
         nextSelector.find('.chattingArea').scrollTop() == 0 &&
@@ -772,6 +775,17 @@ function readingEvent(){
     $('.readingPage :is(.leftAside , .rightAside) > button').click(function(){
         $(this).parent().toggleClass('active');
     })
+
+    // 채팅 메세지
+    $("#test").on('keydown keyup', function (key) {
+        // 엔터 치면
+        if(key.keyCode == 13 && !key.shiftKey){
+            console.log($(this).val());
+        }
+        // 자동 세로 줄
+        $(this).height(1).height( $(this).prop('scrollHeight') );	
+        chattingScrollBottom()
+      });
 
     // 채팅 공지사항 열기
     $('[data-notice="open"]').click(function(){

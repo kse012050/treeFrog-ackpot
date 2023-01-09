@@ -193,7 +193,7 @@
 /* 리빙 채팅 하단 입력창 */
 .readingPage .contentArea section > .inputArea{background-color: white; border-radius: 10px; padding: 12px 20px; border: 1px solid white; position: relative;}
 .readingPage .contentArea section > .inputArea:has( > textarea:focus){border-color: black;}
-.readingPage .contentArea section > .inputArea > textarea{width: 100%; font-size: 15px; line-height: 22px; padding: 0; border: none; background-color: transparent; outline: none;}
+.readingPage .contentArea section > .inputArea > textarea{width: 100%; font-size: 15px; line-height: 22px; padding: 0; border: none; background-color: transparent; outline: none; padding: 0 5px;}
 .readingPage .contentArea section > .inputArea .btnArea{display: flex;}
 .readingPage .contentArea section > .inputArea .btnArea > button[class|="btn"]{width: 34px; height: 34px; background-position: center; background-size: cover; text-indent: -9999px;}
 .readingPage .contentArea section > .inputArea .btnArea .btn-add{background-image: url('../images/icon-plus-circle.png'); margin-right: 4px;}
