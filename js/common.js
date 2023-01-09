@@ -572,8 +572,12 @@ function submitClick(){
         pageName === 'historyGift' && console.log('셋팅 내역페이지 - 선물한 돈풍선 내역');
         pageName === 'historyUse' && console.log('셋팅 내역페이지 - 돈풍선 사용 내역');
         // resultValue : 최종 값
-        // resultValue.charge-start : 검색 시작 날짜
-        // resultValue.charge-end : 검색 종료 날짜
+        // resultValue.charge-start
+        // resultValue.gift-start
+        // resultValue.use-start : 검색 시작 날짜
+        // resultValue.charge-end 
+        // resultValue.gift-end 
+        // resultValue.use-end : 검색 종료 날짜
 
         // 폼으로 데이터 전송 시 삭제
         e.preventDefault();
@@ -920,12 +924,20 @@ function moneyHistory(){
     $('body').click(function(e){
         ($(e.target).closest('.calenderArea').length || $(e.target).hasClass('dycalendar-prev-next-btn')) || $('.calenderArea').remove();
         $(e.target).hasClass('dycalendar-prev-next-btn') && calenderAreaClick();
+        $(e.target).hasClass('dycalendar-prev-next-btn') && calenderPrevNextBtn();
+        $(e.target).hasClass('dycalendar-prev-next-btn') && calenderUnClick();
+
+        
     })
 
 
     $('.calenderBox button').click(function(e){
         $('.calenderArea').remove();
-        $(this).after('<div class="calenderArea"></div>')
+        if(!$(this).closest('.calenderBox').find('[data-calender="start"]').attr('data-selectday')){
+            $(this).closest('.calenderBox').find('[data-calender="start"]').after('<div class="calenderArea"></div>')
+        }else{
+            $(this).after('<div class="calenderArea"></div>')
+        }
         let calenderAPI = {
             target : '.calenderArea',
             type : 'month',
@@ -937,11 +949,17 @@ function moneyHistory(){
             calenderAPI.month =  Number($(this).attr('data-selectmonth')) - 1;
             calenderAPI.date = Number($(this).attr('data-selectday'));
         }
+
         
         dycalendar.draw(calenderAPI)
+        if($(this).attr('data-calender') === 'start'){
+        }else{
+            calenderUnClick()
+        }
         calenderAreaClick();
+        calenderPrevNextBtn();
     });
-
+    
     function calenderAreaClick(){
         $('.calenderArea .dycalendar-body tr td').off('click');
         $('.calenderArea .dycalendar-body tr td').click(function(){
@@ -964,8 +982,49 @@ function moneyHistory(){
             submitActive($(this).closest('form'));
             $('.calenderArea').remove();
         })
+        calenderPrevNextBtn();
     }
 
+    function calenderPrevNextBtn(){
+        let date = new Date();
+        let newDate = {
+            day : date.getDate(),
+            month : date.getMonth() + 1,
+            year : date.getFullYear(),
+        }
+        let selectMonth = $('.calenderArea [data-usermonth]').html();
+        let selectYear = $('.calenderArea [data-useryear]').html();
+
+        if(newDate.year == selectYear && newDate.month == selectMonth){
+            $('.calenderArea .next-btn').remove()
+            $('.calenderArea').addClass('today')
+        }else{
+            $('.calenderArea').removeClass('today')
+        }
+        
+        if(newDate.year >= selectYear && newDate.month == selectMonth){
+            $('.calenderArea td').each(function(){
+                Number(newDate.day) < Number($(this).html()) && $(this).addClass('unClick');
+            })
+        }
+
+    }
+
+    function calenderUnClick(){
+        let startCalender = $('.calenderArea').closest('.calenderBox').find('[data-calender="start"]');
+        let selectMonth = startCalender.attr('data-selectmonth')
+        let selectYear = startCalender.attr('data-selectyear')
+        let calenderMonth = $('.calenderArea [data-usermonth]').html();
+        let calenderYear = $('.calenderArea [data-useryear]').html();
+        if(selectYear >= calenderYear && selectMonth == calenderMonth){
+            $('.calenderArea .prev-btn').remove()
+        }
+        if(calenderYear == selectYear && selectMonth == calenderMonth){
+            $('.dycalendar-body td').each(function(){
+                Number(startCalender.attr('data-selectday')) > Number( $(this).html()) && $(this).addClass('unClick')
+            })
+        }
+    }
 }
 
 // 셋팅 간편 결제 정보

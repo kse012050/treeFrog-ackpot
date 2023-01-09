@@ -414,8 +414,10 @@
 .settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container{padding: 16px 16px 30px;}
 .settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container .dycalendar-body{margin: 0;}
 .settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container table{width: 100%;}
-.settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container table td{width: 32px; line-height: 32px; padding: 0;}
-.settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container .dycalendar-target-date{background-color: #f51515; border-radius: 100%;}
+.settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container table td{width: 32px; line-height: 32px; padding: 0; cursor: pointer;}
+.settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea .dycalendar-month-container table td.unClick{color: #bcbcbc; pointer-events: none;}
+.settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea.today .dycalendar-month-container .dycalendar-target-date{background-color: #f51515; border-radius: 100%;}
+.settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > div .calenderArea:not(.today) .dycalendar-month-container .dycalendar-target-date{background-color: transparent; color: black;}
 .settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox > span{font-size: 13px; color: #d9d9d9; margin: 0 5px;}
 .settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox input[type="submit"]{margin-left: 10px;}
 .settingPage .historyPage section > div:not(.moneyArea) > form.calenderBox input[type="submit"]:hover{background-color: black;}
